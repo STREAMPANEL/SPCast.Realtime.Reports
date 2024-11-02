@@ -84,7 +84,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Betriebssystem</h2>
                         <p class="card-text">Zeigt die Betriebssysteme der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="protocol.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="os.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -114,7 +114,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Protokoll</h2>
                         <p class="card-text">Zeigt die Protokolle der Nutzeraktivitäten für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="os.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="protocol.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
