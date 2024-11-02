@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Eingehend & Ausgehend</h2>
                         <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk eingeschaltet oder ausgeschaltet haben.</p>
-                        <a href="rtd/all.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="all.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Eingehend</h2>
                         <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk eingeschaltet haben.</p>
-                        <a href="rtd/in.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="in.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -42,7 +42,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Ausgehend</h2>
                         <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk ausgeschaltet haben.</p>
-                        <a href="rtd/out.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="out.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Land</h2>
                         <p class="card-text">Zeigt die Länder der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="rtd/country.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="country.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Bundesland</h2>
                         <p class="card-text">Zeigt die Bundesländer der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="rtd/region.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="region.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Stadt</h2>
                         <p class="card-text">Zeigt die Städte der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="rtd/city.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="city.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Betriebssystem</h2>
                         <p class="card-text">Zeigt die Betriebssysteme der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="rtd/os.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="os.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Browser</h2>
                         <p class="card-text">Zeigt die genutzten Browser der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="rtd/browser.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="browser.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -102,16 +102,14 @@
                     <div class="card-body">
                         <h2 class="card-title">Mountpoint</h2>
                         <p class="card-text">Zeigt die Mountpoints der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="rtd/mount.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="mount.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Include JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-
+    <?php require_once "includes/footer.php"; ?>
 </body>
 
 </html>
