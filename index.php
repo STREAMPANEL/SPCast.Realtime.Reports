@@ -14,7 +14,7 @@
     <div class="container mt-5">
         <div class="text-center mb-4">
             <h1>SPCast Statistiken</h1>
-            <p>Verfolgen Sie Echtzeitdaten der Nutzeraktivitäten im Netzwerk.</br>Hier erhalten Sie Einblicke in eingehende, ausgehende und kombinierte Nutzerdaten, die innerhalb der letzten 30
+            <p>Verfolgen Sie Echtzeitdaten der Nutzeraktivitäten im Netzwerk.<br>Hier erhalten Sie Einblicke in eingehende, ausgehende und kombinierte Nutzerdaten, die innerhalb der letzten 30
                 Minuten aktualisiert wurden.</p>
         </div>
 
@@ -84,7 +84,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Betriebssystem</h2>
                         <p class="card-text">Zeigt die Betriebssysteme der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="os.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="protocol.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
