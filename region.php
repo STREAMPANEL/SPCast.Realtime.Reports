@@ -222,6 +222,9 @@ $results30Days    = fetchAndCacheRegionData($regionFile30Days, '30daysAgo');
                                 title: {
                                     display: true,
                                     text: 'Bundesland'
+                                },
+                                ticks: {
+                                    autoSkip: true
                                 }
                             },
                             y: {

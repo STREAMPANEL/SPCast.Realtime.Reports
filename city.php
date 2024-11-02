@@ -222,6 +222,9 @@ $results30Days    = fetchAndCacheCityData($cityFile30Days, '30daysAgo');
                                 title: {
                                     display: true,
                                     text: 'Stadt'
+                                },
+                                ticks: {
+                                    autoSkip: true
                                 }
                             },
                             y: {

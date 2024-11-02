@@ -222,6 +222,9 @@ $results30Days    = fetchAndCacheBrowserData($browserFile30Days, '30daysAgo');
                                 title: {
                                     display: true,
                                     text: 'Browser'
+                                },
+                                ticks: {
+                                    autoSkip: true
                                 }
                             },
                             y: {

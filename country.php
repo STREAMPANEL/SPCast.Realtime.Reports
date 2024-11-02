@@ -222,6 +222,9 @@ $results30Days    = fetchAndCacheCountryData($countryFile30Days, '30daysAgo');
                                 title: {
                                     display: true,
                                     text: 'Land'
+                                },
+                                ticks: {
+                                    autoSkip: true
                                 }
                             },
                             y: {

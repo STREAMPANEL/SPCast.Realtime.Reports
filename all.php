@@ -277,6 +277,9 @@ foreach ($hours as $hour) {
                             title: {
                                 display: true,
                                 text: 'Stunde des Tages'
+                            },
+                            ticks: {
+                                autoSkip: true
                             }
                         },
                         y: {

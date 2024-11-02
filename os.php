@@ -223,6 +223,9 @@ $results30Days    = fetchAndCacheOSData($osFile30Days, '30daysAgo');
                                 title: {
                                     display: true,
                                     text: 'Betriebssystem'
+                                },
+                                ticks: {
+                                    autoSkip: true
                                 }
                             },
                             y: {

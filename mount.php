@@ -222,6 +222,9 @@ $results30Days    = fetchAndCacheMountData($mountFile30Days, '30daysAgo');
                                 title: {
                                     display: true,
                                     text: 'Mountpoint'
+                                },
+                                ticks: {
+                                    autoSkip: true
                                 }
                             },
                             y: {
