@@ -88,7 +88,7 @@ $results30Days    = fetchAndCacheIPVersionData($ipVersionFile30Days, '30daysAgo'
 <body>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast.eu Echtzeitstatistiken</h1>
+        <h1 class="text-center">SPCast Statistiken</h1>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

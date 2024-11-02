@@ -81,14 +81,14 @@ $results30Days    = fetchAndCachePortData($portFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Port-Statistik für Heute, Gestern, 7 und letzten 30 Tage</title>
+    <title>Portstatistik für heute, gestern, die letzten 7 und 30 Tage</title>
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast.eu Echtzeitstatistiken</h1>
+        <h1 class="text-center">SPCast Statistiken</h1>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">
