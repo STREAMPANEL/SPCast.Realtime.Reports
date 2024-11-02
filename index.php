@@ -127,6 +127,15 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">IP-Version</h2>
+                        <p class="card-text">Zeigt die genutzten IP-Versionen der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
+                        <a href="ipversion.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
