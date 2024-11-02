@@ -118,6 +118,15 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Port</h2>
+                        <p class="card-text">Zeigt die genutzten Ports der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
+                        <a href="port.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
