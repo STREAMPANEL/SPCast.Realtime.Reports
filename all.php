@@ -317,6 +317,9 @@ foreach ($hours as $hour) {
                             title: {
                                 display: true,
                                 text: 'Datum'
+                            },
+                            ticks: {
+                                autoSkip: true
                             }
                         },
                         y: {
@@ -354,6 +357,9 @@ foreach ($hours as $hour) {
                             title: {
                                 display: true,
                                 text: 'Datum'
+                            },
+                            ticks: {
+                                autoSkip: true
                             }
                         },
                         y: {
