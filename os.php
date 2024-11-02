@@ -31,7 +31,7 @@ function getListenerAddWithOS($analytics, $startDate, $endDate = 'today')
     $body = new Google_Service_AnalyticsData_RunReportRequest([
         'dimensions'      => [
             ['name' => 'eventName'],
-            ['name' => 'os'],
+            ['name' => 'customEvent:os'],
         ],
         'metrics'         => [
             ['name' => 'eventCount'],

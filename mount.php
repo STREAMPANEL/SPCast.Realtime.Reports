@@ -31,7 +31,7 @@ function getListenerAddWithMount($analytics, $startDate, $endDate = 'today')
     $body = new Google_Service_AnalyticsData_RunReportRequest([
         'dimensions'      => [
             ['name' => 'eventName'],
-            ['name' => 'mount'],
+            ['name' => 'customEvent:mount'],
         ],
         'metrics'         => [
             ['name' => 'eventCount'],

@@ -31,7 +31,7 @@ function getListenerAddWithCity($analytics, $startDate, $endDate = 'today')
     $body = new Google_Service_AnalyticsData_RunReportRequest([
         'dimensions'      => [
             ['name' => 'eventName'],
-            ['name' => 'city'],
+            ['name' => 'customEvent:city'],
         ],
         'metrics'         => [
             ['name' => 'eventCount'],

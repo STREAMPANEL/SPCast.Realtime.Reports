@@ -31,7 +31,7 @@ function getListenerAddWithCountry($analytics, $startDate, $endDate = 'today')
     $body = new Google_Service_AnalyticsData_RunReportRequest([
         'dimensions'      => [
             ['name' => 'eventName'],
-            ['name' => 'country'],
+            ['name' => 'customEvent:country'],
         ],
         'metrics'         => [
             ['name' => 'eventCount'],
