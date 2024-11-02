@@ -107,6 +107,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title">Protokoll</h2>
+                        <p class="card-text">Zeigt die Protokolle der Nutzeraktivitäten für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
+                        <a href="os.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <?php require_once "includes/footer.php"; ?>
