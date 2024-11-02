@@ -15,15 +15,7 @@ if (!file_exists($cacheDir)) {
     mkdir($cacheDir, 0777, true);
 }
 
-function initializeAnalytics()
-{
-
-    $client = new Google_Client();
-    $client->setAuthConfig('../service-account.json');
-    $client->addScope(Google_Service_AnalyticsData::ANALYTICS);
-
-    return new Google_Service_AnalyticsData($client);
-}
+require_once 'includes/initializeAnalytics.php';
 
 function getListenerAddWithCity($analytics, $startDate, $endDate = 'today')
 {
@@ -43,8 +35,8 @@ function getListenerAddWithCity($analytics, $startDate, $endDate = 'today')
             'filter' => [
                 'fieldName'    => 'eventName',
                 'stringFilter' => [
-                    'value' => 'listener_add',
-                ],
+                        'value' => 'listener_add',
+                    ],
             ],
         ],
     ]);
