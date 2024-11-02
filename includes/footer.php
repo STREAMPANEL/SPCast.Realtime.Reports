@@ -17,7 +17,7 @@
                         <a href="https://www.streampanel.net/kontakt/cookies/" target="_blank" rel="noopener" class="text-dark text-decoration-none">Cookies</a> |
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://www.streampanel.net/kontakt/cookies/" target="_blank" rel="noopener" class="text-dark text-decoration-none">Github</a>
+                        <a href="https://github.com/STREAMPANEL/SPCast.Realtime.Reports" target="_blank" rel="noopener" class="text-dark text-decoration-none">Github</a>
                     </li>
                 </ul>
             </div>
