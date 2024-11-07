@@ -8,13 +8,13 @@
             <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
                 <ul class="list-inline d-flex justify-content-center">
                     <li class="list-inline-item">
-                        <a href="https://www.streampanel.net/kontakt/impressum/" target="_blank" rel="noopener" class="text-dark text-decoration-none">Impressum</a> |
+                        <a href="https://www.spcast.eu/kontakt/impressum/" target="_blank" rel="noopener" class="text-dark text-decoration-none">Impressum</a> |
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://www.streampanel.net/kontakt/datenschutz/" target="_blank" rel="noopener" class="text-dark text-decoration-none">Datenschutz</a> |
+                        <a href="https://www.spcast.eu/kontakt/datenschutz/" target="_blank" rel="noopener" class="text-dark text-decoration-none">Datenschutz</a> |
                     </li>
                     <li class="list-inline-item">
-                        <a href="https://www.streampanel.net/kontakt/cookies/" target="_blank" rel="noopener" class="text-dark text-decoration-none">Cookies</a> |
+                        <a href="https://www.spcast.eu/kontakt/cookies/" target="_blank" rel="noopener" class="text-dark text-decoration-none">Cookies</a> |
                     </li>
                     <li class="list-inline-item">
                         <a href="https://github.com/STREAMPANEL/SPCast.Realtime.Reports" target="_blank" rel="noopener" class="text-dark text-decoration-none">Github</a>
