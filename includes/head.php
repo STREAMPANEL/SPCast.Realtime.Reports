@@ -5,6 +5,7 @@
 <!-- Chart.js -->
 <script src="js/chart.js"></script>
 
+<!-- Inline Style -->
 <style>
     .info-icon {
         font-size: 0.8rem;
@@ -18,3 +19,14 @@
         /* Zeiger ändert sich bei Hover */
     }
 </style>
+
+<!-- Matomo Tag Manager -->
+<script>
+    var _mtm = window._mtm = window._mtm || [];
+    _mtm.push({ 'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start' });
+    (function () {
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.async = true; g.src = 'https://pw.streampanel.net/js/container_KVNJAR2p_rewrite.js'; s.parentNode.insertBefore(g, s);
+    })();
+</script>
+<!-- End Matomo Tag Manager -->
