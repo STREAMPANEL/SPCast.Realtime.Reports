@@ -35,8 +35,8 @@ function getListenerAddWithCity($analytics, $startDate, $endDate = 'today')
             'filter' => [
                 'fieldName'    => 'eventName',
                 'stringFilter' => [
-                        'value' => 'listener_add',
-                    ],
+                    'value' => 'listener_add',
+                ],
             ],
         ],
     ]);
@@ -81,14 +81,19 @@ $results30Days    = fetchAndCacheCityData($cityFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Städtestatistik der Nutzer für heute, gestern, die letzten 7 und 30 Tage</title>
+    <title>Nutzerstatistik nach Stadt - SPCast Live</title>
+    <meta name="description" content="Detaillierte Daten zur Herkunft der Nutzer auf Stadtebene. Statistiken für heute, die letzten 7 und 30 Tage.">
+    <meta name="keywords" content="spcast live, spcast städtestatistik, nutzer nach stadt, echtzeitdaten, netzwerkstatistiken, städteanalyse">
+    <link rel="canonical" href="https://live.spcast.eu/city.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Nutzerstatistik nach Stadt</h1>
+        <p>Anonymisierte Statistiken zur Nutzung der Radiostationen im SPCast-Netzwerk, sortiert nach Städten. Erhalten Sie Einblicke in die lokale Verteilung der Aktivitäten.</p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

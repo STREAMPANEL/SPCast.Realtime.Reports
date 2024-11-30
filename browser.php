@@ -81,14 +81,19 @@ $results30Days    = fetchAndCacheBrowserData($browserFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browserstatistik für Heute, Gestern, 7 und letzten 30 Tage</title>
+    <title>Browserstatistiken - SPCast Live</title>
+    <meta name="description" content="Statistiken über die von Nutzern verwendeten Browser. Echtzeitdaten für tägliche, wöchentliche und monatliche Auswertungen.">
+    <meta name="keywords" content="spcast live, spcast browserstatistiken, browsernutzung, nutzerdaten, echtzeitstatistiken, netzwerkdaten">
+    <link rel="canonical" href="https://live.spcast.eu/browser.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Browserstatistiken</h1>
+        <p>Anonymisierte Daten zu den genutzten Browsern der Nutzer im SPCast-Netzwerk. Diese Statistiken helfen bei der Analyse technischer Vorlieben der Nutzer, basierend auf Echtzeitdaten.</p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

@@ -196,14 +196,20 @@ foreach ($hours as $hour) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ausgehende SPCast Statistiken</title>
+    <title>Ausgehende Nutzerstatistik - SPCast Live</title>
+    <meta name="description" content="Zeigt die Nutzer, die Sender im Netzwerk innerhalb der letzten 30 Minuten ausgeschaltet haben. Echtzeit- und Live-Daten verfügbar.">
+    <meta name="keywords" content="spcast live, spcast nutzerstatistik, ausgehende nutzer, sender ausschalten, echtzeitdaten, netzwerkaktivitäten">
+    <link rel="canonical" href="https://live.spcast.eu/out.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Ausgehende Nutzerstatistik</h1>
+        <p>Anonymisierte Statistiken zu Nutzern, die innerhalb der letzten 30 Minuten einen Sender im SPCast-Netzwerk ausgeschaltet haben. Eine wertvolle Analysequelle für allgemeine Trends im
+            Netzwerk.</p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

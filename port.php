@@ -81,14 +81,19 @@ $results30Days    = fetchAndCachePortData($portFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portstatistik für heute, gestern, die letzten 7 und 30 Tage</title>
+    <title>Port-Statistiken - SPCast Live</title>
+    <meta name="description" content="Statistiken zu den von Nutzern genutzten Ports im Netzwerk. Echtzeitdaten für tägliche und wöchentliche Analysen.">
+    <meta name="keywords" content="spcast live, spcast ports, nutzerstatistik ports, netzwerkdaten, echtzeitanalysen, portstatistiken">
+    <link rel="canonical" href="https://live.spcast.eu/port.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Port-Statistiken</h1>
+        <p>Anonymisierte Statistiken zu den von Nutzern genutzten Ports im SPCast-Netzwerk. Diese Daten helfen, allgemeine Trends und technische Präferenzen der Radiostationen zu erkennen.</p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

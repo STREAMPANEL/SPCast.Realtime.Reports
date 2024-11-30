@@ -35,8 +35,8 @@ function getListenerAddWithCountry($analytics, $startDate, $endDate = 'today')
             'filter' => [
                 'fieldName'    => 'eventName',
                 'stringFilter' => [
-                        'value' => 'listener_add',
-                    ],
+                    'value' => 'listener_add',
+                ],
             ],
         ],
     ]);
@@ -81,14 +81,20 @@ $results30Days    = fetchAndCacheCountryData($countryFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Länderstatistik für heute, gestern, die letzten 7 und 30 Tage</title>
+    <title>Nutzerstatistik nach Land - SPCast Live</title>
+    <meta name="description" content="Analyse der Nutzeraktivitäten nach Ländern. Detaillierte Daten für heute, gestern, die letzten 7 und 30 Tage.">
+    <meta name="keywords" content="spcast live, spcast länderstatistik, nutzer nach land, echtzeitdaten, netzwerkstatistiken, länderverteilung">
+    <link rel="canonical" href="https://live.spcast.eu/country.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Nutzerstatistik nach Land</h1>
+        <p>Analysieren Sie, aus welchen Ländern Nutzer im SPCast-Netzwerk auf Radiostationen zugreifen. Die Statistiken sind anonymisiert und bieten tägliche, wöchentliche und monatliche Auswertungen.
+        </p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

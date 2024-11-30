@@ -35,8 +35,8 @@ function getListenerAddWithProtocol($analytics, $startDate, $endDate = 'today')
             'filter' => [
                 'fieldName'    => 'eventName',
                 'stringFilter' => [
-                        'value' => 'listener_add',
-                    ],
+                    'value' => 'listener_add',
+                ],
             ],
         ],
     ]);
@@ -81,14 +81,19 @@ $results30Days    = fetchAndCacheProtocolData($protocolFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protokollstatistik für heute, gestern, die letzten 7 und 30 Tage</title>
+    <title>Protokoll-Statistiken - SPCast Live</title>
+    <meta name="description" content="Zeigt die Protokolle der Nutzeraktivitäten im Netzwerk. Statistiken für tägliche, wöchentliche und monatliche Auswertungen.">
+    <meta name="keywords" content="spcast live, spcast protokollstatistiken, nutzerprotokoll, netzwerkprotokolle, echtzeitstatistiken, datenprotokolle">
+    <link rel="canonical" href="https://live.spcast.eu/protocol.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Protokoll-Statistiken</h1>
+        <p>Sehen Sie anonymisierte Protokollstatistiken der Nutzeraktivitäten im SPCast-Netzwerk. Diese Daten geben Aufschluss über die Nutzung technischer Protokolle für verschiedene Zeiträume.</p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

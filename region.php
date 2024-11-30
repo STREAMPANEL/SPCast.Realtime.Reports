@@ -35,8 +35,8 @@ function getListenerAddWithRegion($analytics, $startDate, $endDate = 'today')
             'filter' => [
                 'fieldName'    => 'eventName',
                 'stringFilter' => [
-                        'value' => 'listener_add',
-                    ],
+                    'value' => 'listener_add',
+                ],
             ],
         ],
     ]);
@@ -81,14 +81,20 @@ $results30Days    = fetchAndCacheRegionData($regionFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bundeslandstatistik für heute, gestern, die letzten 7 und 30 Tage</title>
+    <title>Nutzerstatistik nach Bundesland - SPCast Live</title>
+    <meta name="description" content="Zeigt Nutzeraktivitäten nach Bundesländern. Ausführliche Statistiken für verschiedene Zeiträume, tages- und wochenweise.">
+    <meta name="keywords" content="spcast live, spcast bundesländerstatistik, nutzer nach bundesland, netzwerkdaten, echtzeitstatistiken">
+    <link rel="canonical" href="https://live.spcast.eu/region.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Nutzerstatistik nach Bundesland</h1>
+        <p>Sehen Sie anonymisierte Daten zu Nutzeraktivitäten im SPCast-Netzwerk nach Bundesländern. Diese Statistiken zeigen, wie die Nutzung geografisch verteilt ist, basierend auf tages- und
+            wochenweisen Auswertungen.</p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

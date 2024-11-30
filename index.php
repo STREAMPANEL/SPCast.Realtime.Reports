@@ -4,18 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPCast Statistiken</title>
+    <title>SPCast Echtzeitstatistiken - SPCast Live</title>
+    <meta name="description" content="Erhalten Sie Echtzeitstatistiken über Nutzeraktivitäten im SPCast-Netzwerk. Einblicke in eingehende und ausgehende Daten, live aktualisiert.">
+    <meta name="keywords" content="spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung">
+    <link rel="canonical" href="https://live.spcast.eu/" />
+
     <!-- Include CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container mt-5">
         <div class="text-center mb-4">
-            <h1>SPCast Statistiken</h1>
-            <p>Verfolgen Sie Echtzeitdaten der Nutzeraktivitäten im Netzwerk.<br>Hier erhalten Sie Einblicke in eingehende, ausgehende und kombinierte Nutzerdaten, die innerhalb der letzten 30
-                Minuten aktualisiert wurden.</p>
+            <h1>SPCast Echtzeitstatistiken</h1>
+            <p>Erhalten Sie anonymisierte Echtzeitstatistiken zu den Nutzeraktivitäten im SPCast-Netzwerk. Verfolgen Sie allgemeine Trends und analysieren Sie das Nutzerverhalten aller Radiostationen
+                in einer zentralen Übersicht.</p>
         </div>
 
         <div class="row">

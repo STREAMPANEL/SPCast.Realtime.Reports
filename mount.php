@@ -35,8 +35,8 @@ function getListenerAddWithMount($analytics, $startDate, $endDate = 'today')
             'filter' => [
                 'fieldName'    => 'eventName',
                 'stringFilter' => [
-                        'value' => 'listener_add',
-                    ],
+                    'value' => 'listener_add',
+                ],
             ],
         ],
     ]);
@@ -81,14 +81,19 @@ $results30Days    = fetchAndCacheMountData($mountFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mountpoint-Statistik für heute, gestern, die letzten 7 und 30 Tage</title>
+    <title>Mountpoint-Statistiken - SPCast Live</title>
+    <meta name="description" content="Detaillierte Statistiken über die genutzten Mountpoints im Netzwerk. Analysen für verschiedene Zeiträume verfügbar.">
+    <meta name="keywords" content="spcast live, spcast mountpoints, nutzerdaten, echtzeitstatistiken, netzwerkanalysen, mountpoint statistiken">
+    <link rel="canonical" href="https://live.spcast.eu/mount.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Mountpoint-Statistiken</h1>
+        <p>Erhalten Sie detaillierte, anonymisierte Daten zu den genutzten Mountpoints im SPCast-Netzwerk. Diese Statistiken zeigen allgemeine Trends zur Nutzung der Radiostationen.</p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

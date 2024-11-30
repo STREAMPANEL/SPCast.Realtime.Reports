@@ -35,8 +35,8 @@ function getListenerAddWithOS($analytics, $startDate, $endDate = 'today')
             'filter' => [
                 'fieldName'    => 'eventName',
                 'stringFilter' => [
-                        'value' => 'listener_add',
-                    ],
+                    'value' => 'listener_add',
+                ],
             ],
         ],
     ]);
@@ -81,14 +81,20 @@ $results30Days    = fetchAndCacheOSData($osFile30Days, '30daysAgo');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Betriebssystemstatistik für heute, gestern, die letzten 7 und 30 Tage</title>
+    <title>Betriebssystem-Statistiken - SPCast Live</title>
+    <meta name="description" content="Überblick über die genutzten Betriebssysteme der Nutzer. Live-Daten und Statistiken für verschiedene Zeiträume.">
+    <meta name="keywords" content="spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen">
+    <link rel="canonical" href="https://live.spcast.eu/os.php" />
     <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
+<?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">SPCast Statistiken</h1>
+        <h1 class="text-center">Betriebssystem-Statistiken</h1>
+        <p>Statistiken zu den von Nutzern verwendeten Betriebssystemen im SPCast-Netzwerk. Anonymisierte Daten bieten Einblicke in technische Vorlieben und Trends über verschiedene Zeiträume hinweg.
+        </p>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">
