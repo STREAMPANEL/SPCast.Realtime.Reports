@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- Startseite -->
+    <url>
+        <loc>https://live.spcast.eu/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Menüpunkte -->
+    <url>
+        <loc>https://live.spcast.eu/all.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/in.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/out.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Statistikseiten -->
+    <url>
+        <loc>https://live.spcast.eu/country.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/region.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/city.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/os.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/browser.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/mount.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/protocol.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://live.spcast.eu/port.php</loc>
+        <changefreq>always</changefreq>
+        <priority>0.6</priority>
+    </url>
+</urlset>
