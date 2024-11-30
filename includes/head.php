@@ -2,6 +2,8 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap ICONS -->
 <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+<!-- Navbar -->
+<link rel="stylesheet" href="css/nav.min.css">
 <!-- Chart.js -->
 <script src="js/chart.js"></script>
 

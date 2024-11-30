@@ -4,7 +4,8 @@
 
 <footer class="bg-light text-center text-lg-start mt-5">
     <div class="container p-4">
-        <div class="row">
+        </div>
+<div class="row">
             <div class="col-lg-12 col-md-12 mb-4 mb-md-0">
                 <ul class="list-inline d-flex justify-content-center">
                     <li class="list-inline-item">

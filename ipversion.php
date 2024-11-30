@@ -89,11 +89,13 @@ $results30Days    = fetchAndCacheIPVersionData($ipVersionFile30Days, '30daysAgo'
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">IP-Version-Statistiken</h1>
-        <p>Anonymisierte Daten zur Nutzung von IPv4 und IPv6 im SPCast-Netzwerk. Diese Statistiken geben Aufschluss über die Verteilung der IP-Versionen innerhalb der Radiostationen.</p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">IP-Version-Statistiken</h1>
+            <p>Anonymisierte Daten zur Nutzung von IPv4 und IPv6 im SPCast-Netzwerk. Diese Statistiken geben Aufschluss über die Verteilung der IP-Versionen innerhalb der Radiostationen.</p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

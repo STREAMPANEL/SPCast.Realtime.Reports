@@ -89,11 +89,13 @@ $results30Days    = fetchAndCacheMountData($mountFile30Days, '30daysAgo');
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Mountpoint-Statistiken</h1>
-        <p>Erhalten Sie detaillierte, anonymisierte Daten zu den genutzten Mountpoints im SPCast-Netzwerk. Diese Statistiken zeigen allgemeine Trends zur Nutzung der Radiostationen.</p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">Mountpoint-Statistiken</h1>
+            <p>Erhalten Sie detaillierte, anonymisierte Daten zu den genutzten Mountpoints im SPCast-Netzwerk. Diese Statistiken zeigen allgemeine Trends zur Nutzung der Radiostationen.</p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

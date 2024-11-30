@@ -89,11 +89,13 @@ $results30Days    = fetchAndCacheCityData($cityFile30Days, '30daysAgo');
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Nutzerstatistik nach Stadt</h1>
-        <p>Anonymisierte Statistiken zur Nutzung der Radiostationen im SPCast-Netzwerk, sortiert nach Städten. Erhalten Sie Einblicke in die lokale Verteilung der Aktivitäten.</p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">Nutzerstatistik nach Stadt</h1>
+            <p>Anonymisierte Statistiken zur Nutzung der Radiostationen im SPCast-Netzwerk, sortiert nach Städten. Erhalten Sie Einblicke in die lokale Verteilung der Aktivitäten.</p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

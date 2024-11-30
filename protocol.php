@@ -89,11 +89,14 @@ $results30Days    = fetchAndCacheProtocolData($protocolFile30Days, '30daysAgo');
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Protokoll-Statistiken</h1>
-        <p>Sehen Sie anonymisierte Protokollstatistiken der Nutzeraktivitäten im SPCast-Netzwerk. Diese Daten geben Aufschluss über die Nutzung technischer Protokolle für verschiedene Zeiträume.</p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">Protokoll-Statistiken</h1>
+            <p>Sehen Sie anonymisierte Protokollstatistiken der Nutzeraktivitäten im SPCast-Netzwerk. Diese Daten geben Aufschluss über die Nutzung technischer Protokolle für verschiedene Zeiträume.
+            </p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

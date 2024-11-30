@@ -89,11 +89,13 @@ $results30Days    = fetchAndCachePortData($portFile30Days, '30daysAgo');
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Port-Statistiken</h1>
-        <p>Anonymisierte Statistiken zu den von Nutzern genutzten Ports im SPCast-Netzwerk. Diese Daten helfen, allgemeine Trends und technische Präferenzen der Radiostationen zu erkennen.</p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">Port-Statistiken</h1>
+            <p>Anonymisierte Statistiken zu den von Nutzern genutzten Ports im SPCast-Netzwerk. Diese Daten helfen, allgemeine Trends und technische Präferenzen der Radiostationen zu erkennen.</p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

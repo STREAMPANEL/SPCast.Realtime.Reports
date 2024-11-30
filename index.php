@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container mt-5">
         <div class="text-center mb-4">
@@ -22,7 +22,6 @@
             <p>Erhalten Sie anonymisierte Echtzeitstatistiken zu den Nutzeraktivitäten im SPCast-Netzwerk. Verfolgen Sie allgemeine Trends und analysieren Sie das Nutzerverhalten aller Radiostationen
                 in einer zentralen Übersicht.</p>
         </div>
-
         <div class="row">
             <div class="col-md-4">
                 <div class="card">

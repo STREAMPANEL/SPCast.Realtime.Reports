@@ -199,12 +199,15 @@ foreach ($hours as $hour) {
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Alle Nutzeraktivitäten</h1>
-        <p>Hier finden Sie eine Übersicht aller anonymisierten Nutzeraktivitäten im SPCast-Netzwerk. Diese Statistik zeigt, wie viele Nutzer Sender ein- oder ausgeschaltet haben, aktualisiert alle 30
-            Minuten.</p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">Alle Nutzeraktivitäten</h1>
+            <p>Hier finden Sie eine Übersicht aller anonymisierten Nutzeraktivitäten im SPCast-Netzwerk. Diese Statistik zeigt, wie viele Nutzer Sender ein- oder ausgeschaltet haben, aktualisiert alle
+                30
+                Minuten.</p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

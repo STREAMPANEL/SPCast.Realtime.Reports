@@ -89,12 +89,15 @@ $results30Days    = fetchAndCacheOSData($osFile30Days, '30daysAgo');
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Betriebssystem-Statistiken</h1>
-        <p>Statistiken zu den von Nutzern verwendeten Betriebssystemen im SPCast-Netzwerk. Anonymisierte Daten bieten Einblicke in technische Vorlieben und Trends über verschiedene Zeiträume hinweg.
-        </p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">Betriebssystem-Statistiken</h1>
+            <p>Statistiken zu den von Nutzern verwendeten Betriebssystemen im SPCast-Netzwerk. Anonymisierte Daten bieten Einblicke in technische Vorlieben und Trends über verschiedene Zeiträume
+                hinweg.
+            </p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

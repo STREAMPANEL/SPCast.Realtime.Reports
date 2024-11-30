@@ -89,11 +89,13 @@ $results30Days    = fetchAndCacheBrowserData($browserFile30Days, '30daysAgo');
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Browserstatistiken</h1>
-        <p>Anonymisierte Daten zu den genutzten Browsern der Nutzer im SPCast-Netzwerk. Diese Statistiken helfen bei der Analyse technischer Vorlieben der Nutzer, basierend auf Echtzeitdaten.</p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">Browserstatistiken</h1>
+            <p>Anonymisierte Daten zu den genutzten Browsern der Nutzer im SPCast-Netzwerk. Diese Statistiken helfen bei der Analyse technischer Vorlieben der Nutzer, basierend auf Echtzeitdaten.</p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">

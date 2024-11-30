@@ -89,12 +89,15 @@ $results30Days    = fetchAndCacheCountryData($countryFile30Days, '30daysAgo');
 </head>
 
 <body>
-<?php require_once "includes/nav.php"; ?>
+    <?php require_once "includes/nav.php"; ?>
 
     <div class="container my-5">
-        <h1 class="text-center">Nutzerstatistik nach Land</h1>
-        <p>Analysieren Sie, aus welchen Ländern Nutzer im SPCast-Netzwerk auf Radiostationen zugreifen. Die Statistiken sind anonymisiert und bieten tägliche, wöchentliche und monatliche Auswertungen.
-        </p>
+        <div class="text-center mb-4">
+            <h1 class="text-center">Nutzerstatistik nach Land</h1>
+            <p>Analysieren Sie, aus welchen Ländern Nutzer im SPCast-Netzwerk auf Radiostationen zugreifen. Die Statistiken sind anonymisiert und bieten tägliche, wöchentliche und monatliche
+                Auswertungen.
+            </p>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="card text-center">
