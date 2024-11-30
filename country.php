@@ -76,7 +76,7 @@ $results30Days    = fetchAndCacheCountryData($countryFile30Days, '30daysAgo');
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">

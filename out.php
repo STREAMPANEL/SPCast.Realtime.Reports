@@ -191,7 +191,7 @@ foreach ($hours as $hour) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8">
