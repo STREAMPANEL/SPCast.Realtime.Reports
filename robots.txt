@@ -1,3 +1,4 @@
 User-agent: *
+Disallow: .well-known/*
 Disallow:
 Sitemap: https://live.spcast.eu/sitemap.xml
