@@ -30,7 +30,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Eingehend & Ausgehend</h2>
                         <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk eingeschaltet oder ausgeschaltet haben.</p>
-                        <a href="all.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="all.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Eingehend</h2>
                         <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk eingeschaltet haben.</p>
-                        <a href="in.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="in.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Ausgehend</h2>
                         <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk ausgeschaltet haben.</p>
-                        <a href="out.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="out.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Land</h2>
                         <p class="card-text">Zeigt die Länder der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="country.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="country.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Bundesland</h2>
                         <p class="card-text">Zeigt die Bundesländer der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="region.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="region.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -78,7 +78,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Stadt</h2>
                         <p class="card-text">Zeigt die Städte der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="city.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="city.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Betriebssystem</h2>
                         <p class="card-text">Zeigt die Betriebssysteme der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="os.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="os.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -99,7 +99,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Browser</h2>
                         <p class="card-text">Zeigt die genutzten Browser der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="browser.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="browser.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -108,7 +108,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Mountpoint</h2>
                         <p class="card-text">Zeigt die Mountpoints der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="mount.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="mount.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -120,7 +120,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Protokoll</h2>
                         <p class="card-text">Zeigt die Protokolle der Nutzeraktivitäten für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="protocol.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="protocol.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@
                     <div class="card-body">
                         <h2 class="card-title">Port</h2>
                         <p class="card-text">Zeigt die genutzten Ports der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="port.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="port.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>
@@ -138,7 +138,7 @@
                     <div class="card-body">
                         <h2 class="card-title">IP-Version</h2>
                         <p class="card-text">Zeigt die genutzten IP-Versionen der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="ipversion.php" target="_blank" rel="noopener" class="btn btn-primary">Aufrufen</a>
+                        <a href="ipversion.php" class="btn btn-primary">Aufrufen</a>
                     </div>
                 </div>
             </div>-->
