@@ -1,2 +1,9 @@
 ### Set PHP 8.2
 AddType application/x-httpd-alt-php82___lsphp .php5 .php4 .php .php3 .php2 .phtml
+
+# HTTP Rewrite
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP:X-Forwarded-SSL} !on
+RewriteCond %{HTTP_HOST} ^live\.spcast\.eu$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.live\.spcast\.eu$
+RewriteRule ^(.*)$ "https\:\/\/live\.spcast\.eu\/$1" [R=301,L]
