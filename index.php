@@ -8,11 +8,7 @@
     <meta name="description" content="Erhalten Sie Echtzeitstatistiken über Nutzeraktivitäten im SPCast-Netzwerk. Einblicke in eingehende und ausgehende Daten, live aktualisiert.">
     <meta name="keywords" content="spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung">
     <link rel="canonical" href="https://live.spcast.eu/" />
-
-    <!-- Bootstrap CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <!-- Bootstrap ICONS -->
-    <link rel="stylesheet" href="css/bootstrap-icons.min.css">
+    <?php require_once "includes/head.php"; ?>
 </head>
 
 <body>
