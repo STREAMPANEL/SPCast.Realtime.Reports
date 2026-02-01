@@ -1,6 +1,21 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+// Security headers
+$allowed_origins = ['https://live.spcast.eu', 'https://spcast.eu'];
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: " . $origin);
+}
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: text/html; charset=UTF-8");
+header("X-Content-Type-Options: nosniff");
+header("X-Frame-Options: DENY");
+header("X-XSS-Protection: 1; mode=block");
+
+// Resource limits
+ini_set('memory_limit', '256M');
+ini_set('max_execution_time', 30);
 
 require_once 'vendor/autoload.php';
 
@@ -12,7 +27,7 @@ $browserFile30Days    = $cacheDir . 'analytics_browser_cache_30days.json';
 $cacheTime            = 45;
 
 if (!file_exists($cacheDir)) {
-    mkdir($cacheDir, 0777, true);
+    mkdir($cacheDir, 0755, true);
 }
 
 require_once 'includes/initializeAnalytics.php';

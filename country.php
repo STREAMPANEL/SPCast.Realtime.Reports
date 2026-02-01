@@ -1,6 +1,21 @@
 <?php
-header("Access-Control-Allow-Origin: *");
+// Security headers
+$allowed_origins = ['https://live.spcast.eu', 'https://spcast.eu'];
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (in_array($origin, $allowed_origins)) {
+    header("Access-Control-Allow-Origin: " . $origin);
+}
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: text/html; charset=UTF-8");
+header("X-Content-Type-Options: nosniff");
+header("X-Frame-Options: DENY");
+header("X-XSS-Protection: 1; mode=block");
+
+// Resource limits
+ini_set('memory_limit', '256M');
+ini_set('max_execution_time', 30);
 
 require_once 'vendor/autoload.php';
 
@@ -12,10 +27,11 @@ $countryFile30Days    = $cacheDir . 'analytics_country_cache_30days.json';
 $cacheTime            = 45;
 
 if (!file_exists($cacheDir)) {
-    mkdir($cacheDir, 0777, true);
+    mkdir($cacheDir, 0755, true);
 }
 
 require_once 'includes/initializeAnalytics.php';
+require_once 'includes/cacheCleanup.php';
 
 function getListenerAddWithCountry($analytics, $startDate, $endDate = 'today')
 {
@@ -46,26 +62,46 @@ function getListenerAddWithCountry($analytics, $startDate, $endDate = 'today')
 
 function fetchAndCacheCountryData($cacheFile, $startDate, $endDate = 'today')
 {
+    try {
+        if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 45) {
+            $cachedData = file_get_contents($cacheFile);
+            if ($cachedData === false) {
+                throw new Exception('Failed to read cache file');
+            }
+            $decoded = json_decode($cachedData, true);
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                throw new Exception('Invalid JSON in cache: ' . json_last_error_msg());
+            }
+            return $decoded;
+        }
 
-    if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < 45) {
-        return json_decode(file_get_contents($cacheFile), true);
-    } else {
         $analytics = initializeAnalytics();
-        $response  = getListenerAddWithCountry($analytics, $startDate, $endDate);
+        $response = getListenerAddWithCountry($analytics, $startDate, $endDate);
 
         $results = [];
         if ($response->getRows()) {
             foreach ($response->getRows() as $row) {
-                $country = $row->getDimensionValues()[1]->getValue();
-                $count   = $row->getMetricValues()[0]->getValue();
+                $country = htmlspecialchars($row->getDimensionValues()[1]->getValue(), ENT_QUOTES, 'UTF-8');
+                $count = (int)$row->getMetricValues()[0]->getValue();
                 if ($country !== "(not set)") {
                     $results[$country] = isset($results[$country]) ? $results[$country] + $count : $count;
                 }
             }
         }
 
-        file_put_contents($cacheFile, json_encode($results));
+        $jsonData = json_encode($results);
+        if ($jsonData === false) {
+            throw new Exception('Failed to encode data to JSON');
+        }
+        
+        if (file_put_contents($cacheFile, $jsonData, LOCK_EX) === false) {
+            throw new Exception('Failed to write cache file');
+        }
+        
         return $results;
+    } catch (Exception $e) {
+        error_log('Analytics Error: ' . $e->getMessage());
+        return [];
     }
 }
 
@@ -160,19 +196,19 @@ $results30Days    = fetchAndCacheCountryData($countryFile30Days, '30daysAgo');
                 });
             }
 
-            const countryDataToday = <?php echo json_encode($resultsToday); ?>;
+            const countryDataToday = <?php echo htmlspecialchars(json_encode($resultsToday), ENT_QUOTES, 'UTF-8'); ?>;
             const countryLabelsToday = createCountryLinks(countryDataToday);
             const countryCountsToday = Object.values(countryDataToday);
 
-            const countryDataYesterday = <?php echo json_encode($resultsYesterday); ?>;
+            const countryDataYesterday = <?php echo htmlspecialchars(json_encode($resultsYesterday), ENT_QUOTES, 'UTF-8'); ?>;
             const countryLabelsYesterday = createCountryLinks(countryDataYesterday);
             const countryCountsYesterday = Object.values(countryDataYesterday);
 
-            const countryData7Days = <?php echo json_encode($results7Days); ?>;
+            const countryData7Days = <?php echo htmlspecialchars(json_encode($results7Days), ENT_QUOTES, 'UTF-8'); ?>;
             const countryLabels7Days = createCountryLinks(countryData7Days);
             const countryCounts7Days = Object.values(countryData7Days);
 
-            const countryData30Days = <?php echo json_encode($results30Days); ?>;
+            const countryData30Days = <?php echo htmlspecialchars(json_encode($results30Days), ENT_QUOTES, 'UTF-8'); ?>;
             const countryLabels30Days = createCountryLinks(countryData30Days);
             const countryCounts30Days = Object.values(countryData30Days);
 
