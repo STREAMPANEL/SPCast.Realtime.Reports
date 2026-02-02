@@ -12,9 +12,6 @@
                     <a class="nav-link" href="https://live.spcast.eu/">Startseite</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="all.php">Eingehend & Ausgehend</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="in.php">Eingehend</a>
                 </li>
                 <li class="nav-item">
@@ -62,9 +59,6 @@
         <ul class="navbar-nav flex-column">
             <li class="nav-item">
                 <a class="nav-link" href="https://live.spcast.eu/">Startseite</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="all.php">Eingehend & Ausgehend</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="in.php">Eingehend</a>
