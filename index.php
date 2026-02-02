@@ -21,16 +21,7 @@
                 in einer zentralen Übersicht.</p>
         </div>
         <div class="row">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Eingehend & Ausgehend</h2>
-                        <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk eingeschaltet oder ausgeschaltet haben.</p>
-                        <a href="all.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">Eingehend</h2>
@@ -39,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title">Ausgehend</h2>
