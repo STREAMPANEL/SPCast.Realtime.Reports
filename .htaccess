@@ -1,0 +1,2 @@
+### Set PHP 8.2
+AddType application/x-httpd-alt-php82___lsphp .php5 .php4 .php .php3 .php2 .phtml

@@ -1,0 +1,32 @@
+/* Desktop navigation: align items horizontally */
+.navbar-nav {
+  flex-direction: row;
+}
+
+.nav-item {
+  margin: 0 10px; /* Add space between desktop links */
+}
+
+/* Mobile navigation: make each link occupy a single row */
+.offcanvas-body ul {
+  list-style: none; /* Remove bullets */
+  padding: 0;
+}
+
+.offcanvas-body .nav-link {
+  display: block; /* Ensure each link takes up the full row */
+  margin: 10px 0; /* Add vertical spacing between links */
+  text-decoration: none; /* Remove underline */
+  color: #000; /* Default text color */
+}
+
+/* Ensure the links are displayed in a column for mobile */
+.offcanvas-body .navbar-nav {
+  flex-direction: column !important; /* Stack items vertically */
+}
+
+/* Hover effect for mobile navigation links */
+.offcanvas-body .nav-link:hover {
+  background-color: #f8f9fa; /* Light gray background on hover */
+  color: #0056b3; /* Blue text on hover */
+}
