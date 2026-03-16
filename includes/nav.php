@@ -1,24 +1,27 @@
 <?php
+
+declare(strict_types=1);
+
 $navItems = [
-    ['label' => 'Startseite', 'url' => 'https://live.spcast.eu/'],
-    ['label' => 'Eingehend', 'url' => 'in.php'],
-    ['label' => 'Ausgehend', 'url' => 'out.php'],
-    ['label' => 'Land', 'url' => 'country.php'],
-    ['label' => 'Bundesland', 'url' => 'region.php'],
-    ['label' => 'Stadt', 'url' => 'city.php'],
-    ['label' => 'Betriebssystem', 'url' => 'os.php'],
-    ['label' => 'Browser', 'url' => 'browser.php'],
-    ['label' => 'Mountpoint', 'url' => 'mount.php'],
-    ['label' => 'Protokoll', 'url' => 'protocol.php'],
-    ['label' => 'Port', 'url' => 'port.php'],
-    ['label' => 'IP-Version', 'url' => 'ipversion.php'],
+    ['label' => __('Home'), 'url' => 'https://live.spcast.eu/'],
+    ['label' => __('Incoming'), 'url' => 'in.php'],
+    ['label' => __('Outgoing'), 'url' => 'out.php'],
+    ['label' => __('Country'), 'url' => 'country.php'],
+    ['label' => __('Region'), 'url' => 'region.php'],
+    ['label' => __('City'), 'url' => 'city.php'],
+    ['label' => __('Operating System'), 'url' => 'os.php'],
+    ['label' => __('Browser'), 'url' => 'browser.php'],
+    ['label' => __('Mountpoint'), 'url' => 'mount.php'],
+    ['label' => __('Protocol'), 'url' => 'protocol.php'],
+    ['label' => __('Port'), 'url' => 'port.php'],
+    ['label' => __('IP Version'), 'url' => 'ipversion.php'],
 ];
 ?>
-<nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="Hauptnavigation">
+<nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="<?php echo htmlspecialchars(__('Main Navigation')); ?>">
     <div class="container-fluid">
         <!-- Mobile menu button -->
         <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
-            Menü
+            <?php echo htmlspecialchars(__('Menu')); ?>
         </button>
 
         <!-- Desktop navigation -->
@@ -37,7 +40,7 @@ $navItems = [
 <!-- Off-Canvas menu for mobile devices -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNav" aria-labelledby="offcanvasNavLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavLabel">Menü</h5>
+        <h5 class="offcanvas-title" id="offcanvasNavLabel"><?php echo htmlspecialchars(__('Menu')); ?></h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">

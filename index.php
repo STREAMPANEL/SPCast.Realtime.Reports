@@ -1,12 +1,17 @@
+<?php
+
+declare(strict_types=1);
+
+require_once 'includes/i18n.php'; ?>
 <!DOCTYPE html>
-<html lang="de">
+<html lang="<?php echo htmlspecialchars($current_lang ?? 'en'); ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPCast Echtzeitstatistiken - SPCast Live</title>
-    <meta name="description" content="Erhalten Sie Echtzeitstatistiken über Nutzeraktivitäten im SPCast-Netzwerk. Einblicke in eingehende und ausgehende Daten, live aktualisiert.">
-    <meta name="keywords" content="spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung">
+    <title>SPCast <?php echo __('Realtime Statistics'); ?> - SPCast Live</title>
+    <meta name="description" content="<?php echo __('Get realtime statistics on user activities in the SPCast network. Insights into incoming and outgoing data, updated live.'); ?>">
+    <meta name="keywords" content="<?php echo __('spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung'); ?>">
     <link rel="canonical" href="https://live.spcast.eu/" />
     <?php require_once "includes/head.php"; ?>
 </head>
@@ -16,119 +21,54 @@
 
     <div class="container mt-5">
         <div class="text-center mb-4">
-            <h1>SPCast Echtzeitstatistiken</h1>
-            <p>Erhalten Sie anonymisierte Echtzeitstatistiken zu den Nutzeraktivitäten im SPCast-Netzwerk. Verfolgen Sie allgemeine Trends und analysieren Sie das Nutzerverhalten aller Radiostationen
-                in einer zentralen Übersicht.</p>
+            <h1>SPCast <?php echo __('Realtime Statistics'); ?></h1>
+            <p><?php echo __('Get anonymized realtime statistics on user activities in the SPCast network. Track general trends and analyze the user behavior of all radio stations in a centralized overview.'); ?></p>
         </div>
+        
         <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Eingehend</h2>
-                        <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk eingeschaltet haben.</p>
-                        <a href="in.php" class="btn btn-primary">Aufrufen</a>
+            <?php
+            $mainCards = [
+                ['title' => __('Incoming'), 'text' => __('These are users who tuned in to a station in the network within the last 30 minutes.'), 'url' => 'in.php'],
+                ['title' => __('Outgoing'), 'text' => __('These are users who tuned out of a station in the network within the last 30 minutes.'), 'url' => 'out.php']
+            ];
+            foreach ($mainCards as $card): ?>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2 class="card-title"><?php echo $card['title']; ?></h2>
+                            <p class="card-text"><?php echo $card['text']; ?></p>
+                            <a href="<?php echo htmlspecialchars($card['url']); ?>" class="btn btn-primary"><?php echo __('View'); ?></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Ausgehend</h2>
-                        <p class="card-text">Es handelt sich um Nutzer, die in den letzten 30 Minuten einen Sender im Netzwerk ausgeschaltet haben.</p>
-                        <a href="out.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
 
         <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Land</h2>
-                        <p class="card-text">Zeigt die Länder der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="country.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Bundesland</h2>
-                        <p class="card-text">Zeigt die Bundesländer der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="region.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Stadt</h2>
-                        <p class="card-text">Zeigt die Städte der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="city.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <?php
+            $statCards = [
+                ['title' => __('Country'), 'text' => __('Shows user countries for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'country.php'],
+                ['title' => __('Region'), 'text' => __('Shows user regions for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'region.php'],
+                ['title' => __('City'), 'text' => __('Shows user cities for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'city.php'],
+                ['title' => __('Operating System'), 'text' => __('Shows user operating systems for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'os.php'],
+                ['title' => __('Browser'), 'text' => __('Shows used browsers for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'browser.php'],
+                ['title' => __('Mountpoint'), 'text' => __('Shows user mountpoints for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'mount.php'],
+                ['title' => __('Protocol'), 'text' => __('Shows user activity protocols for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'protocol.php'],
+                ['title' => __('Port'), 'text' => __('Shows used ports for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'port.php'],
+                ['title' => __('IP Version'), 'text' => __('Shows used IP versions for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'ipversion.php']
+            ];
 
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Betriebssystem</h2>
-                        <p class="card-text">Zeigt die Betriebssysteme der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="os.php" class="btn btn-primary">Aufrufen</a>
+            foreach ($statCards as $card): ?>
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h2 class="card-title"><?php echo $card['title']; ?></h2>
+                            <p class="card-text"><?php echo $card['text']; ?></p>
+                            <a href="<?php echo htmlspecialchars($card['url']); ?>" class="btn btn-primary"><?php echo __('View'); ?></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Browser</h2>
-                        <p class="card-text">Zeigt die genutzten Browser der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="browser.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Mountpoint</h2>
-                        <p class="card-text">Zeigt die Mountpoints der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="mount.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Protokoll</h2>
-                        <p class="card-text">Zeigt die Protokolle der Nutzeraktivitäten für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="protocol.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">Port</h2>
-                        <p class="card-text">Zeigt die genutzten Ports der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="port.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h2 class="card-title">IP-Version</h2>
-                        <p class="card-text">Zeigt die genutzten IP-Versionen der Nutzer für heute, gestern, die letzten 7 und die letzten 30 Tage.</p>
-                        <a href="ipversion.php" class="btn btn-primary">Aufrufen</a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
     </div>
 

@@ -1,0 +1,524 @@
+msgid ""
+msgstr ""
+"Language: fr_FR\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Realtime Statistics"
+msgstr "Statistiques en temps réel"
+
+msgid "Get anonymized realtime statistics on user activities within the SPCast network. Track general trends and analyze user behavior across all radio stations in a centralized overview."
+msgstr "Obtenez des statistiques anonymisées en temps réel sur les activités des utilisateurs au sein du réseau SPCast. Suivez les tendances générales et analysez le comportement des utilisateurs sur toutes les stations de radio dans un aperçu centralisé."
+
+msgid "These are users who tuned in to a station in the network within the last 30 minutes."
+msgstr "Il s'agit des utilisateurs qui se sont connectés à une station du réseau au cours des 30 dernières minutes."
+
+msgid "These are users who tuned out of a station in the network within the last 30 minutes."
+msgstr "Il s'agit des utilisateurs qui ont désactivé une station du réseau au cours des 30 dernières minutes."
+
+msgid "Shows user countries for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les pays des utilisateurs pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Shows user regions for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les régions utilisateur pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Shows user cities for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les villes des utilisateurs pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Shows user operating systems for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les systèmes d'exploitation des utilisateurs pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Shows used browsers for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les navigateurs utilisés pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Shows user mountpoints for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les points de montage utilisateur pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Shows user activity protocols for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les protocoles d'activité des utilisateurs pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Shows used ports for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les ports utilisés pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Shows used IP versions for today, yesterday, the last 7, and the last 30 days."
+msgstr "Affiche les versions IP utilisées pour aujourd'hui, hier, les 7 derniers et les 30 derniers jours."
+
+msgid "Incoming"
+msgstr "Entrant"
+
+msgid "Outgoing"
+msgstr "Sortant"
+
+msgid "Country"
+msgstr "Pays"
+
+msgid "Region"
+msgstr "Région"
+
+msgid "City"
+msgstr "Ville"
+
+msgid "Operating System"
+msgstr "Système d'exploitation"
+
+msgid "Browser"
+msgstr "Navigateur"
+
+msgid "Mountpoint"
+msgstr "Point de montage"
+
+msgid "Protocol"
+msgstr "Protocole"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "IP Version"
+msgstr "Version IP"
+
+msgid "View"
+msgstr "Affichage"
+
+msgid "Incoming User Statistics - SPCast Live"
+msgstr "Statistiques des utilisateurs entrants - SPCast Live"
+
+msgid "Outgoing User Statistics - SPCast Live"
+msgstr "Statistiques des utilisateurs sortants - SPCast Live"
+
+msgid "Incoming User Statistics"
+msgstr "Statistiques des utilisateurs entrants"
+
+msgid "Outgoing User Statistics"
+msgstr "Statistiques des utilisateurs sortants"
+
+msgid "Track all users who tuned into stations within the last 30 minutes. Live statistics and real-time insights."
+msgstr "Suivez tous les utilisateurs qui se sont connectés aux stations au cours des 30 dernières minutes. Statistiques en direct et informations en temps réel."
+
+msgid "This statistic shows anonymized data on users who tuned into a station on the SPCast network within the last 30 minutes. Analyze trends and general usage activities."
+msgstr "Cette statistique montre des données anonymisées sur les utilisateurs qui se sont connectés à une station du réseau SPCast au cours des 30 dernières minutes. Analyser les tendances et les activités d’utilisation générale."
+
+msgid "Tuned in over the last 30 minutes"
+msgstr "Écoutez une station au cours des 30 dernières minutes."
+
+msgid "Users who tuned in to a station in the last 30 minutes."
+msgstr "Utilisateurs qui ont écouté une station au cours des 30 dernières minutes."
+
+msgid "Next update in"
+msgstr "Prochaine mise à jour dans"
+
+msgid "seconds"
+msgstr "secondes"
+
+msgid "Hour of the day"
+msgstr "Heure de la journée"
+
+msgid "Tuned in per 30 minutes"
+msgstr "Connecté toutes les 30 minutes"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgid "Tuned in over the last 7 days"
+msgstr "Connecté au cours des 7 derniers jours"
+
+msgid "Tuned in over the last 30 days"
+msgstr "À l'écoute au cours des 30 derniers jours"
+
+msgid "Shows the users who tuned out of stations on the network within the last 30 minutes. Real-time and live data available."
+msgstr "Affiche les utilisateurs qui ont désactivé les stations du réseau au cours des 30 dernières minutes. Données en temps réel et en direct disponibles."
+
+msgid "Anonymized statistics on users who tuned out of a station in the SPCast network within the last 30 minutes. A valuable source of analysis for general trends on the network."
+msgstr "Statistiques anonymisées sur les utilisateurs qui ont désactivé une station du réseau SPCast au cours des 30 dernières minutes. Une source précieuse d’analyse des tendances générales du réseau."
+
+msgid "Tuned out over the last 30 minutes"
+msgstr "Désactivé au cours des 30 dernières minutes."
+
+msgid "Users who tuned out of a station in the last 30 minutes."
+msgstr "Utilisateurs qui ont désactivé une station au cours des 30 dernières minutes."
+
+msgid "Tuned out per 30 minutes"
+msgstr "Désactivé toutes les 30 minutes"
+
+msgid "Tuned out over the last 7 days"
+msgstr "Désactivé au cours des 7 derniers jours"
+
+msgid "Tuned out over the last 30 days"
+msgstr "Désactivé au cours des 30 derniers jours"
+
+msgid "Today"
+msgstr "Aujourd'hui"
+
+msgid "Yesterday"
+msgstr "Hier"
+
+msgid "Last 7 Days"
+msgstr "7 derniers jours"
+
+msgid "Last 30 Days"
+msgstr "30 derniers jours"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "Main Navigation"
+msgstr "Navigation principale"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Imprint"
+msgstr "Mentions légales"
+
+msgid "Privacy Policy"
+msgstr "Politique de confidentialité"
+
+msgid "Cookies"
+msgstr "Cookies"
+
+msgid "Language Selection"
+msgstr "Sélection de la langue"
+
+msgid "Browser Statistics"
+msgstr "Statistiques du navigateur"
+
+msgid "City Statistics"
+msgstr "Statistiques de ville"
+
+msgid "Country Statistics"
+msgstr "Statistiques de pays"
+
+msgid "Region Statistics"
+msgstr "Statistiques de région"
+
+msgid "Mountpoint Statistics"
+msgstr "Statistiques de point de montage"
+
+msgid "Operating System Statistics"
+msgstr "Statistiques du système d'exploitation"
+
+msgid "Port Statistics"
+msgstr "Statistiques de port"
+
+msgid "Protocol Statistics"
+msgstr "Statistiques de protocole"
+
+msgid "IP Version Statistics"
+msgstr "Statistiques de version IP"
+
+msgid "Statistics on the cities of users in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiques sur les villes des utilisateurs du réseau SPCast. Données en temps réel pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Statistics on the countries of users in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiques sur les pays des utilisateurs du réseau SPCast. Données en temps réel pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Statistics on the regions of users in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiques sur les régions des utilisateurs du réseau SPCast. Données en temps réel pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Statistics on the used mountpoints in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiques sur les points de montage utilisés dans le réseau SPCast. Données en temps réel pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Statistics on the used ports in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiques sur les ports utilisés dans le réseau SPCast. Données en temps réel pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Statistics on the used protocols in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiques sur les protocoles utilisés dans le réseau SPCast. Données en temps réel pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Statistics on the used IP versions in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiques sur les versions IP utilisées dans le réseau SPCast. Données en temps réel pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Browser Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques du navigateur pour aujourd'hui, hier, 7 et les 30 derniers jours"
+
+msgid "Browser Distribution for Today"
+msgstr "Répartition du navigateur pour aujourd'hui"
+
+msgid "Browser Distribution for Yesterday"
+msgstr "Répartition du navigateur pour hier"
+
+msgid "Browser Distribution over the last 7 Days"
+msgstr "Répartition du navigateur au cours des 7 derniers jours"
+
+msgid "Browser Distribution over the last 30 Days"
+msgstr "Répartition du navigateur au cours des 30 derniers jours"
+
+msgid "City Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques par ville pour aujourd'hui, hier, 7 et les 30 derniers jours"
+
+msgid "City Distribution for Today"
+msgstr "Répartition par ville pour aujourd'hui"
+
+msgid "City Distribution for Yesterday"
+msgstr "Répartition par ville pour hier"
+
+msgid "City Distribution over the last 7 Days"
+msgstr "Répartition par ville au cours des 7 derniers jours"
+
+msgid "City Distribution over the last 30 Days"
+msgstr "Répartition par ville au cours des 30 derniers jours"
+
+msgid "Country Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques par pays pour aujourd'hui, hier, 7 et les 30 derniers jours"
+
+msgid "Country Distribution for Today"
+msgstr "Répartition par pays pour aujourd'hui"
+
+msgid "Country Distribution for Yesterday"
+msgstr "Répartition par pays pour hier"
+
+msgid "Country Distribution over the last 7 Days"
+msgstr "Répartition par pays au cours des 7 derniers jours"
+
+msgid "Country Distribution over the last 30 Days"
+msgstr "Répartition par pays au cours des 30 derniers jours"
+
+msgid "Region Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques régionales pour aujourd'hui, hier, 7 et les 30 derniers jours"
+
+msgid "Region Distribution for Today"
+msgstr "Distribution par région pour aujourd'hui"
+
+msgid "Region Distribution for Yesterday"
+msgstr "Distribution par région pour hier"
+
+msgid "Region Distribution over the last 7 Days"
+msgstr "Distribution par région au cours des 7 derniers jours"
+
+msgid "Region Distribution over the last 30 Days"
+msgstr "Distribution par région au cours des 30 derniers jours"
+
+msgid "Mountpoint Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques de point de montage pour aujourd'hui, hier, 7 et les 30 derniers jours"
+
+msgid "Mountpoint Distribution for Today"
+msgstr "Distribution de point de montage pour aujourd'hui"
+
+msgid "Mountpoint Distribution for Yesterday"
+msgstr "Distribution de point de montage pour hier"
+
+msgid "Mountpoint Distribution over the last 7 Days"
+msgstr "Distribution de point de montage au cours des 7 derniers jours"
+
+msgid "Mountpoint Distribution over the last 30 Days"
+msgstr "Distribution de point de montage au cours des 30 derniers jours"
+
+msgid "Operating System Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques du système d'exploitation pour aujourd'hui, hier, 7 et les 30 derniers jours"
+
+msgid "Operating System Distribution for Today"
+msgstr "Répartition du système d'exploitation pour aujourd'hui"
+
+msgid "Operating System Distribution for Yesterday"
+msgstr "Répartition du système d'exploitation pour hier"
+
+msgid "Operating System Distribution over the last 7 Days"
+msgstr "Répartition du système d'exploitation au cours des 7 derniers jours"
+
+msgid "Operating System Distribution over the last 30 Days"
+msgstr "Répartition du système d'exploitation au cours des 30 derniers jours"
+
+msgid "Port Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques des ports pour aujourd'hui, hier, 7 et les 30 derniers jours"
+
+msgid "Port Distribution for Today"
+msgstr "Répartition des ports pour aujourd'hui"
+
+msgid "Port Distribution for Yesterday"
+msgstr "Répartition des ports pour hier"
+
+msgid "Port Distribution over the last 7 Days"
+msgstr "Répartition des ports au cours des 7 derniers jours"
+
+msgid "Port Distribution over the last 30 Days"
+msgstr "Répartition des ports au cours des 30 derniers jours"
+
+msgid "Protocol Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques de protocole pour aujourd'hui, Hier, les 7 derniers jours et les 30 derniers jours"
+
+msgid "Protocol Distribution for Today"
+msgstr "Distribution des protocoles pour aujourd'hui"
+
+msgid "Protocol Distribution for Yesterday"
+msgstr "Distribution des protocoles pour hier"
+
+msgid "Protocol Distribution over the last 7 Days"
+msgstr "Distribution des protocoles au cours des 7 derniers jours"
+
+msgid "Protocol Distribution over the last 30 Days"
+msgstr "Distribution des protocoles au cours des 30 derniers jours"
+
+msgid "IP Version Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiques de version IP pour aujourd'hui, hier, 7 et les 30 derniers jours"
+
+msgid "IP Version Distribution for Today"
+msgstr "Distribution des versions IP pour aujourd'hui"
+
+msgid "IP Version Distribution for Yesterday"
+msgstr "Distribution des versions IP d'hier"
+
+msgid "IP Version Distribution over the last 7 Days"
+msgstr "Distribution des versions IP au cours des 7 derniers jours"
+
+msgid "IP Version Distribution over the last 30 Days"
+msgstr "Distribution des versions IP au cours des 30 derniers jours"
+
+msgid "User Statistics by Country"
+msgstr "Statistiques des utilisateurs par pays"
+
+msgid "Analysis of user activities by countries. Detailed data for today, yesterday, the last 7 and 30 days."
+msgstr "Analyse des activités des utilisateurs par pays. Données détaillées pour aujourd'hui, hier, les 7 et 30 derniers jours."
+
+msgid "User Statistics by City"
+msgstr "Statistiques d'utilisateurs par ville."
+
+msgid "Anonymized statistics on the usage of radio stations in the SPCast network, sorted by cities. Gain insights into the local distribution of activities."
+msgstr "Statistiques anonymisées sur l'utilisation des stations de radio du réseau SPCast, triées par villes. Obtenez un aperçu de la répartition locale des activités."
+
+msgid "City Statistics of users for today, yesterday, the last 7 and 30 days"
+msgstr "Statistiques de la ville des utilisateurs pour aujourd'hui, hier, les 7 et 30 derniers jours."
+
+msgid "User Statistics by City - SPCast Live"
+msgstr "Statistiques des utilisateurs par ville - SPCast Live."
+
+msgid "Detailed data on the origin of users at the city level. Statistics for today, the last 7 and 30 days."
+msgstr "Données détaillées sur l'origine des utilisateurs au niveau de la ville. Statistiques pour aujourd'hui, les 7 et 30 derniers jours."
+
+msgid "User Statistics by Region - SPCast Live"
+msgstr "Statistiques utilisateur par région - SPCast Live."
+
+msgid "Shows user activities by region. Detailed statistics for various time periods, daily and weekly."
+msgstr "Affiche les activités des utilisateurs par région. Statistiques détaillées pour différentes périodes, quotidiennes et hebdomadaires."
+
+msgid "User Statistics by Region"
+msgstr "Statistiques des utilisateurs par région."
+
+msgid "View anonymized data on user activities in the SPCast network by region. These statistics show how usage is distributed geographically, based on daily and weekly evaluations."
+msgstr "Visualisez les données anonymisées sur les activités des utilisateurs dans le réseau SPCast par région. Ces statistiques montrent la répartition géographique des usages, sur la base d'évaluations quotidiennes et hebdomadaires."
+
+msgid "Shows the protocols of user activities in the network. Statistics for daily, weekly, and monthly evaluations."
+msgstr "Affiche les protocoles des activités des utilisateurs sur le réseau. Statistiques pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "View anonymized protocol statistics of user activities in the SPCast network. This data provides insights into the usage of technical protocols for various periods."
+msgstr "Afficher les statistiques de protocole anonymisées des activités des utilisateurs dans le réseau SPCast. Ces données fournissent un aperçu de l’utilisation des protocoles techniques pour différentes périodes."
+
+msgid "Statistics on the ports used by users in the network. Real-time data for daily and weekly analyses."
+msgstr "Statistiques sur les ports utilisés par les utilisateurs du réseau. Données en temps réel pour des analyses quotidiennes et hebdomadaires."
+
+msgid "Anonymized statistics on the ports used by users in the SPCast network. This data helps to identify general trends and technical preferences of radio stations."
+msgstr "Statistiques anonymisées sur les ports utilisés par les utilisateurs du réseau SPCast. Ces données permettent d'identifier les tendances générales et les préférences techniques des stations de radio."
+
+msgid "Shows the users who tuned out of a station in the network within the last 30 minutes. Real-time and live data available."
+msgstr "Affiche les utilisateurs qui ont désactivé une station du réseau au cours des 30 dernières minutes. Données en temps réel et en direct disponibles."
+
+msgid "Anonymized statistics on users who tuned out of a station in the SPCast network within the last 30 minutes. A valuable source of analysis for general trends in the network."
+msgstr "Statistiques anonymisées sur les utilisateurs qui ont désactivé une station du réseau SPCast au cours des 30 dernières minutes. Une source précieuse d’analyse des tendances générales du réseau."
+
+msgid "Overview of the operating systems used by users. Live data and statistics for various periods."
+msgstr "Présentation des systèmes d'exploitation utilisés par les utilisateurs. Données et statistiques en direct pour différentes périodes."
+
+msgid "Statistics on the operating systems used by users in the SPCast network. Anonymized data provides insights into technical preferences and trends across various periods."
+msgstr "Statistiques sur les systèmes d'exploitation utilisés par les utilisateurs du réseau SPCast. Les données anonymisées fournissent des informations sur les préférences et tendances techniques sur différentes périodes."
+
+msgid "Shows the usage of IPv4 and IPv6 by users in the network. Real-time data and statistics for various periods."
+msgstr "Affiche l'utilisation d'IPv4 et d'IPv6 par les utilisateurs du réseau. Données et statistiques en temps réel pour différentes périodes."
+
+msgid "Get realtime statistics on user activities in the SPCast network. Insights into incoming and outgoing data, updated live."
+msgstr "Obtenez des statistiques en temps réel sur les activités des utilisateurs sur le réseau SPCast. Aperçu des données entrantes et sortantes, mis à jour en direct."
+
+msgid "Get anonymized realtime statistics on user activities in the SPCast network. Track general trends and analyze the user behavior of all radio stations in a centralized overview."
+msgstr "Obtenez des statistiques anonymisées en temps réel sur les activités des utilisateurs sur le réseau SPCast. Suivez les tendances générales et analysez le comportement des utilisateurs de toutes les stations de radio dans un aperçu centralisé."
+
+msgid "This statistic shows anonymized data on users who tuned into a station in the SPCast network within the last 30 minutes. Analyze trends and general usage activities."
+msgstr "Cette statistique montre des données anonymisées sur les utilisateurs qui se sont connectés à une station du réseau SPCast au cours des 30 dernières minutes. Analyser les tendances et les activités d’utilisation générale."
+
+msgid "Analyze from which countries users in the SPCast network access radio stations. The statistics are anonymized and provide daily, weekly, and monthly evaluations."
+msgstr "Analyser à partir de quels pays les utilisateurs du réseau SPCast accèdent aux stations de radio. Les statistiques sont anonymisées et fournissent des évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Distribution by Region for Today"
+msgstr "Répartition par région pour aujourd'hui"
+
+msgid "Distribution by Region for Yesterday"
+msgstr "Répartition par région pour hier"
+
+msgid "Distribution by Region over the last 7 Days"
+msgstr "Répartition par région au cours des 7 derniers jours"
+
+msgid "Distribution by Region over the last 30 Days"
+msgstr "Répartition par région au cours des 30 derniers jours"
+
+msgid "Region Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiques de région pour aujourd'hui, hier, 7 et 30 jours"
+
+msgid "Protocol Statistics - SPCast Live"
+msgstr "Statistiques de protocole - SPCast Live"
+
+msgid "Protocol Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiques de protocole pour aujourd'hui, hier, 7 et 30 jours"
+
+msgid "Port Statistics - SPCast Live"
+msgstr "Statistiques de port - SPCast Live"
+
+msgid "Port Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiques de port pour aujourd'hui, hier, 7 et 30 jours"
+
+msgid "Mountpoint Statistics - SPCast Live"
+msgstr "Statistiques de point de montage - SPCast Live"
+
+msgid "Mountpoint Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiques de point de montage pour aujourd'hui, hier, 7 et 30 jours"
+
+msgid "IP Version Statistics - SPCast Live"
+msgstr "Statistiques de version IP - SPCast Live"
+
+msgid "IP Version Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiques de version IP pour aujourd'hui, hier, 7 et 30 jours"
+
+msgid "Operating System Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiques du système d'exploitation pour aujourd'hui, hier, 7 et 30 jours"
+
+msgid "Operating System Statistics - SPCast Live"
+msgstr "Statistiques du système d'exploitation - SPCast Live"
+
+msgid "Statistics on the browsers used by users. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiques sur les navigateurs utilisés par les utilisateurs. Données en temps réel pour les évaluations quotidiennes, hebdomadaires et mensuelles."
+
+msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
+msgstr "Données anonymisées sur les navigateurs utilisés par les utilisateurs du réseau SPCast. Ces statistiques aident à analyser les préférences techniques des utilisateurs, sur la base de données en temps réel."
+
+
+msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
+msgstr "spcast live, systèmes d'exploitation spcast, plates-formes utilisateur, statistiques du système d'exploitation, données en temps réel, plates-formes réseau"
+
+msgid "spcast live, spcast browserstatistiken, browsernutzung, nutzerdaten, echtzeitstatistiken, netzwerkdaten"
+msgstr "spcast live, statistiques du navigateur spcast, utilisation du navigateur, données utilisateur, statistiques en temps réel, données réseau"
+
+msgid "spcast live, spcast nutzerstatistik, ausgehende nutzer, sender ausschalten, echtzeitdaten, netzwerkaktivitäten"
+msgstr "spcast live, statistiques des utilisateurs spcast, utilisateurs sortants, désactivation des chaînes, données en temps réel, activité réseau"
+
+msgid "spcast live, spcast ip-version, ipv4, ipv6, ip statistiken, nutzerdaten, netzwerkprotokolle"
+msgstr "spcast live, version spcast ip, ipv4, ipv6, statistiques ip, données utilisateur, protocoles réseau"
+
+msgid "spcast live, spcast nutzerstatistik, eingehende nutzer, sender einschalten, echtzeitdaten, netzwerkaktivitäten"
+msgstr "spcast live, statistiques des utilisateurs spcast, utilisateurs entrants, mise au point, données en temps réel, activité réseau"
+
+msgid "spcast live, spcast städtestatistik, nutzer nach stadt, echtzeitdaten, netzwerkstatistiken, städteanalyse"
+msgstr "spcast live, statistiques de la ville spcast, utilisateurs par ville, données en temps réel, statistiques du réseau, analyse de la ville"
+
+msgid "spcast live, spcast länderstatistik, nutzer nach land, echtzeitdaten, netzwerkstatistiken, länderverteilung"
+msgstr "spcast live, statistiques par pays spcast, utilisateurs par pays, données en temps réel, statistiques du réseau, répartition par pays"
+
+msgid "spcast live, spcast mountpoints, nutzerdaten, echtzeitstatistiken, netzwerkanalysen, mountpoint statistiken"
+msgstr "spcast live, points de montage spcast, données utilisateur, statistiques en temps réel, analyse de réseau, statistiques de points de montage"
+
+msgid "spcast live, spcast protokollstatistiken, nutzerprotokoll, netzwerkprotokolle, echtzeitstatistiken, datenprotokolle"
+msgstr "spcast live, statistiques du journal spcast, journal utilisateur, journaux réseau, statistiques en temps réel, journaux de données"
+
+msgid "spcast live, spcast bundesländerstatistik, nutzer nach bundesland, netzwerkdaten, echtzeitstatistiken"
+msgstr "spcast live, statistiques d'état spcast, utilisateurs par état, données réseau, statistiques en temps réel"
+
+msgid "spcast live, spcast ports, nutzerstatistik ports, netzwerkdaten, echtzeitanalysen, portstatistiken"
+msgstr "spcast live, ports spcast, ports de statistiques utilisateur, données réseau, analyse en temps réel, statistiques de ports"
+
+msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
+msgstr "spcast live, statistiques spcast en temps réel, statistiques utilisateur, statistiques réseau, données en direct, utilisation des canaux"

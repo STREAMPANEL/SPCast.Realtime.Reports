@@ -1,0 +1,524 @@
+msgid ""
+msgstr ""
+"Language: cs_CZ\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "Realtime Statistics"
+msgstr "Statistiky v reálném čase"
+
+msgid "Get anonymized realtime statistics on user activities within the SPCast network. Track general trends and analyze user behavior across all radio stations in a centralized overview."
+msgstr "Získejte anonymizované statistiky v reálném čase o aktivitách uživatelů v rámci sítě SPCast. Sledujte obecné trendy a analyzujte chování uživatelů napříč všemi rozhlasovými stanicemi v centralizovaném přehledu."
+
+msgid "These are users who tuned in to a station in the network within the last 30 minutes."
+msgstr "Jedná se o uživatele, kteří se naladili na stanici v síti během posledních 30 minut."
+
+msgid "These are users who tuned out of a station in the network within the last 30 minutes."
+msgstr "Jedná se o uživatele, kteří se během posledních 30 minut odpojili od stanice v síti."
+
+msgid "Shows user countries for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazuje uživatelské země pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Shows user regions for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazuje uživatelské oblasti pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Shows user cities for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazuje uživatelská města pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Shows user operating systems for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazuje uživatelské operační systémy pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Shows used browsers for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazí použité prohlížeče pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Shows user mountpoints for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazuje uživatelské přípojné body pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Shows user activity protocols for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazuje protokoly aktivity uživatele pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Shows used ports for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazuje použité porty pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Shows used IP versions for today, yesterday, the last 7, and the last 30 days."
+msgstr "Zobrazí použité verze IP pro dnešek, včerejšek, posledních 7 a posledních 30 dní."
+
+msgid "Incoming"
+msgstr "Přijetí"
+
+msgid "Outgoing"
+msgstr "Odchozí"
+
+msgid "Country"
+msgstr "Stát"
+
+msgid "Region"
+msgstr "Kraj"
+
+msgid "City"
+msgstr "Město"
+
+msgid "Operating System"
+msgstr "Operační systém"
+
+msgid "Browser"
+msgstr "Prohlížeč"
+
+msgid "Mountpoint"
+msgstr "Místo připojení@ title job"
+
+msgid "Protocol"
+msgstr "Protokol"
+
+msgid "Port"
+msgstr "Port"
+
+msgid "IP Version"
+msgstr "Verze IP"
+
+msgid "View"
+msgstr "Zobrazit"
+
+msgid "Incoming User Statistics - SPCast Live"
+msgstr "Statistiky příchozích uživatelů - SPCast Live"
+
+msgid "Outgoing User Statistics - SPCast Live"
+msgstr "Statistiky odchozích uživatelů - SPCast Live"
+
+msgid "Incoming User Statistics"
+msgstr "Statistiky příchozích uživatelů"
+
+msgid "Outgoing User Statistics"
+msgstr "Statistiky odchozích uživatelů"
+
+msgid "Track all users who tuned into stations within the last 30 minutes. Live statistics and real-time insights."
+msgstr "Sledujte všechny uživatele, kteří se naladili na stanice během posledních 30 minut. Živé statistiky a přehledy v reálném čase."
+
+msgid "This statistic shows anonymized data on users who tuned into a station on the SPCast network within the last 30 minutes. Analyze trends and general usage activities."
+msgstr "Tato statistika zobrazuje anonymizovaná data o uživatelích, kteří se naladili na stanici v síti SPCast během posledních 30 minut. Analyzujte trendy a obecné aktivity použití."
+
+msgid "Tuned in over the last 30 minutes"
+msgstr "Naladěno za posledních 30 minut"
+
+msgid "Users who tuned in to a station in the last 30 minutes."
+msgstr "Uživatelé, kteří se naladili na stanici za posledních 30 minut."
+
+msgid "Next update in"
+msgstr "Další aktualizace za"
+
+msgid "seconds"
+msgstr "sekundy"
+
+msgid "Hour of the day"
+msgstr "Hodina dne"
+
+msgid "Tuned in per 30 minutes"
+msgstr "Naladěno za 30 minut"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Users"
+msgstr "Uživatelé"
+
+msgid "Tuned in over the last 7 days"
+msgstr "Naladěno za posledních 7 dní"
+
+msgid "Tuned in over the last 30 days"
+msgstr "Naladěno za posledních 30 dní"
+
+msgid "Shows the users who tuned out of stations on the network within the last 30 minutes. Real-time and live data available."
+msgstr "Zobrazuje uživatele, kteří během posledních 30 minut vypnuli stanice v síti. K dispozici jsou data v reálném čase a v reálném čase."
+
+msgid "Anonymized statistics on users who tuned out of a station in the SPCast network within the last 30 minutes. A valuable source of analysis for general trends on the network."
+msgstr "Anonymizované statistiky o uživatelích, kteří se během posledních 30 minut odpojili ze stanice v síti SPCast. Cenný zdroj analýzy obecných trendů v síti."
+
+msgid "Tuned out over the last 30 minutes"
+msgstr "Vyladěno za posledních 30 minut"
+
+msgid "Users who tuned out of a station in the last 30 minutes."
+msgstr "Uživatelé, kteří se za posledních 30 minut odpojili od stanice."
+
+msgid "Tuned out per 30 minutes"
+msgstr "Vyladěno na 30 minut"
+
+msgid "Tuned out over the last 7 days"
+msgstr "Vyladěno za posledních 7 dní"
+
+msgid "Tuned out over the last 30 days"
+msgstr "Vyladěno za posledních 30 dní"
+
+msgid "Today"
+msgstr "Dnes"
+
+msgid "Yesterday"
+msgstr "Včera"
+
+msgid "Last 7 Days"
+msgstr "Posledních 7 dní"
+
+msgid "Last 30 Days"
+msgstr "Posledních 30 dní"
+
+msgid "Home"
+msgstr "Domov"
+
+msgid "Main Navigation"
+msgstr "Hlavní navigace"
+
+msgid "Menu"
+msgstr "Jídelní lístek"
+
+msgid "Imprint"
+msgstr "Tiráž"
+
+msgid "Privacy Policy"
+msgstr "Zásady ochrany osobních údajů"
+
+msgid "Cookies"
+msgstr "Soubory cookie"
+
+msgid "Language Selection"
+msgstr "Výběr jazyka"
+
+msgid "Browser Statistics"
+msgstr "Statistiky prohlížeče"
+
+msgid "City Statistics"
+msgstr "Statistiky města"
+
+msgid "Country Statistics"
+msgstr "Statistiky zemí"
+
+msgid "Region Statistics"
+msgstr "Statistiky regionu"
+
+msgid "Mountpoint Statistics"
+msgstr "Statistiky přípojného bodu"
+
+msgid "Operating System Statistics"
+msgstr "Statistiky operačního systému"
+
+msgid "Port Statistics"
+msgstr "Statistiky přístavu"
+
+msgid "Protocol Statistics"
+msgstr "Statistika protokolu"
+
+msgid "IP Version Statistics"
+msgstr "Statistika verze IP"
+
+msgid "Statistics on the cities of users in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiky o městech uživatelů v síti SPCast. Data v reálném čase pro denní, týdenní a měsíční hodnocení."
+
+msgid "Statistics on the countries of users in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiky o zemích uživatelů v síti SPCast. Data v reálném čase pro denní, týdenní a měsíční hodnocení."
+
+msgid "Statistics on the regions of users in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiky o regionech uživatelů v síti SPCast. Data v reálném čase pro denní, týdenní a měsíční hodnocení."
+
+msgid "Statistics on the used mountpoints in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiky o použitých přípojných bodech v síti SPCast. Data v reálném čase pro denní, týdenní a měsíční hodnocení."
+
+msgid "Statistics on the used ports in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiky o použitých portech v síti SPCast. Data v reálném čase pro denní, týdenní a měsíční hodnocení."
+
+msgid "Statistics on the used protocols in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiky použitých protokolů v síti SPCast. Data v reálném čase pro denní, týdenní a měsíční hodnocení."
+
+msgid "Statistics on the used IP versions in the SPCast network. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiky o použitých verzích IP v síti SPCast. Data v reálném čase pro denní, týdenní a měsíční hodnocení."
+
+msgid "Browser Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky prohlížeče pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "Browser Distribution for Today"
+msgstr "Distribuce prohlížeče pro dnešek"
+
+msgid "Browser Distribution for Yesterday"
+msgstr "Distribuce prohlížeče pro včerejšek"
+
+msgid "Browser Distribution over the last 7 Days"
+msgstr "Distribuce prohlížeče za posledních 7 dní"
+
+msgid "Browser Distribution over the last 30 Days"
+msgstr "Distribuce prohlížeče za posledních 30 dní"
+
+msgid "City Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky města pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "City Distribution for Today"
+msgstr "Městská distribuce pro dnešek"
+
+msgid "City Distribution for Yesterday"
+msgstr "Distribuce města pro včerejšek"
+
+msgid "City Distribution over the last 7 Days"
+msgstr "Distribuce ve městě za posledních 7 dní"
+
+msgid "City Distribution over the last 30 Days"
+msgstr "Distribuce ve městě za posledních 30 dní"
+
+msgid "Country Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky země pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "Country Distribution for Today"
+msgstr "Distribuce zemí pro dnešek"
+
+msgid "Country Distribution for Yesterday"
+msgstr "Distribuce země pro včerejšek"
+
+msgid "Country Distribution over the last 7 Days"
+msgstr "Rozdělení podle zemí za posledních 7 dní"
+
+msgid "Country Distribution over the last 30 Days"
+msgstr "Rozdělení podle zemí za posledních 30 dní"
+
+msgid "Region Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky kraje pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "Region Distribution for Today"
+msgstr "Regionální distribuce pro dnešek"
+
+msgid "Region Distribution for Yesterday"
+msgstr "Regionální distribuce pro včerejšek"
+
+msgid "Region Distribution over the last 7 Days"
+msgstr "Regionální distribuce za posledních 7 dní"
+
+msgid "Region Distribution over the last 30 Days"
+msgstr "Regionální distribuce za posledních 30 dní"
+
+msgid "Mountpoint Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky přípojného bodu pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "Mountpoint Distribution for Today"
+msgstr "Distribuce přípojného bodu pro dnešek"
+
+msgid "Mountpoint Distribution for Yesterday"
+msgstr "Distribuce přípojného bodu pro včerejšek"
+
+msgid "Mountpoint Distribution over the last 7 Days"
+msgstr "Rozložení přípojného bodu za posledních 7 dní"
+
+msgid "Mountpoint Distribution over the last 30 Days"
+msgstr "Rozložení přípojného bodu za posledních 30 dní"
+
+msgid "Operating System Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky operačního systému pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "Operating System Distribution for Today"
+msgstr "Distribuce operačního systému pro dnešek"
+
+msgid "Operating System Distribution for Yesterday"
+msgstr "Distribuce operačního systému pro včerejšek"
+
+msgid "Operating System Distribution over the last 7 Days"
+msgstr "Distribuce operačního systému za posledních 7 dní"
+
+msgid "Operating System Distribution over the last 30 Days"
+msgstr "Distribuce operačního systému za posledních 30 dní"
+
+msgid "Port Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky přístavu pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "Port Distribution for Today"
+msgstr "Distribuce portů pro dnešek"
+
+msgid "Port Distribution for Yesterday"
+msgstr "Distribuce portů pro včerejšek"
+
+msgid "Port Distribution over the last 7 Days"
+msgstr "Distribuce portů za posledních 7 dní"
+
+msgid "Port Distribution over the last 30 Days"
+msgstr "Distribuce portů za posledních 30 dní"
+
+msgid "Protocol Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky protokolu pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "Protocol Distribution for Today"
+msgstr "Distribuce protokolu pro dnešek"
+
+msgid "Protocol Distribution for Yesterday"
+msgstr "Distribuce protokolu pro včerejšek"
+
+msgid "Protocol Distribution over the last 7 Days"
+msgstr "Distribuce protokolu za posledních 7 dní"
+
+msgid "Protocol Distribution over the last 30 Days"
+msgstr "Distribuce protokolu za posledních 30 dní"
+
+msgid "IP Version Statistics for Today, Yesterday, 7 and the last 30 Days"
+msgstr "Statistiky verze IP pro dnešek, včerejšek, 7 a posledních 30 dní"
+
+msgid "IP Version Distribution for Today"
+msgstr "Distribuce verzí IP pro dnešek"
+
+msgid "IP Version Distribution for Yesterday"
+msgstr "Distribuce verze IP pro včerejšek"
+
+msgid "IP Version Distribution over the last 7 Days"
+msgstr "Distribuce verze IP za posledních 7 dní"
+
+msgid "IP Version Distribution over the last 30 Days"
+msgstr "Distribuce verze IP za posledních 30 dní"
+
+msgid "User Statistics by Country"
+msgstr "Statistics by country"
+
+msgid "Analysis of user activities by countries. Detailed data for today, yesterday, the last 7 and 30 days."
+msgstr "Analýza uživatelských aktivit podle zemí. Podrobná data za dnešek, včerejšek, posledních 7 a 30 dní."
+
+msgid "User Statistics by City"
+msgstr "Statistiky uživatelů podle města"
+
+msgid "Anonymized statistics on the usage of radio stations in the SPCast network, sorted by cities. Gain insights into the local distribution of activities."
+msgstr "Anonymizované statistiky o využívání rozhlasových stanic v síti SPCast seřazené podle měst. Získejte přehled o místní distribuci aktivit."
+
+msgid "City Statistics of users for today, yesterday, the last 7 and 30 days"
+msgstr "Statistiky uživatelů města za dnešek, včerejšek, posledních 7 a 30 dní"
+
+msgid "User Statistics by City - SPCast Live"
+msgstr "Statistiky uživatelů podle města - SPCast Live"
+
+msgid "Detailed data on the origin of users at the city level. Statistics for today, the last 7 and 30 days."
+msgstr "Podrobné údaje o původu uživatelů na úrovni města. Statistiky za dnešek, posledních 7 a 30 dní."
+
+msgid "User Statistics by Region - SPCast Live"
+msgstr "Statistiky uživatelů podle regionů - SPCast Live"
+
+msgid "Shows user activities by region. Detailed statistics for various time periods, daily and weekly."
+msgstr "Zobrazuje aktivity uživatele podle regionu. Podrobné statistiky za různá časová období, denní a týdenní."
+
+msgid "User Statistics by Region"
+msgstr "Statistiky uživatelů podle regionu"
+
+msgid "View anonymized data on user activities in the SPCast network by region. These statistics show how usage is distributed geographically, based on daily and weekly evaluations."
+msgstr "Zobrazit anonymizované údaje o uživatelských aktivitách v síti SPCast podle regionu. Tyto statistiky ukazují, jak je využití distribuováno geograficky na základě denních a týdenních hodnocení."
+
+msgid "Shows the protocols of user activities in the network. Statistics for daily, weekly, and monthly evaluations."
+msgstr "Zobrazuje protokoly uživatelských aktivit v síti. Statistiky pro denní, týdenní a měsíční hodnocení."
+
+msgid "View anonymized protocol statistics of user activities in the SPCast network. This data provides insights into the usage of technical protocols for various periods."
+msgstr "Zobrazení anonymizovaných statistik protokolů uživatelských aktivit v síti SPCast. Tato data poskytují vhled do používání technických protokolů pro různá období."
+
+msgid "Statistics on the ports used by users in the network. Real-time data for daily and weekly analyses."
+msgstr "Statistiky o portech používaných uživateli v síti. Data v reálném čase pro denní a týdenní analýzy."
+
+msgid "Anonymized statistics on the ports used by users in the SPCast network. This data helps to identify general trends and technical preferences of radio stations."
+msgstr "Anonymizované statistiky o portech používaných uživateli v síti SPCast. Tato data pomáhají identifikovat obecné trendy a technické preference rozhlasových stanic."
+
+msgid "Shows the users who tuned out of a station in the network within the last 30 minutes. Real-time and live data available."
+msgstr "Zobrazuje uživatele, kteří během posledních 30 minut vypnuli stanici v síti. K dispozici jsou data v reálném čase a v reálném čase."
+
+msgid "Anonymized statistics on users who tuned out of a station in the SPCast network within the last 30 minutes. A valuable source of analysis for general trends in the network."
+msgstr "Anonymizované statistiky o uživatelích, kteří se během posledních 30 minut odpojili ze stanice v síti SPCast. Cenný zdroj analýzy obecných trendů v síti."
+
+msgid "Overview of the operating systems used by users. Live data and statistics for various periods."
+msgstr "Přehled operačních systémů používaných uživateli. Živá data a statistiky za různá období."
+
+msgid "Statistics on the operating systems used by users in the SPCast network. Anonymized data provides insights into technical preferences and trends across various periods."
+msgstr "Statistiky o operačních systémech používaných uživateli v síti SPCast. Anonymizovaná data poskytují vhled do technických preferencí a trendů v různých obdobích."
+
+msgid "Shows the usage of IPv4 and IPv6 by users in the network. Real-time data and statistics for various periods."
+msgstr "Zobrazuje použití IPv4 a IPv6 uživateli v síti. Data a statistiky v reálném čase za různá období."
+
+msgid "Get realtime statistics on user activities in the SPCast network. Insights into incoming and outgoing data, updated live."
+msgstr "Získejte statistiky o aktivitách uživatelů v síti SPCast v reálném čase. Nahlédnutí do příchozích a odchozích dat, aktualizováno živě."
+
+msgid "Get anonymized realtime statistics on user activities in the SPCast network. Track general trends and analyze the user behavior of all radio stations in a centralized overview."
+msgstr "Získejte anonymizované statistiky v reálném čase o aktivitách uživatelů v síti SPCast. Sledujte obecné trendy a analyzujte chování uživatelů všech rozhlasových stanic v centralizovaném přehledu."
+
+msgid "This statistic shows anonymized data on users who tuned into a station in the SPCast network within the last 30 minutes. Analyze trends and general usage activities."
+msgstr "Tato statistika zobrazuje anonymizovaná data o uživatelích, kteří se naladili na stanici v síti SPCast během posledních 30 minut. Analyzujte trendy a obecné aktivity použití."
+
+msgid "Analyze from which countries users in the SPCast network access radio stations. The statistics are anonymized and provide daily, weekly, and monthly evaluations."
+msgstr "Analyzujte, ze kterých zemí uživatelé v síti SPCast přistupují k rozhlasovým stanicím. Statistiky jsou anonymní a poskytují denní, týdenní a měsíční hodnocení."
+
+msgid "Distribution by Region for Today"
+msgstr "Rozdělení podle regionů pro dnešek"
+
+msgid "Distribution by Region for Yesterday"
+msgstr "Distribuce podle regionu za včerejšek"
+
+msgid "Distribution by Region over the last 7 Days"
+msgstr "Rozdělení podle regionů za posledních 7 dní"
+
+msgid "Distribution by Region over the last 30 Days"
+msgstr "Rozdělení podle regionů za posledních 30 dní"
+
+msgid "Region Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiky regionu pro dnešek, včerejšek, 7 a 30 dní"
+
+msgid "Protocol Statistics - SPCast Live"
+msgstr "Statistika protokolu - SPCast Live"
+
+msgid "Protocol Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiky protokolu pro dnešek, včerejšek, 7 a 30 dní"
+
+msgid "Port Statistics - SPCast Live"
+msgstr "Statistiky přístavu - SPCast Live"
+
+msgid "Port Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiky přístavu pro dnešek, včerejšek, 7 a 30 dní"
+
+msgid "Mountpoint Statistics - SPCast Live"
+msgstr "Statistika přípojného bodu - SPCast Live"
+
+msgid "Mountpoint Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiky přípojných bodů pro dnešek, včerejšek, 7 a 30 dní"
+
+msgid "IP Version Statistics - SPCast Live"
+msgstr "Statistika verze IP - SPCast Live"
+
+msgid "IP Version Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiky verze IP pro dnešek, včerejšek, 7 a 30 dní"
+
+msgid "Operating System Statistics for Today, Yesterday, 7 and 30 Days"
+msgstr "Statistiky operačního systému pro dnešek, včerejšek, 7 a 30 dní"
+
+msgid "Operating System Statistics - SPCast Live"
+msgstr "Statistiky operačního systému - SPCast Live"
+
+msgid "Statistics on the browsers used by users. Real-time data for daily, weekly, and monthly evaluations."
+msgstr "Statistiky o prohlížečích používaných uživateli. Data v reálném čase pro denní, týdenní a měsíční hodnocení."
+
+msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
+msgstr "Anonymizovaná data o použitých prohlížečích uživatelů v síti SPCast. Tyto statistiky pomáhají při analýze technických preferencí uživatelů na základě dat v reálném čase."
+
+
+msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
+msgstr "spcast live, spcast operační systémy, uživatelské platformy, statistiky OS, data v reálném čase, síťové platformy"
+
+msgid "spcast live, spcast browserstatistiken, browsernutzung, nutzerdaten, echtzeitstatistiken, netzwerkdaten"
+msgstr "spcast live, spcast statistika prohlížeče, využití prohlížeče, uživatelská data, statistika v reálném čase, síťová data"
+
+msgid "spcast live, spcast nutzerstatistik, ausgehende nutzer, sender ausschalten, echtzeitdaten, netzwerkaktivitäten"
+msgstr "spcast live, statistiky uživatelů spcast, odchozí uživatelé, vypínání kanálů, data v reálném čase, síťová aktivita"
+
+msgid "spcast live, spcast ip-version, ipv4, ipv6, ip statistiken, nutzerdaten, netzwerkprotokolle"
+msgstr "spcast live, spcast ip verze, ipv4, ipv6, ip statistika, uživatelská data, síťové protokoly"
+
+msgid "spcast live, spcast nutzerstatistik, eingehende nutzer, sender einschalten, echtzeitdaten, netzwerkaktivitäten"
+msgstr "spcast live, spcast uživatelské statistiky, příchozí uživatelé, ladění, data v reálném čase, síťová aktivita"
+
+msgid "spcast live, spcast städtestatistik, nutzer nach stadt, echtzeitdaten, netzwerkstatistiken, städteanalyse"
+msgstr "spcast live, statistika města spcast, uživatelé podle města, data v reálném čase, statistika sítě, analýza měst"
+
+msgid "spcast live, spcast länderstatistik, nutzer nach land, echtzeitdaten, netzwerkstatistiken, länderverteilung"
+msgstr "spcast živě, statistika spcast země, uživatelé podle země, data v reálném čase, statistika sítě, distribuce podle zemí"
+
+msgid "spcast live, spcast mountpoints, nutzerdaten, echtzeitstatistiken, netzwerkanalysen, mountpoint statistiken"
+msgstr "spcast live, spcast přípojné body, uživatelská data, statistiky v reálném čase, analýza sítě, statistiky přípojných bodů"
+
+msgid "spcast live, spcast protokollstatistiken, nutzerprotokoll, netzwerkprotokolle, echtzeitstatistiken, datenprotokolle"
+msgstr "spcast live, spcast log statistiky, uživatelský log, síťové logy, statistiky v reálném čase, datové logy"
+
+msgid "spcast live, spcast bundesländerstatistik, nutzer nach bundesland, netzwerkdaten, echtzeitstatistiken"
+msgstr "spcast live, statistika stavu spcast, uživatelé podle stavu, síťová data, statistiky v reálném čase"
+
+msgid "spcast live, spcast ports, nutzerstatistik ports, netzwerkdaten, echtzeitanalysen, portstatistiken"
+msgstr "spcast live, spcast porty, uživatelské statistiky portů, síťová data, analýza v reálném čase, statistika portů"
+
+msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
+msgstr "spcast live, spcast statistika v reálném čase, statistika uživatelů, statistika sítě, živá data, využití kanálu"

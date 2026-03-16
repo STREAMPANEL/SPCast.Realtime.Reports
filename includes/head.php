@@ -1,11 +1,10 @@
+<?php declare(strict_types=1); ?>
 <!-- Bootstrap CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap ICONS -->
 <link rel="stylesheet" href="css/bootstrap-icons.min.css">
 <!-- Navbar -->
 <link rel="stylesheet" href="css/nav.min.css">
-<!-- Chart.js -->
-<script src="js/chart.js"></script>
 
 <!-- Preconnect to speed up the connection to the external favicon domain -->
 <link rel="preconnect" href="https://assets.streampanel.net" crossorigin>
@@ -65,3 +64,8 @@
     })();
 </script>
 <!-- End Matomo Tag Manager -->
+<?php
+
+
+
+echo get_hreflang_links(); ?>
