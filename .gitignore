@@ -6,7 +6,6 @@ reports/
 logs/
 cache/
 tests/
-src/
 *.json
 .env
 .env.example
