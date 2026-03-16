@@ -57,57 +57,119 @@ $results30Days = $reportData['30days'];
             </div>
         </div>
 
-        <div class="row mt-5">
+        <?php
+        $tabPeriods = [
+            'today' => [
+                'id' => 'today',
+                'label' => __('Today'),
+                'data' => $resultsToday,
+                'bg' => 'rgba(255, 99, 132, 0.6)',
+                'border' => 'rgba(255, 99, 132, 1)',
+                'active' => true
+            ],
+            'yesterday' => [
+                'id' => 'yesterday',
+                'label' => __('Yesterday'),
+                'data' => $resultsYesterday,
+                'bg' => 'rgba(153, 102, 255, 0.6)',
+                'border' => 'rgba(153, 102, 255, 1)',
+                'active' => false
+            ],
+            '7days' => [
+                'id' => '7days',
+                'label' => __('Last 7 Days'),
+                'data' => $results7Days,
+                'bg' => 'rgba(54, 162, 235, 0.6)',
+                'border' => 'rgba(54, 162, 235, 1)',
+                'active' => false
+            ],
+            '30days' => [
+                'id' => '30days',
+                'label' => __('Last 30 Days'),
+                'data' => $results30Days,
+                'bg' => 'rgba(75, 192, 192, 0.6)',
+                'border' => 'rgba(75, 192, 192, 1)',
+                'active' => false
+            ]
+        ];
+        ?>
+
+        <div class="row mt-4">
             <div class="col-md-12">
-                <h4 class="text-center"><?php echo $reportConfig['chartTitles']['today']; ?></h4>
-                <canvas id="chartToday"></canvas>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <h4 class="text-center"><?php echo $reportConfig['chartTitles']['yesterday']; ?></h4>
-                <canvas id="chartYesterday"></canvas>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <h4 class="text-center"><?php echo $reportConfig['chartTitles']['7days']; ?></h4>
-                <canvas id="chart7Days"></canvas>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <h4 class="text-center"><?php echo $reportConfig['chartTitles']['30days']; ?></h4>
-                <canvas id="chart30Days"></canvas>
+                <ul class="nav nav-tabs nav-fill flex-nowrap overflow-auto" id="reportTabs" role="tablist">
+                    <?php foreach ($tabPeriods as $key => $tab): ?>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link<?php echo $tab['active'] ? ' active' : ''; ?>"
+                                    id="tab-<?php echo $tab['id']; ?>"
+                                    data-bs-toggle="tab"
+                                    data-bs-target="#panel-<?php echo $tab['id']; ?>"
+                                    type="button" role="tab"
+                                    aria-controls="panel-<?php echo $tab['id']; ?>"
+                                    aria-selected="<?php echo $tab['active'] ? 'true' : 'false'; ?>">
+                                <?php echo $tab['label']; ?>
+                                <span class="badge bg-secondary ms-1"><?php echo count($tab['data'] ?? []); ?></span>
+                            </button>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+
+                <div class="tab-content mt-3" id="reportTabContent">
+                    <?php foreach ($tabPeriods as $key => $tab): ?>
+                        <div class="tab-pane fade<?php echo $tab['active'] ? ' show active' : ''; ?>"
+                             id="panel-<?php echo $tab['id']; ?>" role="tabpanel"
+                             aria-labelledby="tab-<?php echo $tab['id']; ?>">
+                            <h4 class="text-center mb-3"><?php echo $reportConfig['chartTitles'][$key]; ?></h4>
+                            <canvas id="chart-<?php echo $tab['id']; ?>"></canvas>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Output JSON with secure flags to prevent Stored XSS
-            const dataToday = <?php echo json_encode($resultsToday, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            const labelsToday = createFaqLinks(dataToday, '<?php echo $reportConfig["faqLinkType"]; ?>');
-            const countsToday = Object.values(dataToday);
+            var chartLabel = '<?php echo $reportConfig["chartLabel"]; ?>';
+            var faqType = '<?php echo $reportConfig["faqLinkType"]; ?>';
+            var chartInstances = {};
 
-            const dataYesterday = <?php echo json_encode($resultsYesterday, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            const labelsYesterday = createFaqLinks(dataYesterday, '<?php echo $reportConfig["faqLinkType"]; ?>');
-            const countsYesterday = Object.values(dataYesterday);
+            var reportChartConfigs = {
+                <?php foreach ($tabPeriods as $key => $tab): ?>
+                '<?php echo $tab['id']; ?>': {
+                    data: <?php echo json_encode($tab['data'] ?? [], JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>,
+                    bg: '<?php echo $tab['bg']; ?>',
+                    border: '<?php echo $tab['border']; ?>'
+                },
+                <?php endforeach; ?>
+            };
 
-            const data7Days = <?php echo json_encode($results7Days, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            const labels7Days = createFaqLinks(data7Days, '<?php echo $reportConfig["faqLinkType"]; ?>');
-            const counts7Days = Object.values(data7Days);
+            function initReportChart(tabId) {
+                if (chartInstances[tabId]) return;
+                var config = reportChartConfigs[tabId];
+                if (!config) return;
 
-            const data30Days = <?php echo json_encode($results30Days, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            const labels30Days = createFaqLinks(data30Days, '<?php echo $reportConfig["faqLinkType"]; ?>');
-            const counts30Days = Object.values(data30Days);
+                var canvas = document.getElementById('chart-' + tabId);
+                if (!canvas) return;
 
-            const chartLabel = '<?php echo $reportConfig["chartLabel"]; ?>';
+                var labels = createFaqLinks(config.data, faqType);
+                var counts = Object.values(config.data);
+                chartInstances[tabId] = createBarChart(
+                    canvas.getContext('2d'), labels, counts,
+                    chartLabel, config.bg, config.border
+                );
+            }
 
-            createBarChart(document.getElementById('chartToday').getContext('2d'), labelsToday, countsToday, chartLabel, 'rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 1)');
-            createBarChart(document.getElementById('chartYesterday').getContext('2d'), labelsYesterday, countsYesterday, chartLabel, 'rgba(153, 102, 255, 0.6)', 'rgba(153, 102, 255, 1)');
-            createBarChart(document.getElementById('chart7Days').getContext('2d'), labels7Days, counts7Days, chartLabel, 'rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 1)');
-            createBarChart(document.getElementById('chart30Days').getContext('2d'), labels30Days, counts30Days, chartLabel, 'rgba(75, 192, 192, 0.6)', 'rgba(75, 192, 192, 1)');
+            // Init the active tab chart immediately
+            initReportChart('today');
+
+            // Lazy init on tab show
+            var tabButtons = document.querySelectorAll('#reportTabs button[data-bs-toggle="tab"]');
+            tabButtons.forEach(function (btn) {
+                btn.addEventListener('shown.bs.tab', function (e) {
+                    var targetId = e.target.getAttribute('data-bs-target').replace('#panel-', '');
+                    initReportChart(targetId);
+                });
+            });
         });
     </script>
 

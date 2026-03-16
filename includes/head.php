@@ -43,14 +43,58 @@
 <style>
     .info-icon {
         font-size: 0.8rem;
-        /* Verkleinert das Icon */
         position: relative;
         top: -20px;
-        /* Hebt das Icon nach oben über die Überschrift */
         margin-left: -10px;
-        /* Fügt Abstand zur H3-Überschrift hinzu */
         cursor: pointer;
-        /* Zeiger ändert sich bei Hover */
+    }
+
+    /* Tab styles */
+    .nav-tabs {
+        border-bottom: 2px solid #dee2e6;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    .nav-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-tabs .nav-link {
+        white-space: nowrap;
+        font-weight: 500;
+        color: #6c757d;
+        border: none;
+        border-bottom: 3px solid transparent;
+        padding: 0.75rem 1.25rem;
+        transition: color 0.2s, border-color 0.2s;
+    }
+
+    .nav-tabs .nav-link:hover {
+        color: #495057;
+        border-bottom-color: #adb5bd;
+    }
+
+    .nav-tabs .nav-link.active {
+        color: #0d6efd;
+        border-bottom-color: #0d6efd;
+        background: transparent;
+    }
+
+    .nav-tabs .nav-link .badge {
+        font-size: 0.7rem;
+        vertical-align: middle;
+    }
+
+    .tab-content {
+        min-height: 300px;
+    }
+
+    @media (max-width: 575.98px) {
+        .nav-tabs .nav-link {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.9rem;
+        }
     }
 </style>
 

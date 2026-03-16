@@ -167,142 +167,124 @@ $chartData = array_values(array_replace(array_fill_keys($hours, 0), array_inters
                 </div>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-4">
             <div class="col-md-12">
-                <canvas id="realtimeChart"></canvas>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <canvas id="weeklyChart"></canvas>
-            </div>
-        </div>
-        <div class="row mt-5">
-            <div class="col-md-12">
-                <canvas id="monthlyChart"></canvas>
+                <ul class="nav nav-tabs nav-fill flex-nowrap overflow-auto" id="inoutTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="tab-realtime" data-bs-toggle="tab"
+                                data-bs-target="#panel-realtime" type="button" role="tab"
+                                aria-controls="panel-realtime" aria-selected="true">
+                            <?php echo __('Today'); ?>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-weekly" data-bs-toggle="tab"
+                                data-bs-target="#panel-weekly" type="button" role="tab"
+                                aria-controls="panel-weekly" aria-selected="false">
+                            <?php echo __('Last 7 Days'); ?>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="tab-monthly" data-bs-toggle="tab"
+                                data-bs-target="#panel-monthly" type="button" role="tab"
+                                aria-controls="panel-monthly" aria-selected="false">
+                            <?php echo __('Last 30 Days'); ?>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-3" id="inoutTabContent">
+                    <div class="tab-pane fade show active" id="panel-realtime" role="tabpanel" aria-labelledby="tab-realtime">
+                        <canvas id="realtimeChart"></canvas>
+                    </div>
+                    <div class="tab-pane fade" id="panel-weekly" role="tabpanel" aria-labelledby="tab-weekly">
+                        <canvas id="weeklyChart"></canvas>
+                    </div>
+                    <div class="tab-pane fade" id="panel-monthly" role="tabpanel" aria-labelledby="tab-monthly">
+                        <canvas id="monthlyChart"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const ctx = document.getElementById('realtimeChart').getContext('2d');
-            const chartData = <?php echo json_encode($chartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+            var chartInstances = {};
 
-            const myChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: <?php echo json_encode($hours, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>,
-                    datasets: [{
-                        label: '<?php echo $inoutConfig['chartLabels']['realtime']; ?>',
-                        data: chartData,
-                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                        borderColor: 'rgba(54, 162, 235, 1)',
-                        fill: true,
-                        tension: 0.1,
-                        borderWidth: 2
-                    }]
-                },
-                options: {
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: '<?php echo __('Hour of the day'); ?>'
+            var realtimeData = <?php echo json_encode($chartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+            var realtimeHours = <?php echo json_encode($hours, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+            var weeklyChartData = <?php echo json_encode($weeklyChartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+            var weeklyDates = <?php echo json_encode($dates, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+            var monthlyChartDataArr = <?php echo json_encode($monthlyChartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+            var monthlyDatesArr = <?php echo json_encode($monthlyDates, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
+
+            function createLineChart(canvasId, labels, data, label, xLabel, yLabel, bgColor, borderColor) {
+                var canvas = document.getElementById(canvasId);
+                if (!canvas) return null;
+                return new Chart(canvas.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: label,
+                            data: data,
+                            backgroundColor: bgColor,
+                            borderColor: borderColor,
+                            fill: true,
+                            tension: 0.1,
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: { display: true, text: xLabel },
+                                ticks: { autoSkip: true }
                             },
-                            ticks: {
-                                autoSkip: true
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: '<?php echo $inoutConfig['chartLabels']['realtimeY']; ?>'
+                            y: {
+                                beginAtZero: true,
+                                title: { display: true, text: yLabel }
                             }
                         }
                     }
-                }
-            });
+                });
+            }
 
-            const ctxWeekly = document.getElementById('weeklyChart').getContext('2d');
-            const weeklyChartData = <?php echo json_encode($weeklyChartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            const weeklyDates = <?php echo json_encode($dates, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-
-            const weeklyChart = new Chart(ctxWeekly, {
-                type: 'line',
-                data: {
-                    labels: weeklyDates,
-                    datasets: [{
-                        label: '<?php echo $inoutConfig['chartLabels']['weekly']; ?>',
-                        data: weeklyChartData,
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        fill: true,
-                        tension: 0.1,
-                        borderWidth: 2
-                    }]
+            var inoutCharts = {
+                'realtime': function () {
+                    return createLineChart('realtimeChart', realtimeHours, realtimeData,
+                        '<?php echo $inoutConfig['chartLabels']['realtime']; ?>',
+                        '<?php echo __('Hour of the day'); ?>',
+                        '<?php echo $inoutConfig['chartLabels']['realtimeY']; ?>',
+                        'rgba(54, 162, 235, 0.2)', 'rgba(54, 162, 235, 1)');
                 },
-                options: {
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: '<?php echo __('Date'); ?>'
-                            },
-                            ticks: {
-                                autoSkip: true
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: '<?php echo __('Users'); ?>'
-                            }
-                        }
-                    }
-                }
-            });
-
-            const ctxMonthly = document.getElementById('monthlyChart').getContext('2d');
-            const monthlyChartData = <?php echo json_encode($monthlyChartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            const monthlyDates = <?php echo json_encode($monthlyDates, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-
-            const monthlyChart = new Chart(ctxMonthly, {
-                type: 'line',
-                data: {
-                    labels: monthlyDates,
-                    datasets: [{
-                        label: '<?php echo $inoutConfig['chartLabels']['monthly']; ?>',
-                        data: monthlyChartData,
-                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
-                        borderColor: 'rgba(153, 102, 255, 1)',
-                        fill: true,
-                        tension: 0.1,
-                        borderWidth: 2
-                    }]
+                'weekly': function () {
+                    return createLineChart('weeklyChart', weeklyDates, weeklyChartData,
+                        '<?php echo $inoutConfig['chartLabels']['weekly']; ?>',
+                        '<?php echo __('Date'); ?>', '<?php echo __('Users'); ?>',
+                        'rgba(75, 192, 192, 0.2)', 'rgba(75, 192, 192, 1)');
                 },
-                options: {
-                    scales: {
-                        x: {
-                            title: {
-                                display: true,
-                                text: '<?php echo __('Date'); ?>'
-                            },
-                            ticks: {
-                                autoSkip: true
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: '<?php echo __('Users'); ?>'
-                            }
-                        }
-                    }
+                'monthly': function () {
+                    return createLineChart('monthlyChart', monthlyDatesArr, monthlyChartDataArr,
+                        '<?php echo $inoutConfig['chartLabels']['monthly']; ?>',
+                        '<?php echo __('Date'); ?>', '<?php echo __('Users'); ?>',
+                        'rgba(153, 102, 255, 0.2)', 'rgba(153, 102, 255, 1)');
                 }
+            };
+
+            // Init active tab chart
+            chartInstances['realtime'] = inoutCharts['realtime']();
+
+            // Lazy init on tab show
+            var tabButtons = document.querySelectorAll('#inoutTabs button[data-bs-toggle="tab"]');
+            tabButtons.forEach(function (btn) {
+                btn.addEventListener('shown.bs.tab', function (e) {
+                    var targetId = e.target.getAttribute('data-bs-target').replace('#panel-', '');
+                    if (!chartInstances[targetId] && inoutCharts[targetId]) {
+                        chartInstances[targetId] = inoutCharts[targetId]();
+                    }
+                });
             });
         });
     </script>
@@ -311,3 +293,4 @@ $chartData = array_values(array_replace(array_fill_keys($hours, 0), array_inters
 </body>
 
 </html>
+
