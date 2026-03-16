@@ -48,7 +48,7 @@ foreach ($queryParams as $key => $value) {
                             'el' => 'Ελληνικά', 'hr' => 'Hrvatski', 'sl' => 'Slovenščina', 'et' => 'Eesti', 
                             'lv' => 'Latviešu', 'lt' => 'Lietuvių', 'ga' => 'Gaeilge', 'mt' => 'Malti'
                         ];
-                        $selected_lang = $current_lang ?? 'en';
+                        $selected_lang = $current_lang ?? 'de';
                         foreach ($lang_names as $k => $v) {
                             $sel = ($selected_lang === $k) ? 'selected' : '';
                             echo '<option value="' . htmlspecialchars($k) . '" ' . $sel . '>' . htmlspecialchars($v) . '</option>';

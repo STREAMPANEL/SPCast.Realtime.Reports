@@ -26,7 +26,7 @@ $results30Days = $reportData['30days'];
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo htmlspecialchars($current_lang ?? 'en'); ?>">
+<html lang="<?php echo htmlspecialchars($current_lang ?? 'de'); ?>">
 
 <head>
     <meta charset="UTF-8">

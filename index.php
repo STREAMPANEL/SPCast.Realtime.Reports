@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require_once 'includes/i18n.php'; ?>
 <!DOCTYPE html>
-<html lang="<?php echo htmlspecialchars($current_lang ?? 'en'); ?>">
+<html lang="<?php echo htmlspecialchars($current_lang ?? 'de'); ?>">
 
 <head>
     <meta charset="UTF-8">

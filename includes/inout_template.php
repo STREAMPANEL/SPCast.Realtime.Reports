@@ -133,7 +133,7 @@ $chartData = array_values(array_replace(array_fill_keys($hours, 0), array_inters
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php echo htmlspecialchars($current_lang ?? 'en'); ?>">
+<html lang="<?php echo htmlspecialchars($current_lang ?? 'de'); ?>">
 
 <head>
     <meta charset="UTF-8">

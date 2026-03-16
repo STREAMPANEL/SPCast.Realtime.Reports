@@ -16,7 +16,7 @@ if (isset($_GET['lang']) && is_string($_GET['lang']) && array_key_exists($_GET['
     $_SESSION['lang'] = $_GET['lang'];
 }
 
-$current_lang = $_SESSION['lang'] ?? 'en';
+$current_lang = $_SESSION['lang'] ?? 'de';
 $locale_code = $supported_langs[$current_lang];
 
 $translations = [];
@@ -71,13 +71,13 @@ function get_hreflang_links()
         $url = $protocol . $host . $path . '?' . $new_query;
         $links .= '<link rel="alternate" hreflang="' . $lang . '" href="' . htmlspecialchars($url) . '" />' . "\n";
     }
-    // Default x-default language (English)
+    // Default x-default language (German)
     $query = [];
     if (isset($parsed_url['query'])) {
         parse_str($parsed_url['query'], $query);
     }
-    unset($query['lang']); // No lang param for default maybe? Or just en
-    $query['lang'] = 'en';
+    unset($query['lang']); // No lang param for default maybe? Or just de
+    $query['lang'] = 'de';
     $new_query = http_build_query($query);
     $url = $protocol . $host . $path . '?' . $new_query;
     $links .= '<link rel="alternate" hreflang="x-default" href="' . htmlspecialchars($url) . '" />' . "\n";
