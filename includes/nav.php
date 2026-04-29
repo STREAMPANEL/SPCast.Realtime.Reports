@@ -16,20 +16,25 @@ $navItems = [
     ['label' => __('Port'), 'url' => 'port.php'],
     ['label' => __('IP Version'), 'url' => 'ipversion.php'],
 ];
+
+$currentPage = basename($_SERVER['SCRIPT_NAME']);
 ?>
 <nav class="navbar navbar-expand-lg navbar-light bg-light" aria-label="<?php echo htmlspecialchars(__('Main Navigation')); ?>">
     <div class="container-fluid">
+        <a class="navbar-brand d-lg-none fw-bold" href="https://live.spcast.eu/">SPCast Live</a>
         <!-- Mobile menu button -->
-        <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
-            <?php echo htmlspecialchars(__('Menu')); ?>
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav" aria-controls="offcanvasNav">
+            <span class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Desktop navigation -->
         <div class="collapse navbar-collapse justify-content-center d-none d-lg-flex" id="navbarNav">
             <ul class="navbar-nav">
-                <?php foreach ($navItems as $item): ?>
+                <?php foreach ($navItems as $item): 
+                    $isActive = ($currentPage === 'index.php' && $item['url'] === 'https://live.spcast.eu/') || ($item['url'] === $currentPage);
+                ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?= htmlspecialchars($item['url']) ?>"><?= htmlspecialchars($item['label']) ?></a>
+                        <a class="nav-link <?= $isActive ? 'active' : '' ?>" <?= $isActive ? 'aria-current="page"' : '' ?> href="<?= htmlspecialchars($item['url']) ?>"><?= htmlspecialchars($item['label']) ?></a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -45,9 +50,11 @@ $navItems = [
     </div>
     <div class="offcanvas-body">
         <ul class="navbar-nav flex-column">
-            <?php foreach ($navItems as $item): ?>
+            <?php foreach ($navItems as $item): 
+                $isActive = ($currentPage === 'index.php' && $item['url'] === 'https://live.spcast.eu/') || ($item['url'] === $currentPage);
+            ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= htmlspecialchars($item['url']) ?>"><?= htmlspecialchars($item['label']) ?></a>
+                    <a class="nav-link <?= $isActive ? 'active fw-bold' : '' ?>" <?= $isActive ? 'aria-current="page"' : '' ?> href="<?= htmlspecialchars($item['url']) ?>"><?= htmlspecialchars($item['label']) ?></a>
                 </li>
             <?php endforeach; ?>
         </ul>

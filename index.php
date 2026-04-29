@@ -9,11 +9,32 @@ require_once 'includes/i18n.php'; ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPCast <?php echo __('Realtime Statistics'); ?> - SPCast Live</title>
-    <meta name="description" content="<?php echo __('Get realtime statistics on user activities in the SPCast network. Insights into incoming and outgoing data, updated live.'); ?>">
-    <meta name="keywords" content="<?php echo __('spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung'); ?>">
-    <link rel="canonical" href="https://live.spcast.eu/" />
+    <?php
+    $pageTitle = 'SPCast ' . __('Realtime Statistics') . ' - SPCast Live';
+    $pageDescription = __('Get realtime statistics on user activities in the SPCast network. Insights into incoming and outgoing data, updated live.');
+    $pageKeywords = __('spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung');
+    $canonicalUrl = 'https://live.spcast.eu/';
+    ?>
+    <title><?php echo $pageTitle; ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars($pageDescription, ENT_QUOTES); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars($pageKeywords, ENT_QUOTES); ?>">
+    <link rel="canonical" href="<?php echo $canonicalUrl; ?>" />
     <?php require_once "includes/head.php"; ?>
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "SPCast Live",
+      "url": "https://live.spcast.eu/",
+      "description": "<?php echo htmlspecialchars($pageDescription, ENT_QUOTES); ?>",
+      "publisher": {
+        "@type": "Organization",
+        "name": "SPCast"
+      }
+    }
+    </script>
 </head>
 
 <body>
@@ -25,7 +46,7 @@ require_once 'includes/i18n.php'; ?>
             <p><?php echo __('Get anonymized realtime statistics on user activities in the SPCast network. Track general trends and analyze the user behavior of all radio stations in a centralized overview.'); ?></p>
         </div>
         
-        <div class="row">
+        <div class="row g-4">
             <?php
             $mainCards = [
                 ['title' => __('Incoming'), 'text' => __('These are users who tuned in to a station in the network within the last 30 minutes.'), 'url' => 'in.php'],
@@ -33,7 +54,7 @@ require_once 'includes/i18n.php'; ?>
             ];
             foreach ($mainCards as $card): ?>
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title"><?php echo $card['title']; ?></h2>
                             <p class="card-text"><?php echo $card['text']; ?></p>
@@ -44,7 +65,7 @@ require_once 'includes/i18n.php'; ?>
             <?php endforeach; ?>
         </div>
 
-        <div class="row mt-4">
+        <div class="row g-4 mt-2">
             <?php
             $statCards = [
                 ['title' => __('Country'), 'text' => __('Shows user countries for today, yesterday, the last 7, and the last 30 days.'), 'url' => 'country.php'],
@@ -59,7 +80,7 @@ require_once 'includes/i18n.php'; ?>
             ];
 
             foreach ($statCards as $card): ?>
-                <div class="col-md-4 mt-4">
+                <div class="col-md-4">
                     <div class="card h-100">
                         <div class="card-body">
                             <h2 class="card-title"><?php echo $card['title']; ?></h2>
