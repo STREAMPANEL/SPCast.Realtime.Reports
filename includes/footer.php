@@ -61,7 +61,7 @@
         </ul>
     </div>
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        &copy;<?php echo date("Y"); ?> <a href="https://www.spcast.eu" target="_blank" rel="noopener" class="text-dark text-decoration-none">SPCast</a> | <a href="https://www.spcast-playlist.eu"
+        &copy;<?php echo date("Y"); ?> <a href="https://www.spcast.eu" target="_blank" rel="noopener" class="text-dark text-decoration-none">SPCast</a> | <a href="https://www.spcast-playlist.de"
             target="_blank" rel="noopener" class="text-dark text-decoration-none">SPCast Playlist</a>
     </div>
 </footer>
