@@ -6,6 +6,7 @@ require_once __DIR__ . '/includes/i18n.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\ReportType;
+use App\SeoHelper;
 
 $requestedStat = isset($_GET['stat']) && is_string($_GET['stat'])
     ? ReportType::tryFrom(strtolower(trim($_GET['stat'])))
@@ -36,13 +37,43 @@ if (is_file($outCachePath)) {
 }
 $warmNet = $warmInbound - $warmOutbound;
 
+$warmHubEntries = [];
+$warmHubTotal = 0;
+$warmHubCacheFile = '';
+if (!$initialType->isInOut() && in_array($requestedPeriod, ['today', 'yesterday', '7days', '30days'], true)) {
+    $warmHubCacheFile = __DIR__ . '/cache/analytics_' . $initialType->value . '_cache_' . $requestedPeriod . '.json';
+    if (is_file($warmHubCacheFile)) {
+        $decodedHub = json_decode((string) file_get_contents($warmHubCacheFile), true);
+        if (is_array($decodedHub) && $decodedHub !== []) {
+            $warmHubEntries = SeoHelper::normalizeMapEntries($decodedHub);
+            foreach ($warmHubEntries as $hubEntry) {
+                $warmHubTotal += $hubEntry['count'];
+            }
+        }
+    }
+}
+
+$activeLang = (string) ($current_lang ?? 'de');
 $pageTitle = 'SPCast ' . __('Realtime Statistics') . ' - SPCast Live';
 $pageDescription = __('Get realtime statistics on user activities in the SPCast network. Insights into incoming and outgoing data, updated live.');
+$heroDescription = __('Get anonymized realtime statistics on user activities in the SPCast network. Track general trends and analyze the user behavior of all radio stations in a centralized overview.');
 $pageKeywords = __('spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung');
-$canonicalUrl = 'https://live.spcast.eu/';
+$baseCanonicalUrl = 'https://live.spcast.eu/';
+$canonicalUrl = SeoHelper::buildCanonicalUrl($baseCanonicalUrl, $activeLang);
+$seoRobots = SeoHelper::resolveRobotsDirective($_GET);
+$schemaGraph = SeoHelper::buildHomeSchemaGraph(
+    $canonicalUrl,
+    $activeLang,
+    $pageTitle,
+    $pageDescription,
+    $heroDescription,
+    $pageKeywords,
+    '__',
+    [$inCachePath, $outCachePath, $warmHubCacheFile]
+);
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo htmlspecialchars($current_lang ?? 'de', ENT_QUOTES, 'UTF-8'); ?>">
+<html lang="<?php echo htmlspecialchars($activeLang, ENT_QUOTES, 'UTF-8'); ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -52,21 +83,6 @@ $canonicalUrl = 'https://live.spcast.eu/';
     <meta name="keywords" content="<?php echo htmlspecialchars($pageKeywords, ENT_QUOTES, 'UTF-8'); ?>">
     <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>" />
     <?php require_once __DIR__ . '/includes/head.php'; ?>
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "SPCast Live",
-      "url": "https://live.spcast.eu/",
-      "description": <?php echo json_encode($pageDescription, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>,
-      "publisher": {
-        "@type": "Organization",
-        "name": "SPCast",
-        "url": "https://www.spcast.eu/"
-      }
-    }
-    </script>
 </head>
 
 <body>
@@ -96,7 +112,7 @@ $canonicalUrl = 'https://live.spcast.eu/';
                     <div class="sp-kpi-value" id="pulseInbound"><?php echo (int) $warmInbound; ?></div>
                     <div class="sp-kpi-sub d-flex justify-content-between align-items-center">
                         <span><?php echo htmlspecialchars(__('Tuned in (last 30 min)'), ENT_QUOTES, 'UTF-8'); ?></span>
-                        <a href="in.php" class="text-decoration-none fw-semibold"><?php echo htmlspecialchars(__('Details'), ENT_QUOTES, 'UTF-8'); ?> &rarr;</a>
+                        <a href="<?php echo htmlspecialchars(SeoHelper::localizeRelativeUrl('in.php', $activeLang), ENT_QUOTES, 'UTF-8'); ?>" class="text-decoration-none fw-semibold"><?php echo htmlspecialchars(__('Details'), ENT_QUOTES, 'UTF-8'); ?> &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -110,7 +126,7 @@ $canonicalUrl = 'https://live.spcast.eu/';
                     <div class="sp-kpi-value" id="pulseOutbound"><?php echo (int) $warmOutbound; ?></div>
                     <div class="sp-kpi-sub d-flex justify-content-between align-items-center">
                         <span><?php echo htmlspecialchars(__('Tuned out (last 30 min)'), ENT_QUOTES, 'UTF-8'); ?></span>
-                        <a href="out.php" class="text-decoration-none fw-semibold"><?php echo htmlspecialchars(__('Details'), ENT_QUOTES, 'UTF-8'); ?> &rarr;</a>
+                        <a href="<?php echo htmlspecialchars(SeoHelper::localizeRelativeUrl('out.php', $activeLang), ENT_QUOTES, 'UTF-8'); ?>" class="text-decoration-none fw-semibold"><?php echo htmlspecialchars(__('Details'), ENT_QUOTES, 'UTF-8'); ?> &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -163,7 +179,7 @@ $canonicalUrl = 'https://live.spcast.eu/';
                     </p>
                 </div>
                 <div class="flex-shrink-0">
-                    <a id="hubDetailLink" href="<?php echo htmlspecialchars($initialType->pageUrl(), ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-primary">
+                    <a id="hubDetailLink" href="<?php echo htmlspecialchars(SeoHelper::localizeRelativeUrl($initialType->pageUrl(), $activeLang), ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-primary">
                         <span id="hubDetailLabel"><?php echo htmlspecialchars(__('Open dedicated view'), ENT_QUOTES, 'UTF-8'); ?></span>
                         <i class="bi bi-arrow-right" aria-hidden="true"></i>
                     </a>
@@ -214,19 +230,19 @@ $canonicalUrl = 'https://live.spcast.eu/';
                 <div class="col-sm-4">
                     <div class="p-2 px-3 rounded-3 border" style="background: var(--sp-surface-elevated); border-color: var(--sp-border) !important;">
                         <div class="small" style="color: var(--sp-muted);" id="hubStat1Label"><?php echo htmlspecialchars(__('Total events'), ENT_QUOTES, 'UTF-8'); ?></div>
-                        <div class="fw-bold fs-5" style="color: var(--sp-heading);" id="hubStat1Value">-</div>
+                        <div class="fw-bold fs-5" style="color: var(--sp-heading);" id="hubStat1Value"><?php echo $warmHubEntries !== [] ? number_format($warmHubTotal, 0, '.', ',') : '-'; ?></div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="p-2 px-3 rounded-3 border" style="background: var(--sp-surface-elevated); border-color: var(--sp-border) !important;">
                         <div class="small" style="color: var(--sp-muted);" id="hubStat2Label"><?php echo htmlspecialchars(__('Unique entries'), ENT_QUOTES, 'UTF-8'); ?></div>
-                        <div class="fw-bold fs-5" style="color: var(--sp-heading);" id="hubStat2Value">-</div>
+                        <div class="fw-bold fs-5" style="color: var(--sp-heading);" id="hubStat2Value"><?php echo $warmHubEntries !== [] ? number_format(count($warmHubEntries), 0, '.', ',') : '-'; ?></div>
                     </div>
                 </div>
                 <div class="col-sm-4">
                     <div class="p-2 px-3 rounded-3 border" style="background: var(--sp-surface-elevated); border-color: var(--sp-border) !important;">
                         <div class="small" style="color: var(--sp-muted);" id="hubStat3Label"><?php echo htmlspecialchars(__('Top entry'), ENT_QUOTES, 'UTF-8'); ?></div>
-                        <div class="fw-bold fs-5 text-truncate" style="color: var(--sp-accent);" id="hubStat3Value">-</div>
+                        <div class="fw-bold fs-5 text-truncate" style="color: var(--sp-accent);" id="hubStat3Value"><?php echo $warmHubEntries !== [] ? htmlspecialchars($warmHubEntries[0]['label'] . ' (' . number_format($warmHubEntries[0]['count'], 0, '.', ',') . ')', ENT_QUOTES, 'UTF-8') : '-'; ?></div>
                     </div>
                 </div>
             </div>
@@ -252,18 +268,12 @@ $canonicalUrl = 'https://live.spcast.eu/';
                             <caption id="hubTableCaption"><?php echo htmlspecialchars(__('Detailed breakdown for the selected statistic and period'), ENT_QUOTES, 'UTF-8'); ?></caption>
                             <thead>
                                 <tr>
-                                    <th scope="col" id="hubCol1Header"><?php echo htmlspecialchars(__('Entry'), ENT_QUOTES, 'UTF-8'); ?></th>
+                                    <th scope="col" id="hubCol1Header"><?php echo htmlspecialchars(__($initialType->labelMsgId()), ENT_QUOTES, 'UTF-8'); ?></th>
                                     <th scope="col" class="text-end" id="hubCol2Header"><?php echo htmlspecialchars(__('Count'), ENT_QUOTES, 'UTF-8'); ?></th>
                                     <th scope="col"><?php echo htmlspecialchars(__('Share'), ENT_QUOTES, 'UTF-8'); ?></th>
                                 </tr>
                             </thead>
-                            <tbody id="hubRankingBody">
-                                <tr>
-                                    <td colspan="3" class="text-center py-4" style="color: var(--sp-muted);">
-                                        <?php echo htmlspecialchars(__('Loading statistics...'), ENT_QUOTES, 'UTF-8'); ?>
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <tbody id="hubRankingBody"><?php echo SeoHelper::renderRankingRowsHtml($warmHubEntries, $warmHubTotal, $initialType->faqLinkType(), __('Loading statistics...')); ?></tbody>
                         </table>
                     </div>
                 </div>
@@ -292,7 +302,7 @@ $canonicalUrl = 'https://live.spcast.eu/';
                                 <?php echo htmlspecialchars(__($streamCase->descriptionMsgId()), ENT_QUOTES, 'UTF-8'); ?>
                             </p>
                             <div>
-                                <a href="<?php echo htmlspecialchars($streamCase->pageUrl(), ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-primary">
+                                <a href="<?php echo htmlspecialchars(SeoHelper::localizeRelativeUrl($streamCase->pageUrl(), $activeLang), ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-primary">
                                     <span><?php echo htmlspecialchars(__('View'), ENT_QUOTES, 'UTF-8'); ?></span>
                                     <span class="visually-hidden"> <?php echo htmlspecialchars(__($streamCase->labelMsgId()), ENT_QUOTES, 'UTF-8'); ?></span>
                                     <i class="bi bi-arrow-right" aria-hidden="true"></i>
@@ -315,7 +325,7 @@ $canonicalUrl = 'https://live.spcast.eu/';
                                 <?php echo htmlspecialchars(__($dimCase->descriptionMsgId()), ENT_QUOTES, 'UTF-8'); ?>
                             </p>
                             <div>
-                                <a href="<?php echo htmlspecialchars($dimCase->pageUrl(), ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-ghost">
+                                <a href="<?php echo htmlspecialchars(SeoHelper::localizeRelativeUrl($dimCase->pageUrl(), $activeLang), ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-ghost">
                                     <span><?php echo htmlspecialchars(__('View'), ENT_QUOTES, 'UTF-8'); ?></span>
                                     <span class="visually-hidden"> <?php echo htmlspecialchars(__($dimCase->labelMsgId()), ENT_QUOTES, 'UTF-8'); ?></span>
                                     <i class="bi bi-arrow-right" aria-hidden="true"></i>

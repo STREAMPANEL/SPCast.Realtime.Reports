@@ -14,6 +14,7 @@ require_once __DIR__ . '/initializeAnalytics.php';
 use App\AnalyticsService;
 use App\Logger;
 use App\ReportType;
+use App\SeoHelper;
 
 $cacheDir = __DIR__ . '/../cache/';
 ensureSecureCacheDirectory($cacheDir);
@@ -58,6 +59,27 @@ $tabPeriods = [
 ];
 
 $todaySummary = $analyticsService->summarizePeriodRanking($tabPeriods['today']['data']);
+$todayEntries = SeoHelper::normalizeMapEntries($tabPeriods['today']['data']);
+
+$activeLang = (string) ($current_lang ?? 'de');
+$baseCanonicalUrl = (string) $reportConfig['canonicalUrl'];
+$canonicalUrl = SeoHelper::buildCanonicalUrl($baseCanonicalUrl, $activeLang);
+$schemaGraph = SeoHelper::buildReportSchemaGraph(
+    $reportEnum ?? ReportType::Country,
+    $canonicalUrl,
+    $activeLang,
+    (string) $reportConfig['pageTitle'],
+    (string) $reportConfig['headerTitle'],
+    (string) $reportConfig['pageDescription'],
+    (string) $reportConfig['headerDesc'],
+    (string) $reportConfig['keywords'],
+    (string) ($reportConfig['chartLabel'] ?? __('Entry')) . ' (' . __('Today') . ')',
+    (int) $todaySummary['totalEvents'],
+    [
+        $cacheDir . "analytics_{$typeId}_cache_today.json",
+        $cacheDir . "analytics_{$typeId}_cache_30days.json",
+    ]
+);
 
 $initialPayload = [
     'type' => $typeId,
@@ -79,7 +101,7 @@ $initialPayload = [
 ];
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo htmlspecialchars($current_lang ?? 'de', ENT_QUOTES, 'UTF-8'); ?>">
+<html lang="<?php echo htmlspecialchars($activeLang, ENT_QUOTES, 'UTF-8'); ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -87,7 +109,7 @@ $initialPayload = [
     <title><?php echo htmlspecialchars((string) $reportConfig['pageTitle'], ENT_QUOTES, 'UTF-8'); ?></title>
     <meta name="description" content="<?php echo htmlspecialchars((string) $reportConfig['pageDescription'], ENT_QUOTES, 'UTF-8'); ?>">
     <meta name="keywords" content="<?php echo htmlspecialchars((string) $reportConfig['keywords'], ENT_QUOTES, 'UTF-8'); ?>">
-    <link rel="canonical" href="<?php echo htmlspecialchars((string) $reportConfig['canonicalUrl'], ENT_QUOTES, 'UTF-8'); ?>" />
+    <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>" />
     <?php require_once __DIR__ . '/head.php'; ?>
 </head>
 
@@ -96,7 +118,7 @@ $initialPayload = [
 
     <main class="container py-4 py-lg-5" id="spStandaloneReport" data-report-type="<?php echo htmlspecialchars($typeId, ENT_QUOTES, 'UTF-8'); ?>">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
-            <a href="./?stat=<?php echo htmlspecialchars($typeId, ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-ghost">
+            <a href="<?php echo htmlspecialchars(SeoHelper::localizeRelativeUrl('./?stat=' . rawurlencode($typeId), $activeLang), ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-ghost">
                 <i class="bi bi-arrow-left" aria-hidden="true"></i>
                 <span><?php echo htmlspecialchars(__('Back to Statistics Hub'), ENT_QUOTES, 'UTF-8'); ?></span>
             </a>
@@ -206,7 +228,15 @@ $initialPayload = [
                                     <th scope="col"><?php echo htmlspecialchars(__('Share'), ENT_QUOTES, 'UTF-8'); ?></th>
                                 </tr>
                             </thead>
-                            <tbody id="standaloneRankingBody"></tbody>
+                            <tbody id="standaloneRankingBody"><?php
+                                $ssrFaqCategory = $reportEnum !== null ? $reportEnum->faqLinkType() : (string) ($reportConfig['faqLinkType'] ?? $typeId);
+                                echo SeoHelper::renderRankingRowsHtml(
+                                    $todayEntries,
+                                    (int) $todaySummary['totalEvents'],
+                                    $ssrFaqCategory,
+                                    __('No statistics available for the selected period yet.')
+                                );
+                            ?></tbody>
                         </table>
                     </div>
                 </div>

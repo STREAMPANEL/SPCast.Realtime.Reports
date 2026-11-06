@@ -4,11 +4,15 @@ declare(strict_types=1);
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use App\ReportType;
+use App\SeoHelper;
+
+$navLang = (string) ($current_lang ?? 'de');
+$brandUrl = SeoHelper::localizeRelativeUrl('./', $navLang);
 
 $navItems = [
     [
         'label' => __('Home'),
-        'url' => './',
+        'url' => $brandUrl,
         'page' => 'index.php',
         'icon' => 'bi-activity',
     ],
@@ -17,7 +21,7 @@ $navItems = [
 foreach (ReportType::cases() as $reportCase) {
     $navItems[] = [
         'label' => __($reportCase->labelMsgId()),
-        'url' => $reportCase->pageUrl(),
+        'url' => SeoHelper::localizeRelativeUrl($reportCase->pageUrl(), $navLang),
         'page' => $reportCase->pageUrl(),
         'icon' => $reportCase->iconClass(),
     ];
@@ -27,7 +31,7 @@ $currentPage = basename((string) ($_SERVER['SCRIPT_NAME'] ?? 'index.php'));
 ?>
 <header class="sp-navbar" role="banner">
     <nav class="container-fluid px-3 px-xl-4 d-flex align-items-center justify-content-between gap-3" aria-label="<?php echo htmlspecialchars(__('Main Navigation'), ENT_QUOTES, 'UTF-8'); ?>">
-        <a class="sp-brand" href="./">
+        <a class="sp-brand" href="<?php echo htmlspecialchars($brandUrl, ENT_QUOTES, 'UTF-8'); ?>">
             <img src="img/favicons/favicon.svg" alt="SPCast" width="32" height="32" class="sp-brand-logo">
             <span>SPCast</span>
             <span class="sp-live-badge">

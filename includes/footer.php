@@ -33,10 +33,6 @@ $clientI18n = [
                 </li>
                 <li class="d-none d-sm-inline" aria-hidden="true">|</li>
                 <li>
-                    <a href="https://www.spcast-playlist.de" target="_blank" rel="noopener" class="sp-footer-link">SPCast Playlist</a>
-                </li>
-                <li class="d-none d-sm-inline" aria-hidden="true">|</li>
-                <li>
                     <a href="https://www.spcast.eu/kontakt/impressum/" target="_blank" rel="noopener" class="sp-footer-link"><?php echo htmlspecialchars(__('Imprint'), ENT_QUOTES, 'UTF-8'); ?></a>
                 </li>
                 <li class="d-none d-sm-inline" aria-hidden="true">|</li>

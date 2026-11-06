@@ -1,5 +1,9 @@
 <?php
 declare(strict_types=1);
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\SeoHelper;
 ?>
 <meta name="color-scheme" content="light dark">
 <script>
@@ -46,15 +50,37 @@ declare(strict_types=1);
 $ogTitle = $pageTitle ?? ($inoutConfig['pageTitle'] ?? ($reportConfig['pageTitle'] ?? 'SPCast Realtime Statistics - SPCast Live'));
 $ogDesc = $pageDescription ?? ($inoutConfig['pageDescription'] ?? ($reportConfig['pageDescription'] ?? ''));
 $ogUrl = $canonicalUrl ?? ($inoutConfig['canonicalUrl'] ?? ($reportConfig['canonicalUrl'] ?? 'https://live.spcast.eu/'));
+$ogLocale = isset($locale_code) && is_string($locale_code) && $locale_code !== '' ? $locale_code : 'de_DE';
+$robotsContent = isset($seoRobots) && is_string($seoRobots) && $seoRobots !== ''
+    ? $seoRobots
+    : 'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 ?>
+<meta name="robots" content="<?php echo htmlspecialchars($robotsContent, ENT_QUOTES, 'UTF-8'); ?>">
 <meta property="og:title" content="<?php echo htmlspecialchars((string) $ogTitle, ENT_QUOTES, 'UTF-8'); ?>">
 <meta property="og:description" content="<?php echo htmlspecialchars((string) $ogDesc, ENT_QUOTES, 'UTF-8'); ?>">
 <meta property="og:url" content="<?php echo htmlspecialchars((string) $ogUrl, ENT_QUOTES, 'UTF-8'); ?>">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SPCast Live">
+<meta property="og:locale" content="<?php echo htmlspecialchars($ogLocale, ENT_QUOTES, 'UTF-8'); ?>">
 <meta property="og:image" content="https://live.spcast.eu/img/favicons/favicon-512x512.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta property="og:image:alt" content="SPCast Live">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="<?php echo htmlspecialchars((string) $ogTitle, ENT_QUOTES, 'UTF-8'); ?>">
+<meta name="twitter:description" content="<?php echo htmlspecialchars((string) $ogDesc, ENT_QUOTES, 'UTF-8'); ?>">
+<meta name="twitter:image" content="https://live.spcast.eu/img/favicons/favicon-512x512.png">
 
-<?php echo get_hreflang_links(); ?>
+<?php
+if (isset($baseCanonicalUrl) && is_string($baseCanonicalUrl) && isset($supported_langs) && is_array($supported_langs)) {
+    echo SeoHelper::buildHreflangLinks($baseCanonicalUrl, $supported_langs);
+} else {
+    echo get_hreflang_links();
+}
+?>
+<?php if (isset($schemaGraph) && is_array($schemaGraph)): ?>
+<script type="application/ld+json"><?php echo json_encode($schemaGraph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
+<?php endif; ?>
 
 <!-- Matomo Tag Manager -->
 <script>

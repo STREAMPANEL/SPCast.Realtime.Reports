@@ -1,7 +1,6 @@
 User-agent: *
-Disallow: .well-known/*
-Disallow:
+Allow: /
+Disallow: /cache/
+Disallow: /logs/
 
 Sitemap: https://live.spcast.eu/sitemap.xml
-
-Host: live.spcast.eu

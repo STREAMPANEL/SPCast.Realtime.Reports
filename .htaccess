@@ -13,6 +13,10 @@ Options -Indexes
     RewriteEngine On
     RewriteRule (^|/)\.(?!well-known/) - [F,L]
     RewriteRule ^(logs|cache|src|tests|includes|vendor)/ - [F,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(in|out|country|region|city|os|browser|mount|protocol|port|ipversion)/?$ /$1.php [R=301,L,QSA]
 </IfModule>
 
 <FilesMatch "^(composer\.(json|lock)|phpunit\.xml(\.dist)?|README\.md)$|\.(log|po|mo|pot|lock|sh|sql|bak)$">

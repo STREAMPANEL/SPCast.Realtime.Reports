@@ -682,11 +682,17 @@
             });
         }
 
+        function getActiveDocLang() {
+            var raw = (document.documentElement.getAttribute("lang") || "de").toLowerCase().trim();
+            return (raw !== "de" && /^[a-z]{2}$/.test(raw)) ? raw : "";
+        }
+
         function renderActivePayload(payload) {
             if (!payload || !canvas) return;
 
             if (detailLink && typeof payload.pageUrl === "string" && /^[a-z0-9_-]+\.php$/i.test(payload.pageUrl)) {
-                detailLink.href = payload.pageUrl;
+                var activeDocLang = getActiveDocLang();
+                detailLink.href = activeDocLang ? payload.pageUrl + "?lang=" + encodeURIComponent(activeDocLang) : payload.pageUrl;
             }
             if (descEl && payload.description) {
                 descEl.textContent = payload.description;
@@ -819,7 +825,11 @@
 
             if (loadingOverlay) loadingOverlay.classList.remove("d-none");
 
-            return fetch("api.php?action=report&type=" + encodeURIComponent(type), {
+            var langParam = getActiveDocLang();
+            var reportApiUrl = "api.php?action=report&type=" + encodeURIComponent(type)
+                + (langParam ? "&lang=" + encodeURIComponent(langParam) : "");
+
+            return fetch(reportApiUrl, {
                 headers: { Accept: "application/json" },
                 signal: currentController.signal
             })

@@ -14,6 +14,7 @@ require_once __DIR__ . '/initializeAnalytics.php';
 use App\AnalyticsService;
 use App\Logger;
 use App\ReportType;
+use App\SeoHelper;
 
 $cacheDir = __DIR__ . '/../cache/';
 ensureSecureCacheDirectory($cacheDir);
@@ -31,6 +32,28 @@ $inOutData = $analyticsService->getInOutReportData($type, $gaPropertyId, $cacheD
 $activeUsers = $inOutData['activeUsers'];
 $peakToday = $inOutData['hourly']['values'] !== [] ? max($inOutData['hourly']['values']) : 0;
 $sumWeekly = array_sum($inOutData['weekly']['values']);
+$sumHourly = array_sum($inOutData['hourly']['values']);
+$hourlyEntries = SeoHelper::normalizeSeriesEntries($inOutData['hourly']['labels'], $inOutData['hourly']['values']);
+
+$activeLang = (string) ($current_lang ?? 'de');
+$baseCanonicalUrl = (string) $inoutConfig['canonicalUrl'];
+$canonicalUrl = SeoHelper::buildCanonicalUrl($baseCanonicalUrl, $activeLang);
+$schemaGraph = SeoHelper::buildReportSchemaGraph(
+    $reportEnum ?? ReportType::In,
+    $canonicalUrl,
+    $activeLang,
+    (string) $inoutConfig['pageTitle'],
+    (string) $inoutConfig['headerTitle'],
+    (string) $inoutConfig['pageDescription'],
+    (string) $inoutConfig['headerDesc'],
+    (string) $inoutConfig['keywords'],
+    (string) $inoutConfig['cardTitle'],
+    (int) $activeUsers,
+    [
+        $cacheDir . "analytics_cache_{$type}.json",
+        $cacheDir . "analytics_monthly_{$type}.json",
+    ]
+);
 
 $initialInOutPayload = [
     'type' => $type,
@@ -72,7 +95,7 @@ $initialInOutPayload = [
 ];
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo htmlspecialchars($current_lang ?? 'de', ENT_QUOTES, 'UTF-8'); ?>">
+<html lang="<?php echo htmlspecialchars($activeLang, ENT_QUOTES, 'UTF-8'); ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -80,7 +103,7 @@ $initialInOutPayload = [
     <title><?php echo htmlspecialchars((string) $inoutConfig['pageTitle'], ENT_QUOTES, 'UTF-8'); ?></title>
     <meta name="description" content="<?php echo htmlspecialchars((string) $inoutConfig['pageDescription'], ENT_QUOTES, 'UTF-8'); ?>">
     <meta name="keywords" content="<?php echo htmlspecialchars((string) $inoutConfig['keywords'], ENT_QUOTES, 'UTF-8'); ?>">
-    <link rel="canonical" href="<?php echo htmlspecialchars((string) $inoutConfig['canonicalUrl'], ENT_QUOTES, 'UTF-8'); ?>" />
+    <link rel="canonical" href="<?php echo htmlspecialchars($canonicalUrl, ENT_QUOTES, 'UTF-8'); ?>" />
     <?php require_once __DIR__ . '/head.php'; ?>
 </head>
 
@@ -89,7 +112,7 @@ $initialInOutPayload = [
 
     <main class="container py-4 py-lg-5" id="spStandaloneInOut" data-inout-type="<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
-            <a href="./?stat=<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-ghost">
+            <a href="<?php echo htmlspecialchars(SeoHelper::localizeRelativeUrl('./?stat=' . rawurlencode($type), $activeLang), ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-ghost">
                 <i class="bi bi-arrow-left" aria-hidden="true"></i>
                 <span><?php echo htmlspecialchars(__('Back to Statistics Hub'), ENT_QUOTES, 'UTF-8'); ?></span>
             </a>
@@ -191,7 +214,14 @@ $initialInOutPayload = [
                                     <th scope="col"><?php echo htmlspecialchars(__('Share'), ENT_QUOTES, 'UTF-8'); ?></th>
                                 </tr>
                             </thead>
-                            <tbody id="standaloneInOutBody"></tbody>
+                            <tbody id="standaloneInOutBody"><?php
+                                echo SeoHelper::renderRankingRowsHtml(
+                                    $hourlyEntries,
+                                    (int) $sumHourly,
+                                    null,
+                                    __('No statistics available for the selected period yet.')
+                                );
+                            ?></tbody>
                         </table>
                     </div>
                 </div>
