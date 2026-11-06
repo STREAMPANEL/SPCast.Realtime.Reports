@@ -23,15 +23,16 @@ class ReportTypeTest extends TestCase
         $this->assertFalse(ReportType::Browser->isInOut());
     }
 
-    public function testPageUrlsAndFaqMapping(): void
+    public function testPageUrlsAndDetailModalSupport(): void
     {
         $this->assertSame('in.php', ReportType::In->pageUrl());
         $this->assertSame('country.php', ReportType::Country->pageUrl());
         $this->assertSame('ipversion.php', ReportType::IpVersion->pageUrl());
 
-        $this->assertNull(ReportType::In->faqLinkType());
-        $this->assertSame('agent', ReportType::Browser->faqLinkType());
-        $this->assertSame('country', ReportType::Country->faqLinkType());
+        $this->assertFalse(ReportType::In->supportsDetailModal());
+        $this->assertFalse(ReportType::Out->supportsDetailModal());
+        $this->assertTrue(ReportType::Browser->supportsDetailModal());
+        $this->assertTrue(ReportType::Country->supportsDetailModal());
     }
 
     public function testPropertyIdRoutingAndScaleDefaults(): void

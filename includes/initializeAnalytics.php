@@ -19,7 +19,7 @@ function initializeAnalytics(mixed $client = null, bool $reset = false): ?\Googl
             if (is_string($authConfig) && is_file($authConfig) && is_readable($authConfig)) {
                 try {
                     $client->setAuthConfig($authConfig);
-                    $client->addScope(\Google_Service_AnalyticsData::ANALYTICS);
+                    $client->addScope(\Google_Service_AnalyticsData::ANALYTICS_READONLY);
                 } catch (\Throwable $e) {
                     if (class_exists(\App\Logger::class)) {
                         \App\Logger::createDefault()->error('Analytics auth initialization failed: ' . $e->getMessage());

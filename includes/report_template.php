@@ -4,17 +4,17 @@ declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/i18n.php';
 
-if (!headers_sent()) {
-    header('Content-Type: text/html; charset=UTF-8');
-}
-
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/initializeAnalytics.php';
 
 use App\AnalyticsService;
 use App\Logger;
+use App\PublicReportFilter;
 use App\ReportType;
+use App\SecurityHeaders;
 use App\SeoHelper;
+
+$cspNonce = SecurityHeaders::sendHtml();
 
 $cacheDir = __DIR__ . '/../cache/';
 ensureSecureCacheDirectory($cacheDir);
@@ -30,6 +30,8 @@ $defaultScale = $reportEnum !== null ? $reportEnum->defaultScale() : 'logarithmi
 $iconClass = $reportEnum !== null ? $reportEnum->iconClass() : 'bi-bar-chart-line';
 
 $reportData = $analyticsService->getStandardReportData($typeId, $propertyId, 45, $cacheDir);
+$aggregateLabel = $reportEnum !== null && PublicReportFilter::usesAggregation($reportEnum) ? __('Other') : null;
+$reportData = PublicReportFilter::filterPeriods($reportEnum ?? ReportType::Country, $reportData, $aggregateLabel ?? '');
 
 $tabPeriods = [
     'today' => [
@@ -59,7 +61,7 @@ $tabPeriods = [
 ];
 
 $todaySummary = $analyticsService->summarizePeriodRanking($tabPeriods['today']['data']);
-$todayEntries = SeoHelper::normalizeMapEntries($tabPeriods['today']['data']);
+$todayEntries = SeoHelper::normalizeMapEntries($tabPeriods['today']['data'], $aggregateLabel);
 
 $activeLang = (string) ($current_lang ?? 'de');
 $baseCanonicalUrl = (string) $reportConfig['canonicalUrl'];
@@ -84,8 +86,15 @@ $schemaGraph = SeoHelper::buildReportSchemaGraph(
 $initialPayload = [
     'type' => $typeId,
     'axisLabel' => (string) ($reportConfig['chartLabel'] ?? ''),
-    'faqLinkType' => (string) ($reportConfig['faqLinkType'] ?? $typeId),
+    'supportsDetailModal' => $reportEnum !== null ? $reportEnum->supportsDetailModal() : true,
     'defaultScale' => $defaultScale,
+    'aggregateLabel' => $aggregateLabel,
+    'periodLabels' => [
+        'today' => $tabPeriods['today']['label'],
+        'yesterday' => $tabPeriods['yesterday']['label'],
+        '7days' => $tabPeriods['7days']['label'],
+        '30days' => $tabPeriods['30days']['label'],
+    ],
     'chartTitles' => [
         'today' => $tabPeriods['today']['title'],
         'yesterday' => $tabPeriods['yesterday']['title'],
@@ -229,11 +238,9 @@ $initialPayload = [
                                 </tr>
                             </thead>
                             <tbody id="standaloneRankingBody"><?php
-                                $ssrFaqCategory = $reportEnum !== null ? $reportEnum->faqLinkType() : (string) ($reportConfig['faqLinkType'] ?? $typeId);
                                 echo SeoHelper::renderRankingRowsHtml(
                                     $todayEntries,
                                     (int) $todaySummary['totalEvents'],
-                                    $ssrFaqCategory,
                                     __('No statistics available for the selected period yet.')
                                 );
                             ?></tbody>
@@ -244,7 +251,7 @@ $initialPayload = [
         </section>
     </main>
 
-    <script id="spcast-report-payload" type="application/json"><?php echo json_encode($initialPayload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
+    <script nonce="<?php echo htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8'); ?>" id="spcast-report-payload" type="application/json"><?php echo json_encode($initialPayload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
 
     <?php require_once __DIR__ . '/footer.php'; ?>
 </body>

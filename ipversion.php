@@ -7,7 +7,6 @@ require_once 'includes/i18n.php';
 $reportConfig = [
     'typeId' => 'ipversion',
     'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
-    'faqLinkType' => 'ipversion',
     'pageTitle' => __('IP Version Statistics - SPCast Live'),
     'pageDescription' => __('Shows the usage of IPv4 and IPv6 by users in the network. Real-time data and statistics for various periods.'),
     'keywords' => __('spcast live, spcast ip-version, ipv4, ipv6, ip statistiken, nutzerdaten, netzwerkprotokolle'),

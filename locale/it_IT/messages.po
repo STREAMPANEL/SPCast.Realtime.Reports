@@ -703,16 +703,82 @@ msgid "Close"
 msgstr "Chiudi"
 
 msgid "Method not allowed."
-msgstr ""
+msgstr "Metodo non consentito."
 
 msgid "Invalid request parameter."
-msgstr ""
+msgstr "Parametro di richiesta non valido."
 
 msgid "Unsupported API action."
-msgstr ""
+msgstr "Azione API non supportata."
 
 msgid "Missing or invalid report type."
-msgstr ""
+msgstr "Tipo di report mancante o non valido."
 
 msgid "Unknown report type requested."
-msgstr ""
+msgstr "Tipo di report richiesto sconosciuto."
+
+msgid "Period"
+msgstr "Periodo"
+
+msgid "Daily Average"
+msgstr "Media giornaliera"
+
+msgid "Period Comparison"
+msgstr "Confronto periodi"
+
+msgid "Share across Periods (%)"
+msgstr "Quota nei periodi (%)"
+
+msgid "Trend vs. 30-Day Share"
+msgstr "Trend vs quota 30 giorni"
+
+msgid "Show cross-period details"
+msgstr "Mostra dettagli per periodo"
+
+msgid "Standard unencrypted HTTP streaming port"
+msgstr "Porta di streaming HTTP standard non crittografata"
+
+msgid "TLS-encrypted HTTPS streaming port"
+msgstr "Porta di streaming HTTPS crittografata con TLS"
+
+msgid "Icecast / SHOUTcast default audio streaming port"
+msgstr "Porta di streaming audio predefinita Icecast / SHOUTcast"
+
+msgid "Encrypted transport protocol (TLS)"
+msgstr "Protocollo di trasporto crittografato (TLS)"
+
+msgid "Unencrypted transport protocol"
+msgstr "Protocollo di trasporto non crittografato"
+
+msgid "Classic 32-bit network addressing (IPv4)"
+msgstr "Indirizzamento di rete classico a 32 bit (IPv4)"
+
+msgid "Modern 128-bit network addressing (IPv6)"
+msgstr "Indirizzamento di rete moderno a 128 bit (IPv6)"
+
+msgid "Methodology & Data Transparency"
+msgstr "Metodologia e trasparenza dei dati"
+
+msgid "Technical notes on how telemetry metrics on SPCast Live are collected, aggregated, and published."
+msgstr "Note tecniche su raccolta, aggregazione e pubblicazione delle metriche di telemetria su SPCast Live."
+
+msgid "Data Source & Interval"
+msgstr "Fonte dati e intervallo"
+
+msgid "Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history."
+msgstr "Eventi aggregati di ascolto e flusso sull'infrastruttura di streaming audio %s (Icecast, SHOUTcast, HLS), aggiornati ogni 45 secondi con storico mobile di 30 giorni."
+
+msgid "Anonymization & Privacy"
+msgstr "Anonimizzazione e privacy"
+
+msgid "City and mountpoint groups with fewer than five events are combined. Listener IP addresses are not published."
+msgstr "I gruppi di città e mountpoint con meno di cinque eventi vengono aggregati. Gli indirizzi IP degli ascoltatori non vengono pubblicati."
+
+msgid "Open-Source Dashboard"
+msgstr "Dashboard open source"
+
+msgid "The reporting frontend, caching layer, and schema definitions are publicly auditable on %s under the EUPL-1.2 license."
+msgstr "Frontend di reportistica, livello di cache e definizioni di schema sono verificabili pubblicamente su %s con licenza EUPL-1.2."
+
+msgid "Other"
+msgstr "Altri"

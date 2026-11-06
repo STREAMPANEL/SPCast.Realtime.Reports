@@ -69,4 +69,15 @@ class LoggerTest extends TestCase
         $this->assertCount(1, $lines);
         $this->assertStringContainsString('First line  Fake entry', $lines[0]);
     }
+
+    public function testErrorLogSizeStaysBounded(): void
+    {
+        $logger = new Logger($this->testLogFile, 180);
+        for ($i = 0; $i < 20; $i++) {
+            $logger->error('Message ' . $i . ' ' . str_repeat('x', 25));
+        }
+
+        $this->assertLessThanOrEqual(180, filesize($this->testLogFile));
+        $this->assertStringContainsString('Message 19', (string) file_get_contents($this->testLogFile));
+    }
 }

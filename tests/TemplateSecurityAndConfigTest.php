@@ -135,5 +135,104 @@ class TemplateSecurityAndConfigTest extends TestCase
         $this->assertStringContainsString('\u003C', $html);
         $this->assertStringContainsString('container_KVNJAR2p_rewrite.js', $html);
     }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testCityPageDoesNotExposeSmallCachedGroups(): void
+    {
+        $html = $this->renderWithCityCache('city.php');
+
+        $this->assertStringNotContainsString('Private Test City', $html);
+        $this->assertStringContainsString('Public Test City', $html);
+        $this->assertStringContainsString('"Andere":3', $html);
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testHomePageDoesNotExposeSmallCachedCityGroups(): void
+    {
+        $_GET['stat'] = 'city';
+        $html = $this->renderWithCityCache('index.php');
+
+        $this->assertStringNotContainsString('Private Test City', $html);
+        $this->assertStringContainsString('Public Test City', $html);
+        $this->assertMatchesRegularExpression('~<span>Andere</span>.*?<td[^>]*>3</td>~s', $html);
+    }
+
+    private function renderWithCityCache(string $page): string
+    {
+        $cacheDir = __DIR__ . '/../cache/';
+        if (!is_dir($cacheDir)) {
+            mkdir($cacheDir, 0755, true);
+        }
+
+        $saved = [];
+        $lockFiles = [];
+        foreach (['today', 'yesterday', '7days', '30days'] as $period) {
+            $file = $cacheDir . "analytics_city_cache_{$period}.json";
+            $saved[$file] = is_file($file)
+                ? ['content' => file_get_contents($file), 'mtime' => filemtime($file)]
+                : null;
+            $lockFiles[$file . '.lock'] = is_file($file . '.lock');
+            file_put_contents($file, json_encode(['Public Test City' => 8, 'Private Test City' => 3]));
+        }
+
+        $previousCwd = getcwd();
+        chdir(__DIR__ . '/..');
+        $initialBufferLevel = ob_get_level();
+        ob_start();
+        try {
+            include __DIR__ . '/../' . $page;
+            return (string) ob_get_clean();
+        } finally {
+            if (ob_get_level() > $initialBufferLevel) {
+                ob_end_clean();
+            }
+            if ($previousCwd !== false) {
+                chdir($previousCwd);
+            }
+            foreach ($saved as $file => $backup) {
+                if ($backup === null) {
+                    if (is_file($file)) {
+                        unlink($file);
+                    }
+                } else {
+                    file_put_contents($file, $backup['content']);
+                    touch($file, $backup['mtime']);
+                }
+            }
+            foreach ($lockFiles as $file => $existed) {
+                if (!$existed && is_file($file)) {
+                    unlink($file);
+                }
+            }
+        }
+    }
+
+    public function testNoDeadExternalFaqLinksRemainInProjectFiles(): void
+    {
+        $files = array_merge(
+            glob(__DIR__ . '/../*.php') ?: [],
+            glob(__DIR__ . '/../includes/*.php') ?: [],
+            glob(__DIR__ . '/../src/*.php') ?: [],
+            [__DIR__ . '/../js/app.js']
+        );
+
+        foreach ($files as $file) {
+            $content = (string) file_get_contents($file);
+            $this->assertStringNotContainsString(
+                'faq/statistik',
+                $content,
+                'Dead FAQ URL reference found in ' . basename($file)
+            );
+            $this->assertStringNotContainsString(
+                'faqLinkType',
+                $content,
+                'Obsolete faqLinkType reference found in ' . basename($file)
+            );
+        }
+    }
 }
 

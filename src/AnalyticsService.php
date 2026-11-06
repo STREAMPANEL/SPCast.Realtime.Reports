@@ -130,26 +130,78 @@ class AnalyticsService
 
     public function getCachedData(string $cacheFile, callable $fetchCallback, int $cacheTime = 45): ?array
     {
-        if (file_exists($cacheFile) && (time() - filemtime($cacheFile)) < $cacheTime) {
-            $raw = file_get_contents($cacheFile);
-            if (is_string($raw)) {
-                $decoded = json_decode($raw, true);
-                if (is_array($decoded)) {
-                    return $decoded;
+        $dir = dirname($cacheFile);
+        if (!is_dir($dir) && !mkdir($dir, 0755, true) && !is_dir($dir)) {
+            throw new \RuntimeException('Unable to create analytics cache directory.');
+        }
+
+        $lock = fopen($cacheFile . '.lock', 'c+');
+        if ($lock === false) {
+            throw new \RuntimeException('Unable to open analytics cache lock.');
+        }
+
+        try {
+            if (!flock($lock, LOCK_EX)) {
+                throw new \RuntimeException('Unable to lock analytics cache.');
+            }
+
+            clearstatcache(true, $cacheFile);
+            $cached = null;
+            $modified = false;
+            if (is_file($cacheFile)) {
+                $raw = file_get_contents($cacheFile);
+                if (is_string($raw)) {
+                    $decoded = json_decode($raw, true);
+                    if (is_array($decoded)) {
+                        $cached = $decoded;
+                    }
+                }
+                $modified = filemtime($cacheFile);
+            }
+
+            if ($cached !== null && is_int($modified) && (time() - $modified) < $cacheTime) {
+                return $cached;
+            }
+
+            rewind($lock);
+            $retryAfter = (int) trim((string) stream_get_contents($lock));
+            if ($retryAfter > time()) {
+                return $cached;
+            }
+
+            $data = $fetchCallback();
+            if ($data === null) {
+                rewind($lock);
+                ftruncate($lock, 0);
+                fwrite($lock, (string) (time() + min(5, max(1, $cacheTime))));
+                return $cached;
+            }
+
+            $tempFile = null;
+            try {
+                $json = json_encode($data, JSON_THROW_ON_ERROR);
+                $tempFile = tempnam($dir, '.spcast-cache-');
+                if ($tempFile === false) {
+                    throw new \RuntimeException('Unable to create temporary analytics cache file.');
+                }
+                if (file_put_contents($tempFile, $json, LOCK_EX) !== strlen($json) || !rename($tempFile, $cacheFile)) {
+                    throw new \RuntimeException('Unable to write analytics cache file.');
+                }
+                rewind($lock);
+                ftruncate($lock, 0);
+            } catch (Throwable $e) {
+                $this->logger->error('Analytics cache write failed: ' . $e->getMessage());
+            } finally {
+                if (is_string($tempFile) && is_file($tempFile)) {
+                    unlink($tempFile);
                 }
             }
-        }
 
-        $data = $fetchCallback();
-        if ($data !== null) {
-            $dir = dirname($cacheFile);
-            if (!is_dir($dir)) {
-                mkdir($dir, 0755, true);
-            }
-            file_put_contents($cacheFile, json_encode($data), LOCK_EX);
+            return $data;
+        } finally {
+            flock($lock, LOCK_UN);
+            fclose($lock);
         }
-
-        return $data;
     }
 
     /**
@@ -181,7 +233,7 @@ class AnalyticsService
 
             $cached = $this->getCachedData(
                 $cacheFile,
-                function () use ($propertyId, $startDate, $normalizedPrefix): array {
+                function () use ($propertyId, $startDate, $normalizedPrefix): ?array {
                     $customEventKey = 'customEvent:' . $normalizedPrefix;
                     $logIdentifier = ucfirst($normalizedPrefix);
 
@@ -192,6 +244,10 @@ class AnalyticsService
                         'today',
                         $logIdentifier
                     );
+
+                    if ($response === null) {
+                        return null;
+                    }
 
                     return $this->processListenerAddReport($response);
                 },

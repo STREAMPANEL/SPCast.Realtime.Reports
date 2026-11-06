@@ -7,7 +7,6 @@ require_once 'includes/i18n.php';
 $reportConfig = [
     'typeId' => 'port',
     'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
-    'faqLinkType' => 'port',
     'pageTitle' => __('Port Statistics - SPCast Live'),
     'pageDescription' => __('Statistics on the ports used by users in the network. Real-time data for daily and weekly analyses.'),
     'keywords' => __('spcast live, spcast ports, nutzerstatistik ports, netzwerkdaten, echtzeitanalysen, portstatistiken'),

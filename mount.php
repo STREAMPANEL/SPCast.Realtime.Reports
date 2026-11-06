@@ -7,7 +7,6 @@ require_once 'includes/i18n.php';
 $reportConfig = [
     'typeId' => 'mount',
     'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
-    'faqLinkType' => 'mount',
     'pageTitle' => __('Mountpoint Statistics - SPCast Live'),
     'pageDescription' => __('Detailed statistics on the mountpoints used in the network. Analyses available for various periods.'),
     'keywords' => __('spcast live, spcast mountpoints, nutzerdaten, echtzeitstatistiken, netzwerkanalysen, mountpoint statistiken'),

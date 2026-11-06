@@ -703,16 +703,82 @@ msgid "Close"
 msgstr "Zavrieť"
 
 msgid "Method not allowed."
-msgstr ""
+msgstr "Metóda nie je povolená."
 
 msgid "Invalid request parameter."
-msgstr ""
+msgstr "Neplatný parameter požiadavky."
 
 msgid "Unsupported API action."
-msgstr ""
+msgstr "Nepodporovaná akcia API."
 
 msgid "Missing or invalid report type."
-msgstr ""
+msgstr "Chýbajúci alebo neplatný typ prehľadu."
 
 msgid "Unknown report type requested."
-msgstr ""
+msgstr "Požadovaný neznámy typ prehľadu."
+
+msgid "Period"
+msgstr "Obdobie"
+
+msgid "Daily Average"
+msgstr "Denný priemer"
+
+msgid "Period Comparison"
+msgstr "Porovnanie období"
+
+msgid "Share across Periods (%)"
+msgstr "Podiel v obdobiach (%)"
+
+msgid "Trend vs. 30-Day Share"
+msgstr "Trend oproti 30 dňom"
+
+msgid "Show cross-period details"
+msgstr "Zobraziť podrobnosti období"
+
+msgid "Standard unencrypted HTTP streaming port"
+msgstr "Štandardný nešifrovaný streamovací port HTTP"
+
+msgid "TLS-encrypted HTTPS streaming port"
+msgstr "Streamovací port HTTPS šifrovaný pomocou TLS"
+
+msgid "Icecast / SHOUTcast default audio streaming port"
+msgstr "Predvolený port audio streamovania Icecast / SHOUTcast"
+
+msgid "Encrypted transport protocol (TLS)"
+msgstr "Šifrovaný prenosový protokol (TLS)"
+
+msgid "Unencrypted transport protocol"
+msgstr "Nešifrovaný prenosový protokol"
+
+msgid "Classic 32-bit network addressing (IPv4)"
+msgstr "Klasické 32-bitové sieťové adresovanie (IPv4)"
+
+msgid "Modern 128-bit network addressing (IPv6)"
+msgstr "Moderné 128-bitové sieťové adresovanie (IPv6)"
+
+msgid "Methodology & Data Transparency"
+msgstr "Metodika a transparentnosť údajov"
+
+msgid "Technical notes on how telemetry metrics on SPCast Live are collected, aggregated, and published."
+msgstr "Technické poznámky o zbere, agregácii a zverejňovaní telemetrických metrík na SPCast Live."
+
+msgid "Data Source & Interval"
+msgstr "Zdroj údajov a interval"
+
+msgid "Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history."
+msgstr "Agregované udalosti poslucháčov a streamov v audio streamovacej infraštruktúre %s (Icecast, SHOUTcast, HLS), aktualizované každých 45 sekúnd s kĺzavou 30-dňovou históriou."
+
+msgid "Anonymization & Privacy"
+msgstr "Anonymizácia a súkromie"
+
+msgid "City and mountpoint groups with fewer than five events are combined. Listener IP addresses are not published."
+msgstr "Skupiny miest a prípojných bodov s menej ako piatimi udalosťami sa zlučujú. IP adresy poslucháčov sa nezverejňujú."
+
+msgid "Open-Source Dashboard"
+msgstr "Open-source prehľad"
+
+msgid "The reporting frontend, caching layer, and schema definitions are publicly auditable on %s under the EUPL-1.2 license."
+msgstr "Rozhranie prehľadov, vrstva vyrovnávacej pamäte a definície schém sú verejne kontrolovateľné na %s pod licenciou EUPL-1.2."
+
+msgid "Other"
+msgstr "Ostatné"

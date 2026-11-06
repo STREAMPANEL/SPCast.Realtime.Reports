@@ -6,6 +6,9 @@ on:
       - main
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 concurrency:
   group: ftp-deploy-production
   cancel-in-progress: false
@@ -16,10 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Setup PHP 8.5
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # v2
         with:
           php-version: "8.5"
           tools: composer:v2
@@ -27,6 +30,9 @@ jobs:
 
       - name: Install dependencies for test run
         run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Validate dependency lock file
+        run: composer validate --no-check-publish --no-interaction
 
       - name: Run PHPUnit test suite
         run: |
@@ -39,6 +45,9 @@ jobs:
       - name: Build production vendor directory
         run: composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader
 
+      - name: Audit production dependencies
+        run: composer audit --locked --no-dev --no-interaction
+
       - name: Install LFTP
         run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
 
@@ -46,11 +55,15 @@ jobs:
         env:
           FTP_SERVER: ${{ secrets.FTP_SERVER }}
           FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          LFTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          lftp -u "$FTP_USERNAME","$FTP_PASSWORD" "$FTP_SERVER" << 'EOF'
+          lftp --user "$FTP_USERNAME" --env-password "$FTP_SERVER" << 'EOF'
+          set cmd:fail-exit yes
           set ftp:ssl-allow yes
-          set ssl:verify-certificate no
+          set ftp:ssl-force yes
+          set ftp:ssl-protect-data yes
+          set ssl:verify-certificate yes
+          set ssl:check-hostname yes
           set net:timeout 15
           set net:max-retries 3
           mirror --reverse --delete --parallel=10 \
@@ -70,8 +83,8 @@ jobs:
             --exclude-glob package-lock.json \
             --exclude-glob tests/ \
             --exclude-glob reports/ \
-            --exclude-glob cache/*.json \
-            --exclude-glob logs/*.log \
+            --exclude-glob cache/ \
+            --exclude-glob logs/ \
             --exclude-glob .ftpquota \
             ./ /
           quit

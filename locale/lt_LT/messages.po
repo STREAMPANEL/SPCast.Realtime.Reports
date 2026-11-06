@@ -703,16 +703,82 @@ msgid "Close"
 msgstr "Uždaryti"
 
 msgid "Method not allowed."
-msgstr ""
+msgstr "Metodas neleidžiamas."
 
 msgid "Invalid request parameter."
-msgstr ""
+msgstr "Netinkamas užklausos parametras."
 
 msgid "Unsupported API action."
-msgstr ""
+msgstr "Nepalaikomas API veiksmas."
 
 msgid "Missing or invalid report type."
-msgstr ""
+msgstr "Trūksta ataskaitos tipo arba jis netinkamas."
 
 msgid "Unknown report type requested."
-msgstr ""
+msgstr "Užklaustas nežinomas ataskaitos tipas."
+
+msgid "Period"
+msgstr "Laikotarpis"
+
+msgid "Daily Average"
+msgstr "Dienos vidurkis"
+
+msgid "Period Comparison"
+msgstr "Laikotarpių palyginimas"
+
+msgid "Share across Periods (%)"
+msgstr "Dalis per laikotarpius (%)"
+
+msgid "Trend vs. 30-Day Share"
+msgstr "Tendencija palyg. su 30 d."
+
+msgid "Show cross-period details"
+msgstr "Rodyti laikotarpių informaciją"
+
+msgid "Standard unencrypted HTTP streaming port"
+msgstr "Standartinis nešifruotas HTTP transliavimo prievadas"
+
+msgid "TLS-encrypted HTTPS streaming port"
+msgstr "TLS šifruotas HTTPS transliavimo prievadas"
+
+msgid "Icecast / SHOUTcast default audio streaming port"
+msgstr "Numatytasis Icecast / SHOUTcast garso transliavimo prievadas"
+
+msgid "Encrypted transport protocol (TLS)"
+msgstr "Šifruotas transporto protokolas (TLS)"
+
+msgid "Unencrypted transport protocol"
+msgstr "Nešifruotas transporto protokolas"
+
+msgid "Classic 32-bit network addressing (IPv4)"
+msgstr "Klasikinis 32 bitų tinklo adresavimas (IPv4)"
+
+msgid "Modern 128-bit network addressing (IPv6)"
+msgstr "Šiuolaikinis 128 bitų tinklo adresavimas (IPv6)"
+
+msgid "Methodology & Data Transparency"
+msgstr "Metodika ir duomenų skaidrumas"
+
+msgid "Technical notes on how telemetry metrics on SPCast Live are collected, aggregated, and published."
+msgstr "Techninės pastabos apie tai, kaip SPCast Live telemetrijos rodikliai renkami, apibendrinami ir skelbiami."
+
+msgid "Data Source & Interval"
+msgstr "Duomenų šaltinis ir intervalas"
+
+msgid "Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history."
+msgstr "Apibendrinti klausytojų ir srautų įvykiai %s garso transliacijų infrastruktūroje (Icecast, SHOUTcast, HLS), atnaujinami kas 45 sekundes su slenkančia 30 dienų istorija."
+
+msgid "Anonymization & Privacy"
+msgstr "Anonimizavimas ir privatumas"
+
+msgid "City and mountpoint groups with fewer than five events are combined. Listener IP addresses are not published."
+msgstr "Miestų ir prijungimo taškų grupės, kuriose yra mažiau nei penki įvykiai, sujungiamos. Klausytojų IP adresai neskelbiami."
+
+msgid "Open-Source Dashboard"
+msgstr "Atvirojo kodo skydelis"
+
+msgid "The reporting frontend, caching layer, and schema definitions are publicly auditable on %s under the EUPL-1.2 license."
+msgstr "Ataskaitų sąsaja, podėlio sluoksnis ir schemų apibrėžimai yra viešai patikrinami %s platformoje pagal EUPL-1.2 licenciją."
+
+msgid "Other"
+msgstr "Kiti"

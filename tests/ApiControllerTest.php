@@ -93,7 +93,8 @@ class ApiControllerTest extends TestCase
         $this->assertTrue($res['body']['ok']);
         $this->assertSame('dimension', $res['body']['kind']);
         $this->assertSame('browser', $res['body']['type']);
-        $this->assertSame('agent', $res['body']['faqLinkType']);
+        $this->assertTrue($res['body']['supportsDetailModal']);
+        $this->assertArrayNotHasKey('faqLinkType', $res['body']);
         $this->assertSame('browser.php', $res['body']['pageUrl']);
         $this->assertSame(50, $res['body']['periods']['today']['Germany']);
     }
@@ -119,6 +120,28 @@ class ApiControllerTest extends TestCase
         $this->assertSame('inout', $res['body']['kind']);
         $this->assertSame(25, $res['body']['activeUsers']);
         $this->assertArrayHasKey('minutes', $res['body']['periods']);
+    }
+
+    public function testCityReportDoesNotExposeRareLabels(): void
+    {
+        $this->serviceMock->method('getStandardReportData')->willReturn([
+            'today' => ['Berlin' => 12, 'Rare City' => 1],
+            'yesterday' => [],
+            '7days' => [],
+            '30days' => [],
+        ]);
+        $this->serviceMock->method('summarizePeriodRanking')->willReturn([
+            'totalEvents' => 13,
+            'uniqueCount' => 2,
+            'topItem' => ['label' => 'Berlin', 'count' => 12],
+        ]);
+
+        $response = $this->controller->handle(['action' => 'report', 'type' => 'city'], 'GET');
+
+        $this->assertSame(200, $response['status']);
+        $this->assertSame('Other', $response['body']['aggregateLabel']);
+        $this->assertSame(['Berlin' => 12, 'Other' => 1], $response['body']['periods']['today']);
+        $this->assertArrayNotHasKey('Rare City', $response['body']['periods']['today']);
     }
 
     public function testRejectsInvalidOrArrayReportTypeWith400(): void

@@ -7,7 +7,6 @@ require_once 'includes/i18n.php';
 $reportConfig = [
     'typeId' => 'country',
     'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
-    'faqLinkType' => 'country',
     'pageTitle' => __('User Statistics by Country') . ' - SPCast Live',
     'pageDescription' => __('Analysis of user activities by countries. Detailed data for today, yesterday, the last 7 and 30 days.'),
     'keywords' => __('spcast live, spcast länderstatistik, nutzer nach land, echtzeitdaten, netzwerkstatistiken, länderverteilung'),

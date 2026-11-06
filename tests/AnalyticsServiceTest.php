@@ -128,6 +128,9 @@ class AnalyticsServiceTest extends TestCase
         if (file_exists($cacheFile)) {
             unlink($cacheFile);
         }
+        if (file_exists($cacheFile . '.lock')) {
+            unlink($cacheFile . '.lock');
+        }
 
         $data = ['key' => 'value'];
         $fetchCallback = function () use ($data) {
@@ -164,6 +167,9 @@ class AnalyticsServiceTest extends TestCase
         if (file_exists($cacheFile)) {
             unlink($cacheFile);
         }
+        if (file_exists($cacheFile . '.lock')) {
+            unlink($cacheFile . '.lock');
+        }
     }
 
     public function testGetCachedDataDoesNotCacheNull(): void
@@ -181,6 +187,63 @@ class AnalyticsServiceTest extends TestCase
         $result = $this->service->getCachedData($cacheFile, $fetchCallback);
         $this->assertNull($result);
         $this->assertFileDoesNotExist($cacheFile);
+        if (file_exists($cacheFile . '.lock')) {
+            unlink($cacheFile . '.lock');
+        }
+    }
+
+    public function testGetCachedDataReturnsStaleDataAndDelaysRetryAfterFailure(): void
+    {
+        $cacheFile = tempnam(sys_get_temp_dir(), 'test_cache_stale');
+        $this->assertIsString($cacheFile);
+        file_put_contents($cacheFile, json_encode(['value' => 'stale']));
+        touch($cacheFile, time() - 100);
+
+        $attempts = 0;
+        $fetchCallback = static function () use (&$attempts): ?array {
+            $attempts++;
+            return null;
+        };
+
+        $this->assertSame(['value' => 'stale'], $this->service->getCachedData($cacheFile, $fetchCallback));
+        $this->assertSame(['value' => 'stale'], $this->service->getCachedData($cacheFile, $fetchCallback));
+        $this->assertSame(1, $attempts);
+
+        unlink($cacheFile);
+        unlink($cacheFile . '.lock');
+    }
+
+    public function testStandardReportPreservesStalePeriodsWhenAnalyticsFails(): void
+    {
+        $cacheDir = sys_get_temp_dir() . '/spcast-standard-stale-' . bin2hex(random_bytes(6));
+        $this->assertTrue(mkdir($cacheDir, 0700));
+        $periods = ['today', 'yesterday', '7days', '30days'];
+
+        try {
+            foreach ($periods as $period) {
+                $cacheFile = "$cacheDir/analytics_city_cache_$period.json";
+                file_put_contents($cacheFile, json_encode(['Berlin' => 9]));
+                touch($cacheFile, time() - 100);
+            }
+
+            $this->propertiesMock->expects($this->exactly(4))
+                ->method('runReport')
+                ->willThrowException(new \RuntimeException('Simulated provider outage'));
+
+            $report = $this->service->getStandardReportData('city', 'properties/12345', 45, $cacheDir);
+            foreach ($periods as $period) {
+                $this->assertSame(['Berlin' => 9], $report[$period]);
+            }
+        } finally {
+            foreach ($periods as $period) {
+                foreach (["$cacheDir/analytics_city_cache_$period.json", "$cacheDir/analytics_city_cache_$period.json.lock"] as $file) {
+                    if (is_file($file)) {
+                        unlink($file);
+                    }
+                }
+            }
+            rmdir($cacheDir);
+        }
     }
 
     public function testProcessListenerAddReport(): void

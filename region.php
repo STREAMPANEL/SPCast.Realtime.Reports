@@ -7,7 +7,6 @@ require_once 'includes/i18n.php';
 $reportConfig = [
     'typeId' => 'region',
     'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
-    'faqLinkType' => 'region',
     'pageTitle' => __('User Statistics by Region - SPCast Live'),
     'pageDescription' => __('Shows user activities by region. Detailed statistics for various time periods, daily and weekly.'),
     'keywords' => __('spcast live, spcast bundesländerstatistik, nutzer nach bundesland, netzwerkdaten, echtzeitstatistiken'),

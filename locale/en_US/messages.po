@@ -716,3 +716,69 @@ msgstr ""
 
 msgid "Unknown report type requested."
 msgstr ""
+
+msgid "Period"
+msgstr ""
+
+msgid "Daily Average"
+msgstr ""
+
+msgid "Period Comparison"
+msgstr ""
+
+msgid "Share across Periods (%)"
+msgstr ""
+
+msgid "Trend vs. 30-Day Share"
+msgstr ""
+
+msgid "Show cross-period details"
+msgstr ""
+
+msgid "Standard unencrypted HTTP streaming port"
+msgstr ""
+
+msgid "TLS-encrypted HTTPS streaming port"
+msgstr ""
+
+msgid "Icecast / SHOUTcast default audio streaming port"
+msgstr ""
+
+msgid "Encrypted transport protocol (TLS)"
+msgstr ""
+
+msgid "Unencrypted transport protocol"
+msgstr ""
+
+msgid "Classic 32-bit network addressing (IPv4)"
+msgstr ""
+
+msgid "Modern 128-bit network addressing (IPv6)"
+msgstr ""
+
+msgid "Methodology & Data Transparency"
+msgstr ""
+
+msgid "Technical notes on how telemetry metrics on SPCast Live are collected, aggregated, and published."
+msgstr ""
+
+msgid "Data Source & Interval"
+msgstr ""
+
+msgid "Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history."
+msgstr ""
+
+msgid "Anonymization & Privacy"
+msgstr ""
+
+msgid "City and mountpoint groups with fewer than five events are combined. Listener IP addresses are not published."
+msgstr ""
+
+msgid "Open-Source Dashboard"
+msgstr ""
+
+msgid "The reporting frontend, caching layer, and schema definitions are publicly auditable on %s under the EUPL-1.2 license."
+msgstr ""
+
+msgid "Other"
+msgstr ""

@@ -716,3 +716,69 @@ msgstr "Fehlender oder ungültiger Berichtstyp."
 
 msgid "Unknown report type requested."
 msgstr "Unbekannter Berichtstyp angefordert."
+
+msgid "Period"
+msgstr "Zeitraum"
+
+msgid "Daily Average"
+msgstr "Ø pro Tag"
+
+msgid "Period Comparison"
+msgstr "Zeitraum-Vergleich"
+
+msgid "Share across Periods (%)"
+msgstr "Netzwerkanteil im Verlauf (%)"
+
+msgid "Trend vs. 30-Day Share"
+msgstr "Trend ggü. 30-Tage-Anteil"
+
+msgid "Show cross-period details"
+msgstr "Zeitraum-Details anzeigen"
+
+msgid "Standard unencrypted HTTP streaming port"
+msgstr "Unverschlüsselter HTTP-Streaming-Port"
+
+msgid "TLS-encrypted HTTPS streaming port"
+msgstr "TLS-verschlüsselter HTTPS-Streaming-Port"
+
+msgid "Icecast / SHOUTcast default audio streaming port"
+msgstr "Standardport für Icecast- / SHOUTcast-Audiostreams"
+
+msgid "Encrypted transport protocol (TLS)"
+msgstr "Verschlüsseltes Übertragungsprotokoll (TLS)"
+
+msgid "Unencrypted transport protocol"
+msgstr "Unverschlüsseltes Übertragungsprotokoll"
+
+msgid "Classic 32-bit network addressing (IPv4)"
+msgstr "Klassische 32-Bit-Netzwerkadressierung (IPv4)"
+
+msgid "Modern 128-bit network addressing (IPv6)"
+msgstr "Moderne 128-Bit-Netzwerkadressierung (IPv6)"
+
+msgid "Methodology & Data Transparency"
+msgstr "Methodik & Datentransparenz"
+
+msgid "Technical notes on how telemetry metrics on SPCast Live are collected, aggregated, and published."
+msgstr "Technische Hinweise zur Erfassung, Aggregation und Veröffentlichung der Telemetriedaten auf SPCast Live."
+
+msgid "Data Source & Interval"
+msgstr "Datenquelle & Intervall"
+
+msgid "Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history."
+msgstr "Aggregierte Hörer- und Stream-Ereignisse über die Audio-Streaming-Infrastruktur von %s (Icecast, SHOUTcast, HLS), aktualisiert alle 45 Sekunden mit rollierender 30-Tage-Historie."
+
+msgid "Anonymization & Privacy"
+msgstr "Anonymisierung & Datenschutz"
+
+msgid "City and mountpoint groups with fewer than five events are combined. Listener IP addresses are not published."
+msgstr "Stadt- und Mountpoint-Gruppen mit weniger als fünf Ereignissen werden zusammengefasst. IP-Adressen von Hörern werden nicht veröffentlicht."
+
+msgid "Open-Source Dashboard"
+msgstr "Quelloffenes Dashboard"
+
+msgid "The reporting frontend, caching layer, and schema definitions are publicly auditable on %s under the EUPL-1.2 license."
+msgstr "Oberfläche, Caching-Schicht und Schema-Definitionen sind unter der Lizenz EUPL-1.2 öffentlich auf %s einsehbar."
+
+msgid "Other"
+msgstr "Andere"

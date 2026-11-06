@@ -6,7 +6,11 @@ require_once __DIR__ . '/includes/i18n.php';
 require_once __DIR__ . '/vendor/autoload.php';
 
 use App\ReportType;
+use App\PublicReportFilter;
+use App\SecurityHeaders;
 use App\SeoHelper;
+
+$cspNonce = SecurityHeaders::sendHtml();
 
 $requestedStat = isset($_GET['stat']) && is_string($_GET['stat'])
     ? ReportType::tryFrom(strtolower(trim($_GET['stat'])))
@@ -40,12 +44,14 @@ $warmNet = $warmInbound - $warmOutbound;
 $warmHubEntries = [];
 $warmHubTotal = 0;
 $warmHubCacheFile = '';
+$warmAggregateLabel = PublicReportFilter::usesAggregation($initialType) ? __('Other') : null;
 if (!$initialType->isInOut() && in_array($requestedPeriod, ['today', 'yesterday', '7days', '30days'], true)) {
     $warmHubCacheFile = __DIR__ . '/cache/analytics_' . $initialType->value . '_cache_' . $requestedPeriod . '.json';
     if (is_file($warmHubCacheFile)) {
         $decodedHub = json_decode((string) file_get_contents($warmHubCacheFile), true);
         if (is_array($decodedHub) && $decodedHub !== []) {
-            $warmHubEntries = SeoHelper::normalizeMapEntries($decodedHub);
+            $publicHubData = PublicReportFilter::filterPeriod($initialType, $decodedHub, $warmAggregateLabel ?? '');
+            $warmHubEntries = SeoHelper::normalizeMapEntries($publicHubData, $warmAggregateLabel);
             foreach ($warmHubEntries as $hubEntry) {
                 $warmHubTotal += $hubEntry['count'];
             }
@@ -273,7 +279,7 @@ $schemaGraph = SeoHelper::buildHomeSchemaGraph(
                                     <th scope="col"><?php echo htmlspecialchars(__('Share'), ENT_QUOTES, 'UTF-8'); ?></th>
                                 </tr>
                             </thead>
-                            <tbody id="hubRankingBody"><?php echo SeoHelper::renderRankingRowsHtml($warmHubEntries, $warmHubTotal, $initialType->faqLinkType(), __('Loading statistics...')); ?></tbody>
+                            <tbody id="hubRankingBody"><?php echo SeoHelper::renderRankingRowsHtml($warmHubEntries, $warmHubTotal, __('Loading statistics...')); ?></tbody>
                         </table>
                     </div>
                 </div>
@@ -334,6 +340,61 @@ $schemaGraph = SeoHelper::buildHomeSchemaGraph(
                         </div>
                     </div>
                 <?php endforeach; ?>
+            </div>
+        </section>
+
+        <section class="mt-5">
+            <div class="sp-card p-4">
+                <h2 class="h5 mb-1"><?php echo htmlspecialchars(__('Methodology & Data Transparency'), ENT_QUOTES, 'UTF-8'); ?></h2>
+                <p class="sp-methodology-lead mb-3">
+                    <?php echo htmlspecialchars(__('Technical notes on how telemetry metrics on SPCast Live are collected, aggregated, and published.'), ENT_QUOTES, 'UTF-8'); ?>
+                </p>
+
+                <div class="row g-3">
+                    <div class="col-lg-4">
+                        <div class="sp-methodology-item">
+                            <h3 class="sp-methodology-item-title">
+                                <i class="bi bi-hdd-network" aria-hidden="true"></i>
+                                <span><?php echo htmlspecialchars(__('Data Source & Interval'), ENT_QUOTES, 'UTF-8'); ?></span>
+                            </h3>
+                            <p class="sp-methodology-item-text">
+                                <?php echo SeoHelper::renderInterpolatedLink(
+                                    __('Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history.'),
+                                    SeoHelper::BRAND_URL,
+                                    'SPCast.eu'
+                                ); ?>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="sp-methodology-item">
+                            <h3 class="sp-methodology-item-title">
+                                <i class="bi bi-shield-check" aria-hidden="true"></i>
+                                <span><?php echo htmlspecialchars(__('Anonymization & Privacy'), ENT_QUOTES, 'UTF-8'); ?></span>
+                            </h3>
+                            <p class="sp-methodology-item-text">
+                                <?php echo htmlspecialchars(__('City and mountpoint groups with fewer than five events are combined. Listener IP addresses are not published.'), ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="sp-methodology-item">
+                            <h3 class="sp-methodology-item-title">
+                                <i class="bi bi-code-square" aria-hidden="true"></i>
+                                <span><?php echo htmlspecialchars(__('Open-Source Dashboard'), ENT_QUOTES, 'UTF-8'); ?></span>
+                            </h3>
+                            <p class="sp-methodology-item-text">
+                                <?php echo SeoHelper::renderInterpolatedLink(
+                                    __('The reporting frontend, caching layer, and schema definitions are publicly auditable on %s under the EUPL-1.2 license.'),
+                                    'https://github.com/STREAMPANEL/SPCast.Realtime.Reports',
+                                    'GitHub'
+                                ); ?>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

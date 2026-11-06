@@ -107,10 +107,28 @@ class SeoHelperTest extends TestCase
         $this->assertIsArray($graph['@graph']);
         $this->assertCount(4, $graph['@graph']);
 
+        $org = $graph['@graph'][0];
+        $this->assertSame('Organization', $org['@type']);
+        $this->assertSame('https://www.spcast.eu/#organization', $org['@id']);
+        $this->assertSame('https://www.spcast.eu/', $org['url']);
+
+        $website = $graph['@graph'][1];
+        $this->assertSame('WebSite', $website['@type']);
+        $this->assertSame('https://www.spcast.eu/#organization', $website['publisher']['@id']);
+        $this->assertSame('https://www.spcast.eu/#/schema/WebSite', $website['isPartOf']['@id']);
+        $this->assertSame('SPCast.eu', $website['isPartOf']['name']);
+
+        $collectionPage = $graph['@graph'][2];
+        $this->assertSame('https://live.spcast.eu/img/og-preview.png', $collectionPage['primaryImageOfPage']['url']);
+        $this->assertSame(1200, $collectionPage['primaryImageOfPage']['width']);
+        $this->assertSame(630, $collectionPage['primaryImageOfPage']['height']);
+
         $catalog = $graph['@graph'][3];
         $this->assertSame('DataCatalog', $catalog['@type']);
+        $this->assertSame('https://www.spcast.eu/#organization', $catalog['publisher']['@id']);
         $this->assertTrue($catalog['isAccessibleForFree']);
         $this->assertCount(11, $catalog['dataset']);
+        $this->assertSame('https://www.spcast.eu/#organization', $catalog['dataset'][0]['creator']['@id']);
         $this->assertSame('https://live.spcast.eu/in.php?lang=en', $catalog['dataset'][0]['url']);
         $this->assertSame('2026-10-07/2026-11-06', $catalog['dataset'][0]['temporalCoverage']);
     }
@@ -151,17 +169,18 @@ class SeoHelperTest extends TestCase
         );
     }
 
-    public function testRenderRankingRowsHtmlEscapesMaliciousLabelsAndBuildsFaqLinks(): void
+    public function testRenderRankingRowsHtmlEscapesMaliciousLabelsWithoutDeadFaqLinks(): void
     {
         $entries = SeoHelper::normalizeMapEntries([
             'Germany' => 75,
             '<img src=x onerror=alert(1)>' => 25,
         ]);
 
-        $html = SeoHelper::renderRankingRowsHtml($entries, 100, 'country', 'No data');
+        $html = SeoHelper::renderRankingRowsHtml($entries, 100, 'No data');
 
         $this->assertStringContainsString('#1', $html);
-        $this->assertStringContainsString('https://www.spcast.eu/faq/statistik/usercountry/germany/', $html);
+        $this->assertStringContainsString('<span>Germany</span>', $html);
+        $this->assertStringNotContainsString('faq/statistik', $html);
         $this->assertStringContainsString('75.0%', $html);
         $this->assertStringContainsString('25.0%', $html);
         $this->assertStringNotContainsString('<img src=x', $html);
@@ -207,11 +226,83 @@ class SeoHelperTest extends TestCase
 
         $this->assertStringContainsString('<link rel="canonical" href="https://live.spcast.eu/country.php?lang=en" />', $html);
         $this->assertStringContainsString('<meta property="og:locale" content="en_US">', $html);
-        $this->assertStringContainsString('<th scope="row"><span class="sp-badge-count me-2">#1</span>', $html);
-        $this->assertStringContainsString('Germany</a>', $html);
+        $this->assertStringContainsString('<meta property="og:image" content="https://live.spcast.eu/img/og-preview.png">', $html);
+        $this->assertStringContainsString('<meta name="twitter:card" content="summary_large_image">', $html);
+        $this->assertStringContainsString('<th scope="row"><span class="sp-badge-count me-2">#1</span><span>Germany</span></th>', $html);
+        $this->assertStringNotContainsString('faq/statistik', $html);
+        $this->assertStringContainsString('<dialog id="spEntryDetailDialog" class="sp-detail-dialog" closedby="any" aria-labelledby="spDetailDialogTitle">', $html);
         $this->assertStringContainsString('75.0%', $html);
         $this->assertStringContainsString('"@type":"Dataset"', $html);
         $this->assertStringContainsString('"@type":"BreadcrumbList"', $html);
+        $this->assertStringContainsString('https://www.spcast.eu/#organization', $html);
+    }
+
+    public function testRenderInterpolatedLinkEscapesSurroundingTextAndHandlesMissingPlaceholder(): void
+    {
+        $rendered = SeoHelper::renderInterpolatedLink(
+            'Telemetry across <script>alert(1)</script> %s infrastructure.',
+            'https://www.spcast.eu/',
+            'SPCast.eu'
+        );
+
+        $this->assertStringNotContainsString('<script>', $rendered);
+        $this->assertStringContainsString('&lt;script&gt;alert(1)&lt;/script&gt;', $rendered);
+        $this->assertStringContainsString(
+            '<a href="https://www.spcast.eu/" target="_blank" rel="noopener" class="sp-inline-link">SPCast.eu</a>',
+            $rendered
+        );
+
+        $fallback = SeoHelper::renderInterpolatedLink(
+            'Plain translated sentence without placeholder.',
+            'https://github.com/STREAMPANEL/SPCast.Realtime.Reports',
+            'GitHub'
+        );
+        $this->assertStringContainsString('Plain translated sentence without placeholder. <a href="https://github.com/STREAMPANEL/SPCast.Realtime.Reports"', $fallback);
+    }
+
+    public function testOpenGraphPreviewImageExistsWithExactDimensions(): void
+    {
+        $imagePath = __DIR__ . '/../img/og-preview.png';
+        $this->assertFileExists($imagePath);
+
+        $dimensions = getimagesize($imagePath);
+        $this->assertIsArray($dimensions);
+        $this->assertSame(1200, $dimensions[0]);
+        $this->assertSame(630, $dimensions[1]);
+        $this->assertSame('image/png', $dimensions['mime']);
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testHomePageRendersMethodologyTransparencySectionInGerman(): void
+    {
+        $_GET['lang'] = 'de';
+        $previousCwd = getcwd();
+        chdir(__DIR__ . '/..');
+
+        ob_start();
+        try {
+            include __DIR__ . '/../index.php';
+            $html = (string) ob_get_clean();
+        } finally {
+            if ($previousCwd !== false) {
+                chdir($previousCwd);
+            }
+        }
+
+        $this->assertStringContainsString('Methodik &amp; Datentransparenz', $html);
+        $this->assertStringContainsString('Datenquelle &amp; Intervall', $html);
+        $this->assertStringContainsString('Anonymisierung &amp; Datenschutz', $html);
+        $this->assertStringContainsString('Quelloffenes Dashboard', $html);
+        $this->assertStringContainsString(
+            '<a href="https://www.spcast.eu/" target="_blank" rel="noopener" class="sp-inline-link">SPCast.eu</a>',
+            $html
+        );
+        $this->assertStringContainsString(
+            '<a href="https://github.com/STREAMPANEL/SPCast.Realtime.Reports" target="_blank" rel="noopener" class="sp-inline-link">GitHub</a>',
+            $html
+        );
     }
 
     public function testSitemapXmlAndRobotsTxtAreValidAndConsistent(): void

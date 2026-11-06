@@ -217,6 +217,8 @@ class ApiController
             45,
             $this->cacheDir
         );
+        $aggregateLabel = PublicReportFilter::usesAggregation($reportType) ? $tr('Other') : null;
+        $reportData = PublicReportFilter::filterPeriods($reportType, $reportData, $aggregateLabel ?? '');
 
         $summaries = [];
         foreach ($reportData as $periodKey => $items) {
@@ -233,10 +235,11 @@ class ApiController
                 'title' => $tr($reportType->labelMsgId()),
                 'description' => $tr($reportType->descriptionMsgId()),
                 'axisLabel' => $tr($reportType->labelMsgId()),
-                'faqLinkType' => $reportType->faqLinkType(),
+                'supportsDetailModal' => $reportType->supportsDetailModal(),
                 'pageUrl' => $reportType->pageUrl(),
                 'icon' => $reportType->iconClass(),
                 'defaultScale' => $reportType->defaultScale(),
+                'aggregateLabel' => $aggregateLabel,
                 'timestamp' => time(),
                 'periods' => $reportData,
                 'summaries' => $summaries,

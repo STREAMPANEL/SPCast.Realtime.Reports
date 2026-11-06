@@ -6,7 +6,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\SeoHelper;
 ?>
 <meta name="color-scheme" content="light dark">
-<script>
+<script nonce="<?php echo htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8'); ?>">
 (function () {
     try {
         var stored = localStorage.getItem("color-scheme");
@@ -62,14 +62,16 @@ $robotsContent = isset($seoRobots) && is_string($seoRobots) && $seoRobots !== ''
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="SPCast Live">
 <meta property="og:locale" content="<?php echo htmlspecialchars($ogLocale, ENT_QUOTES, 'UTF-8'); ?>">
-<meta property="og:image" content="https://live.spcast.eu/img/favicons/favicon-512x512.png">
-<meta property="og:image:width" content="512">
-<meta property="og:image:height" content="512">
-<meta property="og:image:alt" content="SPCast Live">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="<?php echo htmlspecialchars(SeoHelper::OG_IMAGE_URL, ENT_QUOTES, 'UTF-8'); ?>">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="<?php echo (int) SeoHelper::OG_IMAGE_WIDTH; ?>">
+<meta property="og:image:height" content="<?php echo (int) SeoHelper::OG_IMAGE_HEIGHT; ?>">
+<meta property="og:image:alt" content="<?php echo htmlspecialchars((string) $ogTitle, ENT_QUOTES, 'UTF-8'); ?>">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="<?php echo htmlspecialchars((string) $ogTitle, ENT_QUOTES, 'UTF-8'); ?>">
 <meta name="twitter:description" content="<?php echo htmlspecialchars((string) $ogDesc, ENT_QUOTES, 'UTF-8'); ?>">
-<meta name="twitter:image" content="https://live.spcast.eu/img/favicons/favicon-512x512.png">
+<meta name="twitter:image" content="<?php echo htmlspecialchars(SeoHelper::OG_IMAGE_URL, ENT_QUOTES, 'UTF-8'); ?>">
+<meta name="twitter:image:alt" content="<?php echo htmlspecialchars((string) $ogTitle, ENT_QUOTES, 'UTF-8'); ?>">
 
 <?php
 if (isset($baseCanonicalUrl) && is_string($baseCanonicalUrl) && isset($supported_langs) && is_array($supported_langs)) {
@@ -79,16 +81,16 @@ if (isset($baseCanonicalUrl) && is_string($baseCanonicalUrl) && isset($supported
 }
 ?>
 <?php if (isset($schemaGraph) && is_array($schemaGraph)): ?>
-<script type="application/ld+json"><?php echo json_encode($schemaGraph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
+<script nonce="<?php echo htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8'); ?>" type="application/ld+json"><?php echo json_encode($schemaGraph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
 <?php endif; ?>
 
 <!-- Matomo Tag Manager -->
-<script>
+<script nonce="<?php echo htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8'); ?>">
   var _mtm = window._mtm = window._mtm || [];
   _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
   (function() {
     var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-    g.async=true; g.src='https://pw.streampanel.net/js/container_KVNJAR2p_rewrite.js'; s.parentNode.insertBefore(g,s);
+    g.async=true; g.src='https://pw.spcast.eu/js/container_KVNJAR2p_rewrite.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
 <!-- End Matomo Tag Manager -->

@@ -47,13 +47,9 @@ enum ReportType: string
         };
     }
 
-    public function faqLinkType(): ?string
+    public function supportsDetailModal(): bool
     {
-        return match ($this) {
-            self::In, self::Out => null,
-            self::Browser => 'agent',
-            default => $this->value,
-        };
+        return !$this->isInOut();
     }
 
     public function defaultScale(): string

@@ -10,7 +10,12 @@ final class SeoHelper
 {
     public const BASE_URL = 'https://live.spcast.eu';
     public const BRAND_URL = 'https://www.spcast.eu/';
+    public const BRAND_ORGANIZATION_ID = 'https://www.spcast.eu/#organization';
+    public const BRAND_WEBSITE_ID = 'https://www.spcast.eu/#/schema/WebSite';
     public const LOGO_URL = 'https://live.spcast.eu/img/favicons/favicon-512x512.png';
+    public const OG_IMAGE_URL = 'https://live.spcast.eu/img/og-preview.png';
+    public const OG_IMAGE_WIDTH = 1200;
+    public const OG_IMAGE_HEIGHT = 630;
     public const DEFAULT_LANG = 'de';
 
     public static function buildCanonicalUrl(string $baseCanonicalUrl, string $currentLang = self::DEFAULT_LANG): string
@@ -197,7 +202,7 @@ final class SeoHelper
                 'inLanguage' => $lang,
                 'isAccessibleForFree' => true,
                 'temporalCoverage' => $temporalCoverage,
-                'creator' => ['@id' => self::BASE_URL . '/#organization'],
+                'creator' => ['@id' => self::BRAND_ORGANIZATION_ID],
                 'distribution' => [
                     [
                         '@type' => 'DataDownload',
@@ -223,6 +228,7 @@ final class SeoHelper
                     'dateModified' => $dateModified,
                     'isPartOf' => ['@id' => self::BASE_URL . '/#website'],
                     'about' => ['@id' => self::BASE_URL . '/#catalog'],
+                    'primaryImageOfPage' => self::buildPrimaryImageNode($canonicalUrl),
                 ],
                 [
                     '@type' => 'DataCatalog',
@@ -234,7 +240,7 @@ final class SeoHelper
                     'isAccessibleForFree' => true,
                     'dateModified' => $dateModified,
                     'keywords' => self::parseKeywords($keywords),
-                    'publisher' => ['@id' => self::BASE_URL . '/#organization'],
+                    'publisher' => ['@id' => self::BRAND_ORGANIZATION_ID],
                     'dataset' => $datasets,
                 ],
             ],
@@ -306,6 +312,7 @@ final class SeoHelper
                     'isPartOf' => ['@id' => self::BASE_URL . '/#website'],
                     'breadcrumb' => ['@id' => $canonicalUrl . '#breadcrumb'],
                     'mainEntity' => ['@id' => $canonicalUrl . '#dataset'],
+                    'primaryImageOfPage' => self::buildPrimaryImageNode($canonicalUrl),
                 ],
                 [
                     '@type' => 'Dataset',
@@ -318,8 +325,8 @@ final class SeoHelper
                     'temporalCoverage' => $temporalCoverage,
                     'dateModified' => $dateModified,
                     'keywords' => self::parseKeywords($keywords),
-                    'creator' => ['@id' => self::BASE_URL . '/#organization'],
-                    'publisher' => ['@id' => self::BASE_URL . '/#organization'],
+                    'creator' => ['@id' => self::BRAND_ORGANIZATION_ID],
+                    'publisher' => ['@id' => self::BRAND_ORGANIZATION_ID],
                     'includedInDataCatalog' => ['@id' => self::BASE_URL . '/#catalog'],
                     'variableMeasured' => $variableMeasured,
                     'distribution' => [
@@ -338,11 +345,16 @@ final class SeoHelper
      * @param array<string, int> $dataMap
      * @return list<array{rank: int, label: string, count: int}>
      */
-    public static function normalizeMapEntries(array $dataMap): array
+    public static function normalizeMapEntries(array $dataMap, ?string $aggregateLabel = null): array
     {
         $sorted = [];
         foreach ($dataMap as $label => $count) {
             $sorted[(string) $label] = (int) $count;
+        }
+        $aggregateCount = null;
+        if ($aggregateLabel !== null && array_key_exists($aggregateLabel, $sorted)) {
+            $aggregateCount = $sorted[$aggregateLabel];
+            unset($sorted[$aggregateLabel]);
         }
         arsort($sorted);
 
@@ -353,6 +365,14 @@ final class SeoHelper
                 'rank' => $rank++,
                 'label' => $label,
                 'count' => $count,
+            ];
+        }
+
+        if ($aggregateCount !== null) {
+            $entries[] = [
+                'rank' => 0,
+                'label' => $aggregateLabel,
+                'count' => $aggregateCount,
             ];
         }
 
@@ -384,7 +404,6 @@ final class SeoHelper
     public static function renderRankingRowsHtml(
         array $entries,
         int $totalSum,
-        ?string $faqCategory,
         string $emptyMessage
     ): string {
         if ($entries === []) {
@@ -396,6 +415,7 @@ final class SeoHelper
         $html = '';
         foreach ($entries as $entry) {
             $rank = (int) $entry['rank'];
+            $rankMarkup = $rank > 0 ? '#' . $rank : '&mdash;';
             $label = (string) $entry['label'];
             $count = (int) $entry['count'];
 
@@ -404,23 +424,10 @@ final class SeoHelper
             $pctFormatted = number_format($pct, 1, '.', '') . '%';
             $widthFormatted = number_format($clampedPct, 1, '.', '') . '%';
             $countFormatted = number_format($count, 0, '.', ',');
-
-            if ($faqCategory !== null && $faqCategory !== '') {
-                $faqHref = self::BRAND_URL . 'faq/statistik/user'
-                    . rawurlencode($faqCategory)
-                    . '/'
-                    . rawurlencode(mb_strtolower($label, 'UTF-8'))
-                    . '/';
-                $labelMarkup = '<a href="' . htmlspecialchars($faqHref, ENT_QUOTES, 'UTF-8')
-                    . '" target="_blank" rel="noopener noreferrer" class="text-decoration-none">'
-                    . htmlspecialchars($label, ENT_QUOTES, 'UTF-8')
-                    . '</a>';
-            } else {
-                $labelMarkup = '<span>' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '</span>';
-            }
+            $labelMarkup = '<span>' . htmlspecialchars($label, ENT_QUOTES, 'UTF-8') . '</span>';
 
             $html .= '<tr>'
-                . '<th scope="row"><span class="sp-badge-count me-2">#' . $rank . '</span>' . $labelMarkup . '</th>'
+                . '<th scope="row"><span class="sp-badge-count me-2">' . $rankMarkup . '</span>' . $labelMarkup . '</th>'
                 . '<td class="text-end fw-semibold" style="font-variant-numeric: tabular-nums;">' . $countFormatted . '</td>'
                 . '<td><div class="sp-share-bar">'
                 . '<div class="sp-share-track"><div class="sp-share-fill" style="width: ' . $widthFormatted . ';"></div></div>'
@@ -432,6 +439,28 @@ final class SeoHelper
         return $html;
     }
 
+    public static function renderInterpolatedLink(
+        string $translatedTemplate,
+        string $href,
+        string $linkLabel
+    ): string {
+        $safeLink = '<a href="'
+            . htmlspecialchars($href, ENT_QUOTES, 'UTF-8')
+            . '" target="_blank" rel="noopener" class="sp-inline-link">'
+            . htmlspecialchars($linkLabel, ENT_QUOTES, 'UTF-8')
+            . '</a>';
+
+        if (str_contains($translatedTemplate, '%s')) {
+            $parts = explode('%s', $translatedTemplate, 2);
+
+            return htmlspecialchars($parts[0], ENT_QUOTES, 'UTF-8')
+                . $safeLink
+                . htmlspecialchars($parts[1], ENT_QUOTES, 'UTF-8');
+        }
+
+        return htmlspecialchars($translatedTemplate, ENT_QUOTES, 'UTF-8') . ' ' . $safeLink;
+    }
+
     /**
      * @return array<string, mixed>
      */
@@ -439,8 +468,9 @@ final class SeoHelper
     {
         return [
             '@type' => 'Organization',
-            '@id' => self::BASE_URL . '/#organization',
+            '@id' => self::BRAND_ORGANIZATION_ID,
             'name' => 'SPCast',
+            'alternateName' => 'SPCast.eu',
             'url' => self::BRAND_URL,
             'logo' => [
                 '@type' => 'ImageObject',
@@ -466,7 +496,28 @@ final class SeoHelper
             'url' => self::BASE_URL . '/',
             'name' => 'SPCast Live',
             'inLanguage' => $lang,
-            'publisher' => ['@id' => self::BASE_URL . '/#organization'],
+            'publisher' => ['@id' => self::BRAND_ORGANIZATION_ID],
+            'isPartOf' => [
+                '@type' => 'WebSite',
+                '@id' => self::BRAND_WEBSITE_ID,
+                'url' => self::BRAND_URL,
+                'name' => 'SPCast.eu',
+            ],
+        ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private static function buildPrimaryImageNode(string $canonicalUrl): array
+    {
+        return [
+            '@type' => 'ImageObject',
+            '@id' => $canonicalUrl . '#primaryimage',
+            'url' => self::OG_IMAGE_URL,
+            'contentUrl' => self::OG_IMAGE_URL,
+            'width' => self::OG_IMAGE_WIDTH,
+            'height' => self::OG_IMAGE_HEIGHT,
         ];
     }
 

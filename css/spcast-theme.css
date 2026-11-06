@@ -794,6 +794,126 @@ main {
         font-weight: 600;
         color: var(--sp-muted);
     }
+
+    .sp-detail-table tbody td:nth-child(4)::before {
+        content: var(--label-4, "Avg");
+        font-weight: 600;
+        color: var(--sp-muted);
+    }
+
+    .sp-detail-table tbody td:nth-child(5)::before {
+        content: var(--label-5, "Share");
+        font-weight: 600;
+        color: var(--sp-muted);
+    }
+}
+
+.sp-entry-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--sp-heading);
+    font: inherit;
+    font-weight: 600;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.sp-entry-trigger:hover {
+    color: var(--sp-accent);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+}
+
+.sp-entry-trigger:focus-visible {
+    outline: 2px solid var(--sp-accent);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+}
+
+.sp-entry-trigger-icon {
+    font-size: 0.78rem;
+    color: var(--sp-muted);
+    opacity: 0.75;
+    transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.sp-entry-trigger:hover .sp-entry-trigger-icon {
+    color: var(--sp-accent);
+    opacity: 1;
+}
+
+/* Native entry detail modal */
+dialog.sp-detail-dialog {
+    width: min(680px, calc(100vw - 1.5rem));
+    max-height: min(88vh, 760px);
+    margin: auto;
+    padding: 0;
+    border: 1px solid var(--sp-border-strong);
+    border-radius: 1rem;
+    background: var(--sp-surface);
+    color: var(--sp-text);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.38);
+}
+
+dialog.sp-detail-dialog[open] {
+    display: flex;
+    flex-direction: column;
+}
+
+dialog.sp-detail-dialog:modal {
+    overscroll-behavior: contain;
+}
+
+dialog.sp-detail-dialog::backdrop {
+    overflow: hidden;
+    overscroll-behavior: contain;
+    background-color: rgba(5, 10, 22, 0.62);
+    backdrop-filter: blur(3px);
+}
+
+.sp-detail-dialog-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid var(--sp-border);
+    background: var(--sp-surface);
+}
+
+.sp-detail-dialog-body {
+    padding: 1.15rem 1.25rem 1.25rem;
+    overflow-y: auto;
+}
+
+.sp-detail-tech-note {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 0.6rem;
+    border: 1px solid var(--sp-border-strong);
+    background: var(--sp-active);
+    color: var(--sp-heading);
+    font-size: 0.85rem;
+}
+
+.sp-detail-tech-note i {
+    color: var(--sp-accent);
+}
+
+.sp-detail-chart-box {
+    position: relative;
+    height: 190px;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--sp-border);
+    background: var(--sp-surface-elevated);
 }
 
 .sp-card-icon {
@@ -817,6 +937,45 @@ main {
     border-top: 1px solid var(--sp-border);
     color: var(--sp-muted);
     font-size: 0.88rem;
+}
+
+.sp-methodology-lead {
+    color: var(--sp-muted);
+    font-size: 0.9rem;
+}
+
+.sp-methodology-item {
+    height: 100%;
+    padding: 1rem 1.1rem;
+    border-radius: 0.8rem;
+    background: var(--sp-surface-elevated);
+    border: 1px solid var(--sp-border);
+}
+
+.sp-methodology-item-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--sp-heading);
+    margin-bottom: 0.45rem;
+}
+
+.sp-methodology-item-title i {
+    color: var(--sp-accent);
+    font-size: 1rem;
+}
+
+.sp-methodology-item-text {
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--sp-muted);
+    margin-bottom: 0;
+}
+
+.sp-inline-link {
+    font-weight: 600;
 }
 
 .sp-footer-link {

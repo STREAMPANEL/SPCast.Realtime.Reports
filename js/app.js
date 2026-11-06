@@ -21,11 +21,30 @@
         totalEvents: "Total events",
         uniqueEntries: "Unique entries",
         topEntry: "Top entry",
-        peakToday: "Peak Today"
+        peakToday: "Peak Today",
+        today: "Today",
+        yesterday: "Yesterday",
+        last7Days: "Last 7 Days",
+        last30Days: "Last 30 Days",
+        period: "Period",
+        dailyAverage: "Daily Average",
+        periodComparison: "Period Comparison",
+        shareAcrossPeriods: "Share across Periods (%)",
+        trendVs30d: "Trend vs. 30-Day Share",
+        showEntryDetails: "Show cross-period details",
+        techPortHttp: "Standard unencrypted HTTP streaming port",
+        techPortHttps: "TLS-encrypted HTTPS streaming port",
+        techPortIcecast: "Icecast / SHOUTcast default audio streaming port",
+        techProtoTls: "Encrypted transport protocol (TLS)",
+        techProtoPlain: "Unencrypted transport protocol",
+        techIpv4: "Classic 32-bit network addressing (IPv4)",
+        techIpv6: "Modern 128-bit network addressing (IPv6)"
     };
 
     var themeListeners = [];
     var refreshCallback = null;
+    var detailChartInstance = null;
+    var activeDetailState = null;
 
     function loadI18n() {
         var el = document.getElementById("spcast-i18n");
@@ -57,6 +76,11 @@
 
     function getResolvedTheme() {
         return getStoredScheme() || getSystemScheme();
+    }
+
+    function getActiveDocLang() {
+        var raw = (document.documentElement.getAttribute("lang") || "de").toLowerCase().trim();
+        return (raw !== "de" && /^[a-z]{2}$/.test(raw)) ? raw : "";
     }
 
     function applyColorSchemeState() {
@@ -194,18 +218,7 @@
         };
     }
 
-    function createFaqLinks(data, category) {
-        return Object.keys(data || {}).map(function (label) {
-            return {
-                label: label,
-                url: category
-                    ? "https://www.spcast.eu/faq/statistik/user" + encodeURIComponent(category) + "/" + encodeURIComponent(label.toLowerCase()) + "/"
-                    : null
-            };
-        });
-    }
-
-    function createBarChart(ctx, labels, data, datasetLabel, backgroundColor, borderColor, xAxisLabel, scaleType) {
+    function createBarChart(ctx, labels, data, datasetLabel, backgroundColor, borderColor, xAxisLabel, scaleType, onEntrySelect) {
         if (!ctx) return null;
         var palette = getThemePalette();
         var canvas = ctx.canvas;
@@ -215,11 +228,12 @@
 
         var hasPositive = Array.isArray(data) && data.some(function (v) { return Number(v) > 0; });
         var effectiveScale = (scaleType === "logarithmic" && hasPositive) ? "logarithmic" : "linear";
+        var normalizedLabels = labels.map(function (item) { return typeof item === "string" ? item : item.label; });
 
         return new Chart(ctx, {
             type: "bar",
             data: {
-                labels: labels.map(function (item) { return typeof item === "string" ? item : item.label; }),
+                labels: normalizedLabels,
                 datasets: [{
                     label: datasetLabel,
                     data: data,
@@ -233,12 +247,17 @@
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                onHover: function (event, elements) {
+                    if (typeof onEntrySelect === "function" && event && event.native && event.native.target) {
+                        event.native.target.style.cursor = elements.length > 0 ? "pointer" : "default";
+                    }
+                },
                 onClick: function (event, elements) {
-                    if (elements.length > 0) {
+                    if (typeof onEntrySelect === "function" && elements.length > 0) {
                         var idx = elements[0].index;
-                        var entry = labels[idx];
-                        if (entry && typeof entry === "object" && entry.url) {
-                            window.open(entry.url, "_blank", "noopener,noreferrer");
+                        var labelValue = normalizedLabels[idx];
+                        if (typeof labelValue === "string" && labelValue !== "") {
+                            onEntrySelect(labelValue);
                         }
                     }
                 },
@@ -384,11 +403,304 @@
         });
     }
 
-    // Keep global helpers available for legacy callers
-    window.createFaqLinks = createFaqLinks;
     window.createBarChart = createBarChart;
 
-    function renderRankingRows(tbody, entries, totalSum, faqCategory, filterQuery) {
+    function resolveTechnicalNote(typeId, entryLabel) {
+        var normType = String(typeId || "").toLowerCase().trim();
+        var normLabel = String(entryLabel || "").trim();
+        var upperLabel = normLabel.toUpperCase();
+
+        if (normType === "port") {
+            if (normLabel === "80" || normLabel === "8080") return i18n.techPortHttp;
+            if (normLabel === "443" || normLabel === "8443") return i18n.techPortHttps;
+            if (normLabel === "8000") return i18n.techPortIcecast;
+            return "";
+        }
+
+        if (normType === "protocol") {
+            if (upperLabel === "HTTPS" || upperLabel === "HTTP/2" || upperLabel === "HTTP/3" || upperLabel === "TLS") {
+                return i18n.techProtoTls;
+            }
+            if (upperLabel === "HTTP" || upperLabel === "HTTP/1.0" || upperLabel === "HTTP/1.1" || upperLabel === "ICY") {
+                return i18n.techProtoPlain;
+            }
+            return "";
+        }
+
+        if (normType === "ipversion") {
+            if (upperLabel === "IPV4") return i18n.techIpv4;
+            if (upperLabel === "IPV6") return i18n.techIpv6;
+            return "";
+        }
+
+        return "";
+    }
+
+    function renderDetailModalChart(periodRows) {
+        var modalCanvas = document.getElementById("spDetailModalChart");
+        if (!modalCanvas) return;
+
+        if (detailChartInstance) {
+            detailChartInstance.destroy();
+            detailChartInstance = null;
+        }
+
+        var ctx = modalCanvas.getContext("2d");
+        if (!ctx) return;
+
+        var palette = getThemePalette();
+        var grad = ctx.createLinearGradient(0, 0, 0, modalCanvas.height || 180);
+        grad.addColorStop(0, palette.barTop);
+        grad.addColorStop(1, palette.barBottom);
+
+        detailChartInstance = new Chart(ctx, {
+            type: "bar",
+            data: {
+                labels: periodRows.map(function (r) { return r.label; }),
+                datasets: [{
+                    label: i18n.shareAcrossPeriods,
+                    data: periodRows.map(function (r) { return Number(r.sharePct.toFixed(2)); }),
+                    backgroundColor: grad,
+                    borderColor: palette.accent,
+                    borderWidth: 1.5,
+                    borderRadius: 5,
+                    maxBarThickness: 42
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        labels: { color: palette.text }
+                    },
+                    tooltip: {
+                        backgroundColor: palette.tooltipBg,
+                        titleColor: palette.tooltipTitle,
+                        bodyColor: palette.text,
+                        borderColor: palette.tooltipBorder,
+                        borderWidth: 1,
+                        padding: 10,
+                        callbacks: {
+                            label: function (context) {
+                                var row = periodRows[context.dataIndex];
+                                var countText = row ? " (" + row.count.toLocaleString() + ")" : "";
+                                return Number(context.raw || 0).toFixed(1) + "%" + countText;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: { color: palette.muted },
+                        grid: { color: palette.grid }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        suggestedMax: 100,
+                        ticks: {
+                            color: palette.muted,
+                            callback: function (v) { return v + "%"; }
+                        },
+                        grid: { color: palette.grid }
+                    }
+                }
+            }
+        });
+    }
+
+    function openEntryDetailModal(entryLabel, modalContext) {
+        var dialog = document.getElementById("spEntryDetailDialog");
+        if (!dialog || !modalContext || !modalContext.periods) return;
+
+        activeDetailState = {
+            entryLabel: entryLabel,
+            modalContext: modalContext
+        };
+
+        var badgeEl = document.getElementById("spDetailCategoryBadge");
+        var titleEl = document.getElementById("spDetailDialogTitle");
+        var techBox = document.getElementById("spDetailTechNote");
+        var techText = document.getElementById("spDetailTechNoteText");
+        var kpiRank = document.getElementById("spDetailKpiRank");
+        var kpiShare = document.getElementById("spDetailKpiShare");
+        var kpiTrend = document.getElementById("spDetailKpiTrend");
+        var periodBody = document.getElementById("spDetailPeriodBody");
+
+        if (badgeEl) badgeEl.textContent = modalContext.categoryTitle || i18n.value;
+        if (titleEl) titleEl.textContent = entryLabel;
+
+        var techNote = resolveTechnicalNote(modalContext.type, entryLabel);
+        if (techBox && techText) {
+            if (techNote !== "") {
+                techText.textContent = techNote;
+                techBox.classList.remove("d-none");
+            } else {
+                techText.textContent = "";
+                techBox.classList.add("d-none");
+            }
+        }
+
+        var labelsMap = modalContext.periodLabels || {};
+        var periodSpecs = [
+            { key: "today", label: labelsMap.today || i18n.today, days: 1 },
+            { key: "yesterday", label: labelsMap.yesterday || i18n.yesterday, days: 1 },
+            { key: "7days", label: labelsMap["7days"] || i18n.last7Days, days: 7 },
+            { key: "30days", label: labelsMap["30days"] || i18n.last30Days, days: 30 }
+        ];
+
+        var periodRows = periodSpecs.map(function (spec) {
+            var pMap = modalContext.periods[spec.key] || {};
+            var ranked = mapObjectToEntries(pMap, modalContext.aggregateLabel);
+            var sum = ranked.reduce(function (acc, item) { return acc + item.count; }, 0);
+            var found = null;
+            for (var i = 0; i < ranked.length; i++) {
+                if (ranked[i].label === entryLabel) {
+                    found = ranked[i];
+                    break;
+                }
+            }
+            var count = found ? found.count : 0;
+            var sharePct = sum > 0 ? (count / sum) * 100 : 0;
+            var dailyAvg = spec.days === 1
+                ? count.toLocaleString()
+                : (count / spec.days).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+
+            return {
+                key: spec.key,
+                label: spec.label,
+                rankText: found ? (found.rank > 0 ? "#" + found.rank : "—") : "-",
+                count: count,
+                total: sum,
+                sharePct: sharePct,
+                dailyAvgText: dailyAvg
+            };
+        });
+
+        var todayRow = periodRows[0];
+        var day30Row = periodRows[3];
+
+        if (kpiRank) kpiRank.textContent = todayRow.rankText;
+        if (kpiShare) kpiShare.textContent = todayRow.sharePct.toFixed(1) + "%";
+        if (kpiTrend) {
+            if (todayRow.total === 0 && day30Row.total === 0) {
+                kpiTrend.textContent = "-";
+                kpiTrend.style.color = "var(--sp-heading)";
+            } else {
+                var diff = todayRow.sharePct - day30Row.sharePct;
+                var sign = diff > 0.04 ? "+" : "";
+                kpiTrend.textContent = sign + diff.toFixed(1) + " pp";
+                kpiTrend.style.color = diff > 0.04
+                    ? "var(--sp-accent)"
+                    : (diff < -0.04 ? "var(--sp-muted)" : "var(--sp-heading)");
+            }
+        }
+
+        if (periodBody) {
+            while (periodBody.firstChild) {
+                periodBody.removeChild(periodBody.firstChild);
+            }
+
+            periodRows.forEach(function (row) {
+                var tr = document.createElement("tr");
+
+                var th = document.createElement("th");
+                th.scope = "row";
+                th.textContent = row.label;
+
+                var tdRank = document.createElement("td");
+                tdRank.className = "text-end";
+                var badge = document.createElement("span");
+                badge.className = "sp-badge-count";
+                badge.textContent = row.rankText;
+                tdRank.appendChild(badge);
+
+                var tdCount = document.createElement("td");
+                tdCount.className = "text-end fw-semibold";
+                tdCount.style.fontVariantNumeric = "tabular-nums";
+                tdCount.textContent = row.count.toLocaleString();
+
+                var tdAvg = document.createElement("td");
+                tdAvg.className = "text-end";
+                tdAvg.style.fontVariantNumeric = "tabular-nums";
+                tdAvg.style.color = "var(--sp-muted)";
+                tdAvg.textContent = row.dailyAvgText;
+
+                var tdShare = document.createElement("td");
+                var shareWrap = document.createElement("div");
+                shareWrap.className = "sp-share-bar";
+                var track = document.createElement("div");
+                track.className = "sp-share-track";
+                var fill = document.createElement("div");
+                fill.className = "sp-share-fill";
+                fill.style.width = Math.min(100, Math.max(0, row.sharePct)).toFixed(1) + "%";
+                track.appendChild(fill);
+
+                var pctSpan = document.createElement("span");
+                pctSpan.className = "small";
+                pctSpan.style.minWidth = "3.1rem";
+                pctSpan.style.textAlign = "right";
+                pctSpan.style.fontVariantNumeric = "tabular-nums";
+                pctSpan.textContent = row.sharePct.toFixed(1) + "%";
+
+                shareWrap.appendChild(track);
+                shareWrap.appendChild(pctSpan);
+                tdShare.appendChild(shareWrap);
+
+                tr.appendChild(th);
+                tr.appendChild(tdRank);
+                tr.appendChild(tdCount);
+                tr.appendChild(tdAvg);
+                tr.appendChild(tdShare);
+                periodBody.appendChild(tr);
+            });
+        }
+
+        if (!dialog.open && typeof dialog.showModal === "function") {
+            dialog.showModal();
+        }
+
+        renderDetailModalChart(periodRows);
+    }
+
+    function initEntryDetailModal() {
+        var dialog = document.getElementById("spEntryDetailDialog");
+        if (!dialog) return;
+
+        dialog.addEventListener("close", function () {
+            dialog.returnValue = "";
+            activeDetailState = null;
+            if (detailChartInstance) {
+                detailChartInstance.destroy();
+                detailChartInstance = null;
+            }
+        });
+
+        if (!("closedBy" in HTMLDialogElement.prototype)) {
+            dialog.addEventListener("click", function (event) {
+                if (event.target !== dialog) return;
+                var rect = dialog.getBoundingClientRect();
+                var isDialogContent = (
+                    rect.top <= event.clientY &&
+                    event.clientY <= rect.top + rect.height &&
+                    rect.left <= event.clientX &&
+                    event.clientX <= rect.left + rect.width
+                );
+                if (!isDialogContent) {
+                    dialog.close();
+                }
+            });
+        }
+
+        themeListeners.push(function () {
+            if (dialog.open && activeDetailState) {
+                openEntryDetailModal(activeDetailState.entryLabel, activeDetailState.modalContext);
+            }
+        });
+    }
+
+    function renderRankingRows(tbody, entries, totalSum, onEntrySelect, filterQuery) {
         if (!tbody) return;
         while (tbody.firstChild) {
             tbody.removeChild(tbody.firstChild);
@@ -419,17 +731,28 @@
 
             var rankBadge = document.createElement("span");
             rankBadge.className = "sp-badge-count me-2";
-            rankBadge.textContent = "#" + entry.rank;
+            rankBadge.textContent = entry.rank > 0 ? "#" + entry.rank : "—";
             th.appendChild(rankBadge);
 
-            if (faqCategory) {
-                var link = document.createElement("a");
-                link.href = "https://www.spcast.eu/faq/statistik/user" + encodeURIComponent(faqCategory) + "/" + encodeURIComponent(entry.label.toLowerCase()) + "/";
-                link.target = "_blank";
-                link.rel = "noopener noreferrer";
-                link.className = "text-decoration-none";
-                link.textContent = entry.label;
-                th.appendChild(link);
+            if (typeof onEntrySelect === "function") {
+                var btn = document.createElement("button");
+                btn.type = "button";
+                btn.className = "sp-entry-trigger";
+                btn.title = i18n.showEntryDetails;
+
+                var labelSpan = document.createElement("span");
+                labelSpan.textContent = entry.label;
+                btn.appendChild(labelSpan);
+
+                var icon = document.createElement("i");
+                icon.className = "bi bi-bar-chart-steps sp-entry-trigger-icon";
+                icon.setAttribute("aria-hidden", "true");
+                btn.appendChild(icon);
+
+                btn.addEventListener("click", function () {
+                    onEntrySelect(entry.label);
+                });
+                th.appendChild(btn);
             } else {
                 var span = document.createElement("span");
                 span.textContent = entry.label;
@@ -471,14 +794,18 @@
         });
     }
 
-    function mapObjectToEntries(dataMap) {
+    function mapObjectToEntries(dataMap, aggregateLabel) {
         var keys = Object.keys(dataMap || {});
         var list = keys.map(function (k) {
             return { label: k, count: Number(dataMap[k] || 0) };
         });
-        list.sort(function (a, b) { return b.count - a.count; });
+        list.sort(function (a, b) {
+            if (aggregateLabel && a.label === aggregateLabel) return 1;
+            if (aggregateLabel && b.label === aggregateLabel) return -1;
+            return b.count - a.count;
+        });
         list.forEach(function (item, idx) {
-            item.rank = idx + 1;
+            item.rank = aggregateLabel && item.label === aggregateLabel ? 0 : idx + 1;
         });
         return list;
     }
@@ -682,11 +1009,6 @@
             });
         }
 
-        function getActiveDocLang() {
-            var raw = (document.documentElement.getAttribute("lang") || "de").toLowerCase().trim();
-            return (raw !== "de" && /^[a-z]{2}$/.test(raw)) ? raw : "";
-        }
-
         function renderActivePayload(payload) {
             if (!payload || !canvas) return;
 
@@ -756,7 +1078,7 @@
             }
 
             var mapData = (payload.periods && payload.periods[activePeriod]) ? payload.periods[activePeriod] : {};
-            var entries = mapObjectToEntries(mapData);
+            var entries = mapObjectToEntries(mapData, payload.aggregateLabel);
             var totalEvents = entries.reduce(function (acc, item) { return acc + item.count; }, 0);
 
             if (stat1Label) stat1Label.textContent = i18n.totalEvents;
@@ -772,7 +1094,24 @@
             if (col1Header) col1Header.textContent = payload.axisLabel || i18n.value;
             if (col2Header) col2Header.textContent = i18n.count;
 
-            renderRankingRows(rankingBody, entries, totalEvents, payload.faqLinkType, filterQuery);
+            var onHubEntrySelect = payload.supportsDetailModal !== false
+                ? function (entryLabel) {
+                    openEntryDetailModal(entryLabel, {
+                        type: payload.type,
+                        categoryTitle: payload.axisLabel || payload.title,
+                        aggregateLabel: payload.aggregateLabel,
+                        periods: payload.periods,
+                        periodLabels: {
+                            today: periodGroup ? (periodGroup.getAttribute("data-lbl-today") || i18n.today) : i18n.today,
+                            yesterday: periodGroup ? (periodGroup.getAttribute("data-lbl-yesterday") || i18n.yesterday) : i18n.yesterday,
+                            "7days": periodGroup ? (periodGroup.getAttribute("data-lbl-7days") || i18n.last7Days) : i18n.last7Days,
+                            "30days": periodGroup ? (periodGroup.getAttribute("data-lbl-30days") || i18n.last30Days) : i18n.last30Days
+                        }
+                    });
+                }
+                : null;
+
+            renderRankingRows(rankingBody, entries, totalEvents, onHubEntrySelect, filterQuery);
 
             if (entries.length === 0) {
                 canvas.classList.add("d-none");
@@ -785,20 +1124,19 @@
             canvas.classList.remove("d-none");
 
             var sliced = limitCount > 0 ? entries.slice(0, limitCount) : entries;
-            var slicedMap = {};
-            sliced.forEach(function (item) { slicedMap[item.label] = item.count; });
-            var faqLabels = createFaqLinks(slicedMap, payload.faqLinkType);
+            var barLabels = sliced.map(function (item) { return item.label; });
             var counts = sliced.map(function (item) { return item.count; });
 
             chartInstance = createBarChart(
                 canvas.getContext("2d"),
-                faqLabels,
+                barLabels,
                 counts,
                 payload.axisLabel || payload.title,
                 null,
                 null,
                 payload.axisLabel || payload.title,
-                scaleMode
+                scaleMode,
+                onHubEntrySelect
             );
         }
 
@@ -955,7 +1293,7 @@
             }
 
             var mapData = (payload.periods && payload.periods[activePeriod]) ? payload.periods[activePeriod] : {};
-            var entries = mapObjectToEntries(mapData);
+            var entries = mapObjectToEntries(mapData, payload.aggregateLabel);
             var totalEvents = entries.reduce(function (acc, item) { return acc + item.count; }, 0);
 
             if (statTotal) statTotal.textContent = totalEvents.toLocaleString();
@@ -973,7 +1311,19 @@
                 }
             });
 
-            renderRankingRows(tbody, entries, totalEvents, payload.faqLinkType, filterQuery);
+            var onStandaloneEntrySelect = payload.supportsDetailModal !== false
+                ? function (entryLabel) {
+                    openEntryDetailModal(entryLabel, {
+                        type: payload.type,
+                        categoryTitle: payload.axisLabel,
+                        aggregateLabel: payload.aggregateLabel,
+                        periods: payload.periods,
+                        periodLabels: payload.periodLabels || {}
+                    });
+                }
+                : null;
+
+            renderRankingRows(tbody, entries, totalEvents, onStandaloneEntrySelect, filterQuery);
 
             if (entries.length === 0) {
                 canvas.classList.add("d-none");
@@ -985,20 +1335,19 @@
             canvas.classList.remove("d-none");
 
             var sliced = limitCount > 0 ? entries.slice(0, limitCount) : entries;
-            var slicedMap = {};
-            sliced.forEach(function (item) { slicedMap[item.label] = item.count; });
-            var faqLabels = createFaqLinks(slicedMap, payload.faqLinkType);
+            var barLabels = sliced.map(function (item) { return item.label; });
             var counts = sliced.map(function (item) { return item.count; });
 
             chartInstance = createBarChart(
                 canvas.getContext("2d"),
-                faqLabels,
+                barLabels,
                 counts,
                 payload.axisLabel,
                 null,
                 null,
                 payload.axisLabel,
-                scaleMode
+                scaleMode,
+                onStandaloneEntrySelect
             );
         }
 
@@ -1044,12 +1393,18 @@
         themeListeners.push(renderCurrent);
 
         refreshCallback = function () {
-            return fetch("api.php?action=report&type=" + encodeURIComponent(payload.type), {
+            var langParam = getActiveDocLang();
+            var refreshUrl = "api.php?action=report&type=" + encodeURIComponent(payload.type)
+                + (langParam ? "&lang=" + encodeURIComponent(langParam) : "");
+            return fetch(refreshUrl, {
                 headers: { Accept: "application/json" }
             })
                 .then(function (r) { return r.json(); })
                 .then(function (res) {
                     if (res && res.ok && res.periods) {
+                        if (typeof res.aggregateLabel !== "undefined") {
+                            payload.aggregateLabel = res.aggregateLabel;
+                        }
                         payload.periods = res.periods;
                         renderCurrent();
                     }
@@ -1143,7 +1498,10 @@
         themeListeners.push(renderCurrent);
 
         refreshCallback = function () {
-            return fetch("api.php?action=report&type=" + encodeURIComponent(payload.type), {
+            var langParam = getActiveDocLang();
+            var refreshUrl = "api.php?action=report&type=" + encodeURIComponent(payload.type)
+                + (langParam ? "&lang=" + encodeURIComponent(langParam) : "");
+            return fetch(refreshUrl, {
                 headers: { Accept: "application/json" }
             })
                 .then(function (r) { return r.json(); })
@@ -1163,6 +1521,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         loadI18n();
         initThemeAndA11y();
+        initEntryDetailModal();
         initHomepageHub();
         initStandaloneReportPage();
         initStandaloneInOutPage();

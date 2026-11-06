@@ -7,7 +7,6 @@ require_once 'includes/i18n.php';
 $reportConfig = [
     'typeId' => 'protocol',
     'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
-    'faqLinkType' => 'protocol',
     'pageTitle' => __('Protocol Statistics - SPCast Live'),
     'pageDescription' => __('Shows the protocols of user activities in the network. Statistics for daily, weekly, and monthly evaluations.'),
     'keywords' => __('spcast live, spcast protokollstatistiken, nutzerprotokoll, netzwerkprotokolle, echtzeitstatistiken, datenprotokolle'),

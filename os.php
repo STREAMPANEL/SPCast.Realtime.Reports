@@ -7,7 +7,6 @@ require_once 'includes/i18n.php';
 $reportConfig = [
     'typeId' => 'os',
     'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
-    'faqLinkType' => 'os',
     'pageTitle' => __('Operating System Statistics - SPCast Live'),
     'pageDescription' => __('Overview of the operating systems used by users. Live data and statistics for various periods.'),
     'keywords' => __('spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen'),

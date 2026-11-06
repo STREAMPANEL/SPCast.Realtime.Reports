@@ -4,17 +4,16 @@ declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/i18n.php';
 
-if (!headers_sent()) {
-    header('Content-Type: text/html; charset=UTF-8');
-}
-
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/initializeAnalytics.php';
 
 use App\AnalyticsService;
 use App\Logger;
 use App\ReportType;
+use App\SecurityHeaders;
 use App\SeoHelper;
+
+$cspNonce = SecurityHeaders::sendHtml();
 
 $cacheDir = __DIR__ . '/../cache/';
 ensureSecureCacheDirectory($cacheDir);
@@ -218,7 +217,6 @@ $initialInOutPayload = [
                                 echo SeoHelper::renderRankingRowsHtml(
                                     $hourlyEntries,
                                     (int) $sumHourly,
-                                    null,
                                     __('No statistics available for the selected period yet.')
                                 );
                             ?></tbody>
@@ -229,7 +227,7 @@ $initialInOutPayload = [
         </section>
     </main>
 
-    <script id="spcast-inout-payload" type="application/json"><?php echo json_encode($initialInOutPayload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
+    <script nonce="<?php echo htmlspecialchars($cspNonce, ENT_QUOTES, 'UTF-8'); ?>" id="spcast-inout-payload" type="application/json"><?php echo json_encode($initialInOutPayload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
 
     <?php require_once __DIR__ . '/footer.php'; ?>
 </body>

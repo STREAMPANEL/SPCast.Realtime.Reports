@@ -703,16 +703,82 @@ msgid "Close"
 msgstr "Κλείσιμο"
 
 msgid "Method not allowed."
-msgstr ""
+msgstr "Η μέθοδος δεν επιτρέπεται."
 
 msgid "Invalid request parameter."
-msgstr ""
+msgstr "Μη έγκυρη παράμετρος αιτήματος."
 
 msgid "Unsupported API action."
-msgstr ""
+msgstr "Μη υποστηριζόμενη ενέργεια API."
 
 msgid "Missing or invalid report type."
-msgstr ""
+msgstr "Λείπει ή δεν είναι έγκυρος ο τύπος αναφοράς."
 
 msgid "Unknown report type requested."
-msgstr ""
+msgstr "Ζητήθηκε άγνωστος τύπος αναφοράς."
+
+msgid "Period"
+msgstr "Περίοδος"
+
+msgid "Daily Average"
+msgstr "Ημερήσιος μέσος όρος"
+
+msgid "Period Comparison"
+msgstr "Σύγκριση περιόδων"
+
+msgid "Share across Periods (%)"
+msgstr "Μερίδιο ανά περίοδο (%)"
+
+msgid "Trend vs. 30-Day Share"
+msgstr "Τάση έναντι 30 ημερών"
+
+msgid "Show cross-period details"
+msgstr "Εμφάνιση λεπτομερειών περιόδου"
+
+msgid "Standard unencrypted HTTP streaming port"
+msgstr "Τυπική μη κρυπτογραφημένη θύρα ροής HTTP"
+
+msgid "TLS-encrypted HTTPS streaming port"
+msgstr "Κρυπτογραφημένη με TLS θύρα ροής HTTPS"
+
+msgid "Icecast / SHOUTcast default audio streaming port"
+msgstr "Προεπιλεγμένη θύρα ροής ήχου Icecast / SHOUTcast"
+
+msgid "Encrypted transport protocol (TLS)"
+msgstr "Κρυπτογραφημένο πρωτόκολλο μεταφοράς (TLS)"
+
+msgid "Unencrypted transport protocol"
+msgstr "Μη κρυπτογραφημένο πρωτόκολλο μεταφοράς"
+
+msgid "Classic 32-bit network addressing (IPv4)"
+msgstr "Κλασική δικτυακή διευθυνσιοδότηση 32-bit (IPv4)"
+
+msgid "Modern 128-bit network addressing (IPv6)"
+msgstr "Σύγχρονη δικτυακή διευθυνσιοδότηση 128-bit (IPv6)"
+
+msgid "Methodology & Data Transparency"
+msgstr "Μεθοδολογία και διαφάνεια δεδομένων"
+
+msgid "Technical notes on how telemetry metrics on SPCast Live are collected, aggregated, and published."
+msgstr "Τεχνικές σημειώσεις σχετικά με τη συλλογή, τη συγκέντρωση και τη δημοσίευση μετρήσεων τηλεμετρίας στο SPCast Live."
+
+msgid "Data Source & Interval"
+msgstr "Πηγή δεδομένων και διάστημα"
+
+msgid "Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history."
+msgstr "Συγκεντρωτικά συμβάντα ακροατών και ροών στην υποδομή ροής ήχου %s (Icecast, SHOUTcast, HLS), με ανανέωση κάθε 45 δευτερόλεπτα και κυλιόμενο ιστορικό 30 ημερών."
+
+msgid "Anonymization & Privacy"
+msgstr "Ανωνυμοποίηση και απόρρητο"
+
+msgid "City and mountpoint groups with fewer than five events are combined. Listener IP addresses are not published."
+msgstr "Οι ομάδες πόλεων και σημείων σύνδεσης με λιγότερα από πέντε συμβάντα συγχωνεύονται. Οι διευθύνσεις IP των ακροατών δεν δημοσιεύονται."
+
+msgid "Open-Source Dashboard"
+msgstr "Πίνακας ανοιχτού κώδικα"
+
+msgid "The reporting frontend, caching layer, and schema definitions are publicly auditable on %s under the EUPL-1.2 license."
+msgstr "Το περιβάλλον αναφορών, το επίπεδο προσωρινής αποθήκευσης και οι ορισμοί σχημάτων είναι δημόσια ελέγξιμα στο %s υπό την άδεια EUPL-1.2."
+
+msgid "Other"
+msgstr "Άλλα"

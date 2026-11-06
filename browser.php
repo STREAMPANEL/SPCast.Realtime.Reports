@@ -7,7 +7,6 @@ require_once 'includes/i18n.php';
 $reportConfig = [
     'typeId' => 'browser',
     'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
-    'faqLinkType' => 'agent',
     'pageTitle' => __('Browser Statistics') . ' - SPCast Live',
     'pageDescription' => __('Statistics on the browsers used by users. Real-time data for daily, weekly, and monthly evaluations.'),
     'keywords' => __('spcast live, spcast browserstatistiken, browsernutzung, nutzerdaten, echtzeitstatistiken, netzwerkdaten'),

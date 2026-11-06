@@ -1,11 +1,11 @@
 vendor/
 cache/
-composer.lock
 .phpunit.result.cache
 reports/
 logs/
-cache/
 *.json
+!composer.json
+!composer.lock
 .env
 .env.example
 .DS_Store
