@@ -234,5 +234,17 @@ class TemplateSecurityAndConfigTest extends TestCase
             );
         }
     }
+
+    public function testFooterDoesNotContainRedundantSpcastEuLink(): void
+    {
+        $footerContent = (string) file_get_contents(__DIR__ . '/../includes/footer.php');
+        $navContent = (string) file_get_contents(__DIR__ . '/../includes/nav.php');
+
+        $this->assertStringNotContainsString('href="https://www.spcast.eu/"', $footerContent);
+        $this->assertStringContainsString('https://www.spcast.eu/kontakt/impressum/', $footerContent);
+        $this->assertStringContainsString('https://www.spcast.eu/kontakt/datenschutz/', $footerContent);
+        $this->assertStringContainsString('https://www.spcast.eu/kontakt/cookies/', $footerContent);
+        $this->assertStringContainsString('href="https://www.spcast.eu/"', $navContent);
+    }
 }
 

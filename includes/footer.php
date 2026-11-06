@@ -46,10 +46,6 @@ $clientI18n = [
         <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3 pb-3 border-bottom" style="border-color: var(--sp-border) !important;">
             <ul class="d-flex flex-wrap justify-content-center align-items-center gap-3 list-unstyled mb-0">
                 <li>
-                    <a href="https://www.spcast.eu/" target="_blank" rel="noopener" class="sp-footer-link">SPCast.eu</a>
-                </li>
-                <li class="d-none d-sm-inline" aria-hidden="true">|</li>
-                <li>
                     <a href="https://www.spcast.eu/kontakt/impressum/" target="_blank" rel="noopener" class="sp-footer-link"><?php echo htmlspecialchars(__('Imprint'), ENT_QUOTES, 'UTF-8'); ?></a>
                 </li>
                 <li class="d-none d-sm-inline" aria-hidden="true">|</li>
@@ -100,7 +96,7 @@ $clientI18n = [
 
         <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3 pt-3">
             <div>
-                <span>&copy; 2024 - <?php echo date('Y'); ?> <a href="https://www.spcast.eu/" target="_blank" rel="noopener" class="sp-footer-link fw-semibold">SPCast</a></span>
+                <span>&copy; 2024 - <?php echo date('Y'); ?> <span class="fw-semibold">SPCast</span></span>
             </div>
 
             <div class="sp-a11y-console">
