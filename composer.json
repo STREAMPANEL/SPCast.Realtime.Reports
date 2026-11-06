@@ -10,5 +10,13 @@
         "psr-4": {
             "App\\": "src/"
         }
+    },
+    "scripts": {
+        "pre-autoload-dump": "Google\\Task\\Composer::cleanup"
+    },
+    "extra": {
+        "google/apiclient-services": [
+            "AnalyticsData"
+        ]
     }
 }
