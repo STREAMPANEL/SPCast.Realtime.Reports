@@ -1,296 +1,207 @@
 <?php
-
 declare(strict_types=1);
 
-// includes/inout_template.php
-require_once 'includes/i18n.php';
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: text/html; charset=UTF-8");
+require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/i18n.php';
 
-require_once 'vendor/autoload.php';
+if (!headers_sent()) {
+    header('Content-Type: text/html; charset=UTF-8');
+}
 
-$cacheDir = 'cache/';
-$cacheFile = $cacheDir . 'analytics_cache_' . $inoutConfig['type'] . '.json';
-$historyFile = $cacheDir . 'analytics_history_' . $inoutConfig['type'] . '.json';
-$weeklyFile = $cacheDir . 'analytics_weekly_' . $inoutConfig['type'] . '.json';
-$monthlyFile = $cacheDir . 'analytics_monthly_' . $inoutConfig['type'] . '.json';
-$cacheTime = 45;
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/initializeAnalytics.php';
 
-require_once 'includes/initializeAnalytics.php';
+use App\AnalyticsService;
+use App\Logger;
+use App\ReportType;
+
+$cacheDir = __DIR__ . '/../cache/';
 ensureSecureCacheDirectory($cacheDir);
-require_once 'includes/config.php';
 
-$gaPropertyId = $inoutConfig['gaPropertyId'];
+$type = (string) ($inoutConfig['type'] ?? 'in');
+$gaPropertyId = (string) ($inoutConfig['gaPropertyId'] ?? GA_PROPERTY_ID_INBOUND);
+$reportEnum = ReportType::tryFrom($type);
+$iconClass = $reportEnum !== null ? $reportEnum->iconClass() : 'bi-activity';
 
-$logger = \App\Logger::createDefault();
+$logger = Logger::createDefault();
 $analyticsClient = initializeAnalytics();
-$analyticsService = new \App\AnalyticsService($analyticsClient, $logger);
+$analyticsService = new AnalyticsService($analyticsClient, $logger);
 
-$data = $analyticsService->getCachedData($cacheFile, function () use ($historyFile, $gaPropertyId, $analyticsService) {
-    $response = $analyticsService->getRealTimeReport($gaPropertyId);
+$inOutData = $analyticsService->getInOutReportData($type, $gaPropertyId, $cacheDir, 45);
+$activeUsers = $inOutData['activeUsers'];
+$peakToday = $inOutData['hourly']['values'] !== [] ? max($inOutData['hourly']['values']) : 0;
+$sumWeekly = array_sum($inOutData['weekly']['values']);
 
-    if ($response === null) {
-        return null;
-    }
-
-    $rows = $response->getRows();
-
-    if (!empty($rows)) {
-        $activeUsers = $rows[0]->getMetricValues()[0]->getValue();
-        $data = ['activeUsers' => $activeUsers, 'timestamp' => time()];
-
-        // Update history
-        $hour = date('G');
-        $history = [];
-
-        if (file_exists($historyFile)) {
-            $history = json_decode(file_get_contents($historyFile), true);
-        }
-
-        $history[$hour] = $activeUsers;
-
-        file_put_contents($historyFile, json_encode($history));
-
-        return $data;
-    }
-
-    return null;
-}, 45);
-
-$history = [];
-if (file_exists($historyFile)) {
-    $history = json_decode(file_get_contents($historyFile), true);
-}
-
-$weeklyData = $analyticsService->getCachedData($weeklyFile, function () use ($gaPropertyId, $analyticsService) {
-    $response = $analyticsService->getWeeklyReport($gaPropertyId);
-
-    if ($response === null) {
-        return null;
-    }
-
-    $rows = $response->getRows();
-
-    $weeklyData = [];
-
-    if (!empty($rows)) {
-        foreach ($rows as $row) {
-            $date = $row->getDimensionValues()[0]->getValue();
-            $activeUsers = $row->getMetricValues()[0]->getValue();
-            $weeklyData[$date] = $activeUsers;
-        }
-
-        return $weeklyData;
-    }
-
-    return null;
-}, 24 * 60 * 60);
-
-$monthlyData = $analyticsService->getCachedData($monthlyFile, function () use ($gaPropertyId, $analyticsService) {
-    $response = $analyticsService->getMonthlyReport($gaPropertyId);
-
-    if ($response === null) {
-        return null;
-    }
-
-    $rows = $response->getRows();
-
-    $monthlyData = [];
-
-    if (!empty($rows)) {
-        foreach ($rows as $row) {
-            $date = $row->getDimensionValues()[0]->getValue();
-            $activeUsers = $row->getMetricValues()[0]->getValue();
-            $monthlyData[$date] = $activeUsers;
-        }
-
-        return $monthlyData;
-    }
-
-    return null;
-}, 24 * 60 * 60);
-
-$dates = [];
-$weeklyChartData = [];
-for ($i = 7; $i > 0; $i--) {
-    $date = date('Ymd', strtotime("-$i days"));
-    $formattedDate = date('d.m', strtotime("-$i days"));
-    $dates[] = $formattedDate;
-    $weeklyChartData[] = isset($weeklyData[$date]) ? $weeklyData[$date] : 0;
-}
-
-$monthlyDates = [];
-$monthlyChartData = [];
-for ($i = 30; $i > 0; $i--) {
-    $date = date('Ymd', strtotime("-$i days"));
-    $formattedDate = date('d.m', strtotime("-$i days"));
-    $monthlyDates[] = $formattedDate;
-    $monthlyChartData[] = isset($monthlyData[$date]) ? $monthlyData[$date] : 0;
-}
-
-$hours = range(0, 23);
-$chartData = array_values(array_replace(array_fill_keys($hours, 0), array_intersect_key($history, array_flip($hours))));
+$initialInOutPayload = [
+    'type' => $type,
+    'activeUsers' => $activeUsers,
+    'periods' => [
+        'realtime' => [
+            'label' => __('Today'),
+            'datasetLabel' => (string) $inoutConfig['chartLabels']['realtime'],
+            'xAxisLabel' => __('Hour of the day'),
+            'yAxisLabel' => (string) $inoutConfig['chartLabels']['realtimeY'],
+            'labels' => $inOutData['hourly']['labels'],
+            'values' => $inOutData['hourly']['values'],
+        ],
+        'minutes' => [
+            'label' => __('Last 30 Minutes'),
+            'datasetLabel' => (string) $inoutConfig['chartLabels']['realtime'],
+            'xAxisLabel' => __('Minutes ago'),
+            'yAxisLabel' => __('Users'),
+            'labels' => $inOutData['minutes']['labels'],
+            'values' => $inOutData['minutes']['values'],
+        ],
+        'weekly' => [
+            'label' => __('Last 7 Days'),
+            'datasetLabel' => (string) $inoutConfig['chartLabels']['weekly'],
+            'xAxisLabel' => __('Date'),
+            'yAxisLabel' => __('Users'),
+            'labels' => $inOutData['weekly']['labels'],
+            'values' => $inOutData['weekly']['values'],
+        ],
+        'monthly' => [
+            'label' => __('Last 30 Days'),
+            'datasetLabel' => (string) $inoutConfig['chartLabels']['monthly'],
+            'xAxisLabel' => __('Date'),
+            'yAxisLabel' => __('Users'),
+            'labels' => $inOutData['monthly']['labels'],
+            'values' => $inOutData['monthly']['values'],
+        ],
+    ],
+];
 ?>
-
 <!DOCTYPE html>
-<html lang="<?php echo htmlspecialchars($current_lang ?? 'de'); ?>">
+<html lang="<?php echo htmlspecialchars($current_lang ?? 'de', ENT_QUOTES, 'UTF-8'); ?>">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $inoutConfig['pageTitle']; ?></title>
-    <meta name="description" content="<?php echo $inoutConfig['pageDescription']; ?>">
-    <meta name="keywords" content="<?php echo htmlspecialchars($inoutConfig['keywords'], ENT_QUOTES); ?>">
-    <link rel="canonical" href="<?php echo htmlspecialchars($inoutConfig['canonicalUrl'], ENT_QUOTES); ?>" />
-    <?php require_once "includes/head.php"; ?>
+    <title><?php echo htmlspecialchars((string) $inoutConfig['pageTitle'], ENT_QUOTES, 'UTF-8'); ?></title>
+    <meta name="description" content="<?php echo htmlspecialchars((string) $inoutConfig['pageDescription'], ENT_QUOTES, 'UTF-8'); ?>">
+    <meta name="keywords" content="<?php echo htmlspecialchars((string) $inoutConfig['keywords'], ENT_QUOTES, 'UTF-8'); ?>">
+    <link rel="canonical" href="<?php echo htmlspecialchars((string) $inoutConfig['canonicalUrl'], ENT_QUOTES, 'UTF-8'); ?>" />
+    <?php require_once __DIR__ . '/head.php'; ?>
 </head>
 
 <body>
-    <?php require_once "includes/nav.php"; ?>
+    <?php require_once __DIR__ . '/nav.php'; ?>
 
-    <div class="container my-5">
-        <div class="text-center mb-4">
-            <h1 class="text-center"><?php echo $inoutConfig['headerTitle']; ?></h1>
-            <p><?php echo $inoutConfig['headerDesc']; ?></p>
+    <main class="container py-4 py-lg-5" id="spStandaloneInOut" data-inout-type="<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>">
+        <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+            <a href="./?stat=<?php echo htmlspecialchars($type, ENT_QUOTES, 'UTF-8'); ?>" class="sp-btn-ghost">
+                <i class="bi bi-arrow-left" aria-hidden="true"></i>
+                <span><?php echo htmlspecialchars(__('Back to Statistics Hub'), ENT_QUOTES, 'UTF-8'); ?></span>
+            </a>
+            <div class="d-flex align-items-center gap-2">
+                <span class="small" style="color: var(--sp-muted);">
+                    <?php echo htmlspecialchars(__('Next update in'), ENT_QUOTES, 'UTF-8'); ?>
+                    <strong style="color: var(--sp-heading);" id="countdown">45</strong>
+                    <span id="countdownUnit"><?php echo htmlspecialchars(__('seconds'), ENT_QUOTES, 'UTF-8'); ?></span>
+                </span>
+                <button type="button" id="spManualRefreshBtn" class="sp-btn-ghost py-1 px-2" aria-label="<?php echo htmlspecialchars(__('Refresh now'), ENT_QUOTES, 'UTF-8'); ?>" title="<?php echo htmlspecialchars(__('Refresh now'), ENT_QUOTES, 'UTF-8'); ?>">
+                    <i class="bi bi-arrow-clockwise" aria-hidden="true"></i>
+                </button>
+                <button type="button" id="spPauseRefreshBtn" class="sp-btn-ghost py-1 px-2" aria-pressed="false" aria-label="<?php echo htmlspecialchars(__('Pause auto-refresh'), ENT_QUOTES, 'UTF-8'); ?>" title="<?php echo htmlspecialchars(__('Pause auto-refresh'), ENT_QUOTES, 'UTF-8'); ?>">
+                    <i class="bi bi-pause-fill" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h3 class="card-title">
-                            <?php echo $inoutConfig['cardTitle']; ?>
-                        </h3>
-                        <small><?php echo $inoutConfig['cardDesc']; ?></small>
-                        <p id="activeUsers" class="display-4"><?php echo isset($data['activeUsers']) ? htmlspecialchars($data['activeUsers']) : 0; ?></p>
-                        <p><?php echo __('Next update in'); ?> <span id="countdown">45</span> <?php echo __('seconds'); ?></p>
+
+        <section class="sp-hero pt-2 text-center">
+            <div class="sp-card-icon mx-auto">
+                <i class="bi <?php echo htmlspecialchars($iconClass, ENT_QUOTES, 'UTF-8'); ?>" aria-hidden="true"></i>
+            </div>
+            <h1 class="display-6 fw-bold mb-2"><?php echo htmlspecialchars((string) $inoutConfig['headerTitle'], ENT_QUOTES, 'UTF-8'); ?></h1>
+            <p class="sp-hero-lead mb-0"><?php echo htmlspecialchars((string) $inoutConfig['headerDesc'], ENT_QUOTES, 'UTF-8'); ?></p>
+        </section>
+
+        <section class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="sp-kpi-card sp-card-accent">
+                    <div class="sp-kpi-label">
+                        <span><?php echo htmlspecialchars((string) $inoutConfig['cardTitle'], ENT_QUOTES, 'UTF-8'); ?></span>
+                        <span class="sp-live-dot" aria-hidden="true"></span>
+                    </div>
+                    <div class="sp-kpi-value" id="activeUsers"><?php echo (int) $activeUsers; ?></div>
+                    <div class="sp-kpi-sub"><?php echo htmlspecialchars((string) $inoutConfig['cardDesc'], ENT_QUOTES, 'UTF-8'); ?></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sp-kpi-card">
+                    <div class="sp-kpi-label">
+                        <span><?php echo htmlspecialchars(__('Peak Today'), ENT_QUOTES, 'UTF-8'); ?></span>
+                        <i class="bi bi-graph-up" aria-hidden="true"></i>
+                    </div>
+                    <div class="sp-kpi-value" id="inoutPeakToday"><?php echo (int) $peakToday; ?></div>
+                    <div class="sp-kpi-sub"><?php echo htmlspecialchars(__('Highest hourly value recorded today'), ENT_QUOTES, 'UTF-8'); ?></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="sp-kpi-card">
+                    <div class="sp-kpi-label">
+                        <span><?php echo htmlspecialchars(__('Last 7 Days Total'), ENT_QUOTES, 'UTF-8'); ?></span>
+                        <i class="bi bi-bar-chart-line" aria-hidden="true"></i>
+                    </div>
+                    <div class="sp-kpi-value" id="inoutWeeklyTotal"><?php echo (int) $sumWeekly; ?></div>
+                    <div class="sp-kpi-sub"><?php echo htmlspecialchars(__('Cumulative active users (7 days)'), ENT_QUOTES, 'UTF-8'); ?></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sp-card sp-hub-shell">
+            <ul class="nav nav-tabs sp-tabs flex-nowrap overflow-auto mb-3" id="inoutTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" data-inout-period="realtime" type="button" role="tab" aria-selected="true">
+                        <?php echo htmlspecialchars(__('Today'), ENT_QUOTES, 'UTF-8'); ?>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-inout-period="minutes" type="button" role="tab" aria-selected="false">
+                        <?php echo htmlspecialchars(__('Last 30 Minutes'), ENT_QUOTES, 'UTF-8'); ?>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-inout-period="weekly" type="button" role="tab" aria-selected="false">
+                        <?php echo htmlspecialchars(__('Last 7 Days'), ENT_QUOTES, 'UTF-8'); ?>
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" data-inout-period="monthly" type="button" role="tab" aria-selected="false">
+                        <?php echo htmlspecialchars(__('Last 30 Days'), ENT_QUOTES, 'UTF-8'); ?>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="row g-4 align-items-stretch">
+                <div class="col-lg-8">
+                    <div class="sp-chart-box h-100 d-flex flex-column justify-content-center">
+                        <canvas id="standaloneInOutChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div tabindex="0" role="region" aria-labelledby="inoutTableCaption" class="sp-table-wrapper h-100">
+                        <table class="sp-ranking-table"
+                               style="--label-2: '<?php echo htmlspecialchars(addcslashes(__('Users'), "'\\"), ENT_QUOTES, 'UTF-8'); ?>'; --label-3: '<?php echo htmlspecialchars(addcslashes(__('Share'), "'\\"), ENT_QUOTES, 'UTF-8'); ?>';">
+                            <caption id="inoutTableCaption"><?php echo htmlspecialchars((string) $inoutConfig['headerTitle'], ENT_QUOTES, 'UTF-8'); ?></caption>
+                            <thead>
+                                <tr>
+                                    <th scope="col" id="inoutTimeColHeader"><?php echo htmlspecialchars(__('Hour of the day'), ENT_QUOTES, 'UTF-8'); ?></th>
+                                    <th scope="col" class="text-end"><?php echo htmlspecialchars(__('Users'), ENT_QUOTES, 'UTF-8'); ?></th>
+                                    <th scope="col"><?php echo htmlspecialchars(__('Share'), ENT_QUOTES, 'UTF-8'); ?></th>
+                                </tr>
+                            </thead>
+                            <tbody id="standaloneInOutBody"></tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-4">
-            <div class="col-md-12">
-                <ul class="nav nav-tabs nav-fill flex-nowrap overflow-auto" id="inoutTabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="tab-realtime" data-bs-toggle="tab"
-                                data-bs-target="#panel-realtime" type="button" role="tab"
-                                aria-controls="panel-realtime" aria-selected="true">
-                            <?php echo __('Today'); ?>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="tab-weekly" data-bs-toggle="tab"
-                                data-bs-target="#panel-weekly" type="button" role="tab"
-                                aria-controls="panel-weekly" aria-selected="false">
-                            <?php echo __('Last 7 Days'); ?>
-                        </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="tab-monthly" data-bs-toggle="tab"
-                                data-bs-target="#panel-monthly" type="button" role="tab"
-                                aria-controls="panel-monthly" aria-selected="false">
-                            <?php echo __('Last 30 Days'); ?>
-                        </button>
-                    </li>
-                </ul>
+        </section>
+    </main>
 
-                <div class="tab-content mt-3" id="inoutTabContent">
-                    <div class="tab-pane fade show active" id="panel-realtime" role="tabpanel" aria-labelledby="tab-realtime">
-                        <canvas id="realtimeChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="panel-weekly" role="tabpanel" aria-labelledby="tab-weekly">
-                        <canvas id="weeklyChart"></canvas>
-                    </div>
-                    <div class="tab-pane fade" id="panel-monthly" role="tabpanel" aria-labelledby="tab-monthly">
-                        <canvas id="monthlyChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <script id="spcast-inout-payload" type="application/json"><?php echo json_encode($initialInOutPayload, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var chartInstances = {};
-
-            var realtimeData = <?php echo json_encode($chartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            var realtimeHours = <?php echo json_encode($hours, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            var weeklyChartData = <?php echo json_encode($weeklyChartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            var weeklyDates = <?php echo json_encode($dates, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            var monthlyChartDataArr = <?php echo json_encode($monthlyChartData, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-            var monthlyDatesArr = <?php echo json_encode($monthlyDates, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
-
-            function createLineChart(canvasId, labels, data, label, xLabel, yLabel, bgColor, borderColor) {
-                var canvas = document.getElementById(canvasId);
-                if (!canvas) return null;
-                return new Chart(canvas.getContext('2d'), {
-                    type: 'line',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: label,
-                            data: data,
-                            backgroundColor: bgColor,
-                            borderColor: borderColor,
-                            fill: true,
-                            tension: 0.1,
-                            borderWidth: 2
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            x: {
-                                title: { display: true, text: xLabel },
-                                ticks: { autoSkip: true }
-                            },
-                            y: {
-                                beginAtZero: true,
-                                title: { display: true, text: yLabel }
-                            }
-                        }
-                    }
-                });
-            }
-
-            var inoutCharts = {
-                'realtime': function () {
-                    return createLineChart('realtimeChart', realtimeHours, realtimeData,
-                        '<?php echo $inoutConfig['chartLabels']['realtime']; ?>',
-                        '<?php echo __('Hour of the day'); ?>',
-                        '<?php echo $inoutConfig['chartLabels']['realtimeY']; ?>',
-                        'rgba(54, 162, 235, 0.2)', 'rgba(54, 162, 235, 1)');
-                },
-                'weekly': function () {
-                    return createLineChart('weeklyChart', weeklyDates, weeklyChartData,
-                        '<?php echo $inoutConfig['chartLabels']['weekly']; ?>',
-                        '<?php echo __('Date'); ?>', '<?php echo __('Users'); ?>',
-                        'rgba(75, 192, 192, 0.2)', 'rgba(75, 192, 192, 1)');
-                },
-                'monthly': function () {
-                    return createLineChart('monthlyChart', monthlyDatesArr, monthlyChartDataArr,
-                        '<?php echo $inoutConfig['chartLabels']['monthly']; ?>',
-                        '<?php echo __('Date'); ?>', '<?php echo __('Users'); ?>',
-                        'rgba(153, 102, 255, 0.2)', 'rgba(153, 102, 255, 1)');
-                }
-            };
-
-            // Init active tab chart
-            chartInstances['realtime'] = inoutCharts['realtime']();
-
-            // Lazy init on tab show
-            var tabButtons = document.querySelectorAll('#inoutTabs button[data-bs-toggle="tab"]');
-            tabButtons.forEach(function (btn) {
-                btn.addEventListener('shown.bs.tab', function (e) {
-                    var targetId = e.target.getAttribute('data-bs-target').replace('#panel-', '');
-                    if (!chartInstances[targetId] && inoutCharts[targetId]) {
-                        chartInstances[targetId] = inoutCharts[targetId]();
-                    }
-                });
-            });
-        });
-    </script>
-
-    <?php require_once "includes/footer.php"; ?>
+    <?php require_once __DIR__ . '/footer.php'; ?>
 </body>
 
 </html>
-

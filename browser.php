@@ -1,12 +1,13 @@
 <?php
-
 declare(strict_types=1);
 
+require_once 'includes/config.php';
 require_once 'includes/i18n.php';
+
 $reportConfig = [
     'typeId' => 'browser',
-    'analyticsMethod' => 'getListenerAddWithBrowser',
-    'faqLinkType' => 'agent', // mapped to agent since createFaqLinks expects 'agent' for browser data
+    'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
+    'faqLinkType' => 'agent',
     'pageTitle' => __('Browser Statistics') . ' - SPCast Live',
     'pageDescription' => __('Statistics on the browsers used by users. Real-time data for daily, weekly, and monthly evaluations.'),
     'keywords' => __('spcast live, spcast browserstatistiken, browsernutzung, nutzerdaten, echtzeitstatistiken, netzwerkdaten'),
@@ -18,9 +19,9 @@ $reportConfig = [
         'today' => __('Browser Distribution for Today'),
         'yesterday' => __('Browser Distribution for Yesterday'),
         '7days' => __('Browser Distribution over the last 7 Days'),
-        '30days' => __('Browser Distribution over the last 30 Days')
+        '30days' => __('Browser Distribution over the last 30 Days'),
     ],
-    'chartLabel' => 'Browser'
+    'chartLabel' => __('Browser'),
 ];
 
 require_once 'includes/report_template.php';

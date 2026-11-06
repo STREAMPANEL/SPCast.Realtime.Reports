@@ -486,7 +486,6 @@ msgstr "Statistics on the browsers used by users. Real-time data for daily, week
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "spcast live, operacijski sistemi spcast, uporabniške platforme, statistika OS, podatki v realnem času, omrežne platforme"
 
@@ -522,3 +521,198 @@ msgstr "spcast v živo, spcast vrata, uporabniška statistika vrat, omrežni pod
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "spcast v živo, statistika spcast v realnem času, statistika uporabnikov, statistika omrežja, podatki v živo, uporaba kanala"
+
+msgid "Live Network Telemetry"
+msgstr "Omrežna telemetrija v živo"
+
+msgid "Realtime Overview"
+msgstr "Pregled v realnem času"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Vklopljeni (zadnjih 30 min)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Izklopljeni (zadnjih 30 min)"
+
+msgid "Details"
+msgstr "Podrobnosti"
+
+msgid "Net Stream Flow"
+msgstr "Neto pretok toka"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Razmerje med dohodnimi in odhodnimi"
+
+msgid "Auto Refresh"
+msgstr "Samodejno osveževanje"
+
+msgid "Refresh now"
+msgstr "Osveži zdaj"
+
+msgid "Pause auto-refresh"
+msgstr "Začasno ustavi samodejno osveževanje"
+
+msgid "Resume auto-refresh"
+msgstr "Nadaljuj samodejno osveževanje"
+
+msgid "Paused"
+msgstr "Začasno ustavljeno"
+
+msgid "Interactive Statistics Hub"
+msgstr "Interaktivno statistično središče"
+
+msgid "Open dedicated view"
+msgstr "Odpri podroben pogled"
+
+msgid "Select statistic category"
+msgstr "Izberite kategorijo statistike"
+
+msgid "Select time period"
+msgstr "Izberite časovno obdobje"
+
+msgid "Chart scale"
+msgstr "Merilo grafikona"
+
+msgid "Linear"
+msgstr "Linearno"
+
+msgid "Logarithmic"
+msgstr "Logaritemsko"
+
+msgid "Chart limit"
+msgstr "Omejitev grafikona"
+
+msgid "Top 15"
+msgstr "Top 15"
+
+msgid "All entries"
+msgstr "Vsi vnosi"
+
+msgid "Filter entries"
+msgstr "Filtriraj vnose"
+
+msgid "Filter entries..."
+msgstr "Filtriraj vnose..."
+
+msgid "Total events"
+msgstr "Skupaj dogodkov"
+
+msgid "Unique entries"
+msgstr "Edinstvene vrednosti"
+
+msgid "Top entry"
+msgstr "Vodilni vnos"
+
+msgid "Loading statistics..."
+msgstr "Nalaganje statistike..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Za izbrano obdobje še ni razpoložljivih podatkov."
+
+msgid "Count"
+msgstr "Število"
+
+msgid "Share"
+msgstr "Delež"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Podrobna razčlenitev za izbrano statistiko in obdobje"
+
+msgid "Entry"
+msgstr "Vnos"
+
+msgid "Rank"
+msgstr "Mesto"
+
+msgid "All Individual Views"
+msgstr "Vsi posamezni pogledi"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Neposreden dostop do vseh specializiranih strani s poročili v realnem času in zgodovino."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Anonimizirani podatki o uporabi IPv4 in IPv6 v omrežju SPCast."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Podrobna statistika o uporabljenih mountpointih v omrežju."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Pridobite podrobne, anonimizirane podatke o mountpointih v omrežju SPCast."
+
+msgid "Unable to load statistics at the moment."
+msgstr "Statistike trenutno ni mogoče naložiti."
+
+msgid "Number of users"
+msgstr "Število uporabnikov"
+
+msgid "System (currently dark)"
+msgstr "Sistem (trenutno temno)"
+
+msgid "System (currently light)"
+msgstr "Sistem (trenutno svetlo)"
+
+msgid "Select color scheme"
+msgstr "Izberite barvno shemo"
+
+msgid "System default"
+msgstr "Sistemsko privzeto"
+
+msgid "System"
+msgstr "Sistem"
+
+msgid "Light theme"
+msgstr "Svetla tema"
+
+msgid "Dark theme"
+msgstr "Temna tema"
+
+msgid "Adjust font size"
+msgstr "Prilagodi velikost pisave"
+
+msgid "Decrease font size"
+msgstr "Zmanjšaj pisavo"
+
+msgid "Default font size"
+msgstr "Privzeta velikost pisave"
+
+msgid "Increase font size"
+msgstr "Povečaj pisavo"
+
+msgid "Last 30 Minutes"
+msgstr "Zadnjih 30 minut"
+
+msgid "Minutes ago"
+msgstr "Pred minutami"
+
+msgid "Back to Statistics Hub"
+msgstr "Nazaj na statistično središče"
+
+msgid "Peak Today"
+msgstr "Današnji vrh"
+
+msgid "Highest hourly value recorded today"
+msgstr "Najvišja urna vrednost zabeležena danes"
+
+msgid "Last 7 Days Total"
+msgstr "Skupaj zadnjih 7 dni"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Kumulativni aktivni uporabniki (7 dni)"
+
+msgid "Close"
+msgstr "Zapri"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

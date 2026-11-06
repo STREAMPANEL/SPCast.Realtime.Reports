@@ -1,26 +1,27 @@
 <?php
-
 declare(strict_types=1);
 
+require_once 'includes/config.php';
 require_once 'includes/i18n.php';
+
 $reportConfig = [
     'typeId' => 'mount',
-    'analyticsMethod' => 'getListenerAddWithMount',
+    'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
     'faqLinkType' => 'mount',
     'pageTitle' => __('Mountpoint Statistics - SPCast Live'),
-    'pageDescription' => 'Detaillierte Statistiken über die genutzten Mountpoints im Netzwerk. Analysen für verschiedene Zeiträume verfügbar.',
+    'pageDescription' => __('Detailed statistics on the mountpoints used in the network. Analyses available for various periods.'),
     'keywords' => __('spcast live, spcast mountpoints, nutzerdaten, echtzeitstatistiken, netzwerkanalysen, mountpoint statistiken'),
     'canonicalUrl' => 'https://live.spcast.eu/mount.php',
     'headerTitle' => __('Mountpoint Statistics'),
-    'headerDesc' => 'Erhalten Sie detaillierte, anonymisierte Daten zu den genutzten Mountpoints im SPCast-Netzwerk. Diese Statistiken zeigen allgemeine Trends zur Nutzung der Radiostationen.',
+    'headerDesc' => __('Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage.'),
     'sectionTitle' => __('Mountpoint Statistics for Today, Yesterday, 7 and 30 Days'),
     'chartTitles' => [
         'today' => __('Mountpoint Distribution for Today'),
         'yesterday' => __('Mountpoint Distribution for Yesterday'),
         '7days' => __('Mountpoint Distribution over the last 7 Days'),
-        '30days' => __('Mountpoint Distribution over the last 30 Days')
+        '30days' => __('Mountpoint Distribution over the last 30 Days'),
     ],
-    'chartLabel' => 'Mountpoint'
+    'chartLabel' => __('Mountpoint'),
 ];
 
 require_once 'includes/report_template.php';

@@ -486,7 +486,6 @@ msgstr "Statistics on the browsers used by users. Real-time data for daily, week
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "spcast beo, córais oibriúcháin spcast, ardáin úsáideora, staitisticí OS, sonraí fíor-ama, ardáin líonra"
 
@@ -522,3 +521,198 @@ msgstr "spcast beo, spcast calafoirt, calafoirt staitisticí úsáideora, sonra�
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "spcast beo, spcast staitisticí fíor-ama, staitisticí úsáideora, staitisticí líonra, sonraí beo, úsáid cainéal"
+
+msgid "Live Network Telemetry"
+msgstr "Teiliméadracht líonra bheo"
+
+msgid "Realtime Overview"
+msgstr "Forbhreathnú fíor-ama"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Tiúnáilte isteach (30 nóim. deireanach)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Tiúnáilte amach (30 nóim. deireanach)"
+
+msgid "Details"
+msgstr "Sonraí"
+
+msgid "Net Stream Flow"
+msgstr "Glan-sreabhadh srutha"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Cothromaíocht idir isteach agus amach"
+
+msgid "Auto Refresh"
+msgstr "Athnuachan uathoibríoch"
+
+msgid "Refresh now"
+msgstr "Athnuaigh anois"
+
+msgid "Pause auto-refresh"
+msgstr "Cuir athnuachan uathoibríoch ar sos"
+
+msgid "Resume auto-refresh"
+msgstr "Atosaigh athnuachan uathoibríoch"
+
+msgid "Paused"
+msgstr "Ar sos"
+
+msgid "Interactive Statistics Hub"
+msgstr "Mol idirghníomhach staitisticí"
+
+msgid "Open dedicated view"
+msgstr "Oscail amharc tiomnaithe"
+
+msgid "Select statistic category"
+msgstr "Roghnaigh catagóir staitisticí"
+
+msgid "Select time period"
+msgstr "Roghnaigh tréimhse ama"
+
+msgid "Chart scale"
+msgstr "Scála na cairte"
+
+msgid "Linear"
+msgstr "Líneach"
+
+msgid "Logarithmic"
+msgstr "Logartamach"
+
+msgid "Chart limit"
+msgstr "Teorainn na cairte"
+
+msgid "Top 15"
+msgstr "Barr 15"
+
+msgid "All entries"
+msgstr "Gach iontráil"
+
+msgid "Filter entries"
+msgstr "Scag iontrálacha"
+
+msgid "Filter entries..."
+msgstr "Scag iontrálacha..."
+
+msgid "Total events"
+msgstr "Imeachtaí iomlána"
+
+msgid "Unique entries"
+msgstr "Luachanna uathúla"
+
+msgid "Top entry"
+msgstr "Príomhiontráil"
+
+msgid "Loading statistics..."
+msgstr "Staitisticí á lódáil..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Níl aon staitisticí ar fáil don tréimhse roghnaithe fós."
+
+msgid "Count"
+msgstr "Líon"
+
+msgid "Share"
+msgstr "Sciar"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Miondealú mionsonraithe don staitistic agus don tréimhse roghnaithe"
+
+msgid "Entry"
+msgstr "Iontráil"
+
+msgid "Rank"
+msgstr "Rang"
+
+msgid "All Individual Views"
+msgstr "Gach amharc aonair"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Rochtain dhíreach ar gach leathanach tuairisce fíor-ama agus stairiúil."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Sonraí gan ainm maidir le húsáid IPv4 agus IPv6 i líonra SPCast."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Staitisticí mionsonraithe ar na mountpoints a úsáidtear sa líonra."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Faigh sonraí mionsonraithe gan ainm ar na mountpoints i líonra SPCast."
+
+msgid "Unable to load statistics at the moment."
+msgstr "Ní féidir staitisticí a lódáil faoi láthair."
+
+msgid "Number of users"
+msgstr "Líon na n-úsáideoirí"
+
+msgid "System (currently dark)"
+msgstr "Córas (dorcha faoi láthair)"
+
+msgid "System (currently light)"
+msgstr "Córas (geal faoi láthair)"
+
+msgid "Select color scheme"
+msgstr "Roghnaigh scéim dathanna"
+
+msgid "System default"
+msgstr "Réamhshocrú an chórais"
+
+msgid "System"
+msgstr "Córas"
+
+msgid "Light theme"
+msgstr "Téama geal"
+
+msgid "Dark theme"
+msgstr "Téama dorcha"
+
+msgid "Adjust font size"
+msgstr "Coigeartaigh méid an chló"
+
+msgid "Decrease font size"
+msgstr "Laghdaigh méid an chló"
+
+msgid "Default font size"
+msgstr "Clómhéid réamhshocraithe"
+
+msgid "Increase font size"
+msgstr "Méadaigh méid an chló"
+
+msgid "Last 30 Minutes"
+msgstr "30 nóiméad deireanach"
+
+msgid "Minutes ago"
+msgstr "Nóiméad ó shin"
+
+msgid "Back to Statistics Hub"
+msgstr "Ar ais chuig mol na staitisticí"
+
+msgid "Peak Today"
+msgstr "Buaic inniu"
+
+msgid "Highest hourly value recorded today"
+msgstr "An luach uair an chloig is airde inniu"
+
+msgid "Last 7 Days Total"
+msgstr "Iomlán na 7 lá seo caite"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Úsáideoirí gníomhacha carnacha (7 lá)"
+
+msgid "Close"
+msgstr "Dún"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

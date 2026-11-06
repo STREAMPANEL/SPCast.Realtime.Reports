@@ -1,11 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
+require_once 'includes/config.php';
 require_once 'includes/i18n.php';
+
 $reportConfig = [
     'typeId' => 'os',
-    'analyticsMethod' => 'getListenerAddWithOS',
+    'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
     'faqLinkType' => 'os',
     'pageTitle' => __('Operating System Statistics - SPCast Live'),
     'pageDescription' => __('Overview of the operating systems used by users. Live data and statistics for various periods.'),
@@ -18,9 +19,9 @@ $reportConfig = [
         'today' => __('Operating System Distribution for Today'),
         'yesterday' => __('Operating System Distribution for Yesterday'),
         '7days' => __('Operating System Distribution over the last 7 Days'),
-        '30days' => __('Operating System Distribution over the last 30 Days')
+        '30days' => __('Operating System Distribution over the last 30 Days'),
     ],
-    'chartLabel' => 'Betriebssystem'
+    'chartLabel' => __('Operating System'),
 ];
 
 require_once 'includes/report_template.php';

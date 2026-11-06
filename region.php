@@ -1,11 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
+require_once 'includes/config.php';
 require_once 'includes/i18n.php';
+
 $reportConfig = [
     'typeId' => 'region',
-    'analyticsMethod' => 'getListenerAddWithRegion',
+    'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
     'faqLinkType' => 'region',
     'pageTitle' => __('User Statistics by Region - SPCast Live'),
     'pageDescription' => __('Shows user activities by region. Detailed statistics for various time periods, daily and weekly.'),
@@ -18,9 +19,9 @@ $reportConfig = [
         'today' => __('Distribution by Region for Today'),
         'yesterday' => __('Distribution by Region for Yesterday'),
         '7days' => __('Distribution by Region over the last 7 Days'),
-        '30days' => __('Distribution by Region over the last 30 Days')
+        '30days' => __('Distribution by Region over the last 30 Days'),
     ],
-    'chartLabel' => 'Bundesland'
+    'chartLabel' => __('Region'),
 ];
 
 require_once 'includes/report_template.php';

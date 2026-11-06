@@ -1,11 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
+require_once 'includes/config.php';
 require_once 'includes/i18n.php';
+
 $reportConfig = [
     'typeId' => 'port',
-    'analyticsMethod' => 'getListenerAddWithPort',
+    'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
     'faqLinkType' => 'port',
     'pageTitle' => __('Port Statistics - SPCast Live'),
     'pageDescription' => __('Statistics on the ports used by users in the network. Real-time data for daily and weekly analyses.'),
@@ -18,9 +19,9 @@ $reportConfig = [
         'today' => __('Port Distribution for Today'),
         'yesterday' => __('Port Distribution for Yesterday'),
         '7days' => __('Port Distribution over the last 7 Days'),
-        '30days' => __('Port Distribution over the last 30 Days')
+        '30days' => __('Port Distribution over the last 30 Days'),
     ],
-    'chartLabel' => 'Port'
+    'chartLabel' => __('Port'),
 ];
 
 require_once 'includes/report_template.php';

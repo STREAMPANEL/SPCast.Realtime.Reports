@@ -486,7 +486,6 @@ msgstr "Statistics on the browsers used by users. Real-time data for daily, week
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "spcast live, spcast operačné systémy, používateľské platformy, štatistiky OS, dáta v reálnom čase, sieťové platformy"
 
@@ -522,3 +521,198 @@ msgstr "spcast live, spcast porty, užívateľské štatistiky portov, sieťové
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "spcast live, spcast štatistiky v reálnom čase, užívateľské štatistiky, sieťové štatistiky, živé dáta, využitie kanálov"
+
+msgid "Live Network Telemetry"
+msgstr "Živá sieťová telemetria"
+
+msgid "Realtime Overview"
+msgstr "Prehľad v reálnom čase"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Pripojení (posledných 30 min)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Odpojení (posledných 30 min)"
+
+msgid "Details"
+msgstr "Podrobnosti"
+
+msgid "Net Stream Flow"
+msgstr "Čistý tok streamu"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Bilancia príchodzích a odchádzajúcich"
+
+msgid "Auto Refresh"
+msgstr "Automatická aktualizácia"
+
+msgid "Refresh now"
+msgstr "Aktualizovať teraz"
+
+msgid "Pause auto-refresh"
+msgstr "Pozastaviť automatickú aktualizáciu"
+
+msgid "Resume auto-refresh"
+msgstr "Obnoviť automatickú aktualizáciu"
+
+msgid "Paused"
+msgstr "Pozastavené"
+
+msgid "Interactive Statistics Hub"
+msgstr "Interaktívne centrum štatistík"
+
+msgid "Open dedicated view"
+msgstr "Otvoriť detailné zobrazenie"
+
+msgid "Select statistic category"
+msgstr "Vybrať kategóriu štatistík"
+
+msgid "Select time period"
+msgstr "Vybrať časové obdobie"
+
+msgid "Chart scale"
+msgstr "Mierka grafu"
+
+msgid "Linear"
+msgstr "Lineárna"
+
+msgid "Logarithmic"
+msgstr "Logaritmická"
+
+msgid "Chart limit"
+msgstr "Limit grafu"
+
+msgid "Top 15"
+msgstr "Top 15"
+
+msgid "All entries"
+msgstr "Všetky položky"
+
+msgid "Filter entries"
+msgstr "Filtrovať položky"
+
+msgid "Filter entries..."
+msgstr "Filtrovať položky..."
+
+msgid "Total events"
+msgstr "Celkom udalostí"
+
+msgid "Unique entries"
+msgstr "Unikátne hodnoty"
+
+msgid "Top entry"
+msgstr "Najčastejšie"
+
+msgid "Loading statistics..."
+msgstr "Načítavanie štatistík..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Pre vybrané obdobie zatiaľ nie sú k dispozícii žiadne štatistiky."
+
+msgid "Count"
+msgstr "Počet"
+
+msgid "Share"
+msgstr "Podiel"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Podrobný rozpis pre vybranú štatistiku a obdobie"
+
+msgid "Entry"
+msgstr "Položka"
+
+msgid "Rank"
+msgstr "Poradie"
+
+msgid "All Individual Views"
+msgstr "Všetky jednotlivé zobrazenia"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Priamy prístup na všetky špecializované stránky živých a historických prehľadov."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Anonymizované údaje o využívaní IPv4 a IPv6 v sieti SPCast. Tieto štatistiky poskytujú prehľad o rozložení verzií IP medzi rádiovými stanicami."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Podrobné štatistiky o používaných mountpointoch v sieti."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Získajte podrobné anonymizované údaje o mountpointoch v sieti SPCast."
+
+msgid "Unable to load statistics at the moment."
+msgstr "Štatistiky nie je možné momentálne načítať."
+
+msgid "Number of users"
+msgstr "Počet používateľov"
+
+msgid "System (currently dark)"
+msgstr "Systém (aktuálne tmavý)"
+
+msgid "System (currently light)"
+msgstr "Systém (aktuálne svetlý)"
+
+msgid "Select color scheme"
+msgstr "Vybrať farebnú schému"
+
+msgid "System default"
+msgstr "Predvolené systémom"
+
+msgid "System"
+msgstr "Systém"
+
+msgid "Light theme"
+msgstr "Svetlý motív"
+
+msgid "Dark theme"
+msgstr "Tmavý motív"
+
+msgid "Adjust font size"
+msgstr "Upraviť veľkosť písma"
+
+msgid "Decrease font size"
+msgstr "Zmenšiť písmo"
+
+msgid "Default font size"
+msgstr "Predvolená veľkosť písma"
+
+msgid "Increase font size"
+msgstr "Zväčšiť písmo"
+
+msgid "Last 30 Minutes"
+msgstr "Posledných 30 minút"
+
+msgid "Minutes ago"
+msgstr "Pred minútami"
+
+msgid "Back to Statistics Hub"
+msgstr "Späť do centra štatistík"
+
+msgid "Peak Today"
+msgstr "Dnešné maximum"
+
+msgid "Highest hourly value recorded today"
+msgstr "Najvyššia hodinová hodnota zaznamenaná dnes"
+
+msgid "Last 7 Days Total"
+msgstr "Celkom za posledných 7 dní"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Kumulatívni aktívni používatelia (7 dní)"
+
+msgid "Close"
+msgstr "Zavrieť"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

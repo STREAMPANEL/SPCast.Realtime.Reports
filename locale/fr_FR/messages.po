@@ -486,7 +486,6 @@ msgstr "Statistiques sur les navigateurs utilisés par les utilisateurs. Donnée
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Données anonymisées sur les navigateurs utilisés par les utilisateurs du réseau SPCast. Ces statistiques aident à analyser les préférences techniques des utilisateurs, sur la base de données en temps réel."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "spcast live, systèmes d'exploitation spcast, plates-formes utilisateur, statistiques du système d'exploitation, données en temps réel, plates-formes réseau"
 
@@ -522,3 +521,198 @@ msgstr "spcast live, ports spcast, ports de statistiques utilisateur, données r
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "spcast live, statistiques spcast en temps réel, statistiques utilisateur, statistiques réseau, données en direct, utilisation des canaux"
+
+msgid "Live Network Telemetry"
+msgstr "Télémétrie réseau en direct"
+
+msgid "Realtime Overview"
+msgstr "Aperçu en temps réel"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Connectés (30 dernières min)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Déconnectés (30 dernières min)"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "Net Stream Flow"
+msgstr "Flux net du stream"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Solde des entrées par rapport aux sorties"
+
+msgid "Auto Refresh"
+msgstr "Actualisation auto"
+
+msgid "Refresh now"
+msgstr "Actualiser maintenant"
+
+msgid "Pause auto-refresh"
+msgstr "Suspendre l'actualisation automatique"
+
+msgid "Resume auto-refresh"
+msgstr "Reprendre l'actualisation automatique"
+
+msgid "Paused"
+msgstr "En pause"
+
+msgid "Interactive Statistics Hub"
+msgstr "Centre de statistiques interactif"
+
+msgid "Open dedicated view"
+msgstr "Ouvrir la vue dédiée"
+
+msgid "Select statistic category"
+msgstr "Sélectionner une catégorie de statistiques"
+
+msgid "Select time period"
+msgstr "Sélectionner la période"
+
+msgid "Chart scale"
+msgstr "Échelle du graphique"
+
+msgid "Linear"
+msgstr "Linéaire"
+
+msgid "Logarithmic"
+msgstr "Logarithmique"
+
+msgid "Chart limit"
+msgstr "Limite d'affichage"
+
+msgid "Top 15"
+msgstr "Top 15"
+
+msgid "All entries"
+msgstr "Toutes les entrées"
+
+msgid "Filter entries"
+msgstr "Filtrer les entrées"
+
+msgid "Filter entries..."
+msgstr "Filtrer les entrées..."
+
+msgid "Total events"
+msgstr "Total des événements"
+
+msgid "Unique entries"
+msgstr "Valeurs uniques"
+
+msgid "Top entry"
+msgstr "Première position"
+
+msgid "Loading statistics..."
+msgstr "Chargement des statistiques..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Aucune statistique disponible pour la période sélectionnée."
+
+msgid "Count"
+msgstr "Nombre"
+
+msgid "Share"
+msgstr "Part"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Répartition détaillée pour la statistique et la période sélectionnées"
+
+msgid "Entry"
+msgstr "Entrée"
+
+msgid "Rank"
+msgstr "Rang"
+
+msgid "All Individual Views"
+msgstr "Toutes les vues individuelles"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Accès direct à toutes les pages de rapports en temps réel et historiques."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Données anonymisées sur l'utilisation d'IPv4 et d'IPv6 dans le réseau SPCast. Ces statistiques donnent un aperçu de la répartition des versions IP entre les stations de radio."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Statistiques détaillées sur les points de montage utilisés dans le réseau. Analyses disponibles pour différentes périodes."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Obtenez des données détaillées et anonymisées sur les points de montage utilisés dans le réseau SPCast."
+
+msgid "Unable to load statistics at the moment."
+msgstr "Impossible de charger les statistiques pour le moment."
+
+msgid "Number of users"
+msgstr "Nombre d'utilisateurs"
+
+msgid "System (currently dark)"
+msgstr "Système (actuellement sombre)"
+
+msgid "System (currently light)"
+msgstr "Système (actuellement clair)"
+
+msgid "Select color scheme"
+msgstr "Sélectionner le thème de couleur"
+
+msgid "System default"
+msgstr "Système par défaut"
+
+msgid "System"
+msgstr "Système"
+
+msgid "Light theme"
+msgstr "Thème clair"
+
+msgid "Dark theme"
+msgstr "Thème sombre"
+
+msgid "Adjust font size"
+msgstr "Ajuster la taille de police"
+
+msgid "Decrease font size"
+msgstr "Réduire la taille du texte"
+
+msgid "Default font size"
+msgstr "Taille de texte normale"
+
+msgid "Increase font size"
+msgstr "Agrandir la taille du texte"
+
+msgid "Last 30 Minutes"
+msgstr "30 dernières minutes"
+
+msgid "Minutes ago"
+msgstr "Minutes écoulées"
+
+msgid "Back to Statistics Hub"
+msgstr "Retour au centre de statistiques"
+
+msgid "Peak Today"
+msgstr "Pic aujourd'hui"
+
+msgid "Highest hourly value recorded today"
+msgstr "Valeur horaire maximale enregistrée aujourd'hui"
+
+msgid "Last 7 Days Total"
+msgstr "Total des 7 derniers jours"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Utilisateurs actifs cumulés (7 jours)"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

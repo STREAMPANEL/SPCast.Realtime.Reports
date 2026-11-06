@@ -1,17 +1,13 @@
 <?php
-
 declare(strict_types=1);
 
 namespace App;
 
 class Logger
 {
-    private string $logFile;
-
-    public function __construct(string $logFile)
-    {
-        $this->logFile = $logFile;
-        // Ensure directory exists
+    public function __construct(
+        private readonly string $logFile
+    ) {
         $dir = dirname($this->logFile);
         if (!is_dir($dir)) {
             mkdir($dir, 0755, true);
@@ -21,12 +17,21 @@ class Logger
     public function error(string $message): void
     {
         $timestamp = date('Y-m-d H:i:s');
-        $formattedMessage = "[$timestamp] ERROR: $message" . PHP_EOL;
+        $sanitized = str_replace(["\r", "\n"], ' ', $message);
+        $formattedMessage = "[$timestamp] ERROR: $sanitized" . PHP_EOL;
         error_log($formattedMessage, 3, $this->logFile);
     }
 
     public static function createDefault(): self
     {
-        return new self(__DIR__ . '/../logs/error.log');
+        $logDir = __DIR__ . '/../logs';
+        $logger = new self($logDir . '/error.log');
+        $htaccessFile = $logDir . '/.htaccess';
+        if (!file_exists($htaccessFile) && is_writable($logDir)) {
+            $rules = "<IfModule mod_authz_core.c>\n    Require all denied\n</IfModule>\n<IfModule !mod_authz_core.c>\n    Order deny,allow\n    Deny from all\n</IfModule>\n";
+            file_put_contents($htaccessFile, $rules, LOCK_EX);
+        }
+
+        return $logger;
     }
 }

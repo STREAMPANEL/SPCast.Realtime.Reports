@@ -1,2 +1,26 @@
-### Set PHP 8.2
-AddType application/x-httpd-alt-php82___lsphp .php5 .php4 .php .php3 .php2 .phtml
+### Set PHP 8.5
+AddType application/x-httpd-alt-php85___lsphp .php5 .php4 .php .php3 .php2 .phtml
+
+Options -Indexes
+
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule (^|/)\.(?!well-known/) - [F,L]
+    RewriteRule ^(logs|cache|src|tests|includes|vendor)/ - [F,L]
+</IfModule>
+
+<FilesMatch "^(composer\.(json|lock)|phpunit\.xml(\.dist)?|README\.md)$|\.(log|po|mo|pot|lock|sh|sql|bak)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

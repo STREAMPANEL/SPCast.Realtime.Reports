@@ -486,7 +486,6 @@ msgstr "Statistics on the browsers used by users. Real-time data for daily, week
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "spcast live, spcast λειτουργικά συστήματα, πλατφόρμες χρηστών, στατιστικά OS, δεδομένα σε πραγματικό χρόνο, πλατφόρμες δικτύου"
 
@@ -522,3 +521,198 @@ msgstr "spcast live, spcast ports, user statistics ports, data network, real tim
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "spcast live, spcast στατιστικά σε πραγματικό χρόνο, στατιστικά χρήστη, στατιστικά δικτύου, ζωντανά δεδομένα, χρήση καναλιού"
+
+msgid "Live Network Telemetry"
+msgstr "Ζωντανή τηλεμετρία δικτύου"
+
+msgid "Realtime Overview"
+msgstr "Επισκόπηση σε πραγματικό χρόνο"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Συνδέθηκαν (τελευταία 30 λεπτά)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Αποσυνδέθηκαν (τελευταία 30 λεπτά)"
+
+msgid "Details"
+msgstr "Λεπτομέρειες"
+
+msgid "Net Stream Flow"
+msgstr "Καθαρή ροή μετάδοσης"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Ισοζύγιο εισερχομένων και εξερχομένων"
+
+msgid "Auto Refresh"
+msgstr "Αυτόματη ανανέωση"
+
+msgid "Refresh now"
+msgstr "Ανανέωση τώρα"
+
+msgid "Pause auto-refresh"
+msgstr "Παύση αυτόματης ανανέωσης"
+
+msgid "Resume auto-refresh"
+msgstr "Συνέχιση αυτόματης ανανέωσης"
+
+msgid "Paused"
+msgstr "Σε παύση"
+
+msgid "Interactive Statistics Hub"
+msgstr "Διαδραστικό κέντρο στατιστικών"
+
+msgid "Open dedicated view"
+msgstr "Άνοιγμα αναλυτικής προβολής"
+
+msgid "Select statistic category"
+msgstr "Επιλογή κατηγορίας στατιστικών"
+
+msgid "Select time period"
+msgstr "Επιλογή χρονικής περιόδου"
+
+msgid "Chart scale"
+msgstr "Κλίμακα γραφήματος"
+
+msgid "Linear"
+msgstr "Γραμμική"
+
+msgid "Logarithmic"
+msgstr "Λογαριθμική"
+
+msgid "Chart limit"
+msgstr "Όριο γραφήματος"
+
+msgid "Top 15"
+msgstr "Κορυφαία 15"
+
+msgid "All entries"
+msgstr "Όλες οι εγγραφές"
+
+msgid "Filter entries"
+msgstr "Φιλτράρισμα εγγραφών"
+
+msgid "Filter entries..."
+msgstr "Φιλτράρισμα..."
+
+msgid "Total events"
+msgstr "Σύνολο συμβάντων"
+
+msgid "Unique entries"
+msgstr "Μοναδικές τιμές"
+
+msgid "Top entry"
+msgstr "Κορυφαία εγγραφή"
+
+msgid "Loading statistics..."
+msgstr "Φόρτωση στατιστικών..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Δεν υπάρχουν ακόμη διαθέσιμα στατιστικά για την επιλεγμένη περίοδο."
+
+msgid "Count"
+msgstr "Πλήθος"
+
+msgid "Share"
+msgstr "Μερίδιο"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Αναλυτική κατανομή για το επιλεγμένο στατιστικό και περίοδο"
+
+msgid "Entry"
+msgstr "Εγγραφή"
+
+msgid "Rank"
+msgstr "Κατάταξη"
+
+msgid "All Individual Views"
+msgstr "Όλες οι μεμονωμένες προβολές"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Άμεση πρόσβαση σε όλες τις εξειδικευμένες σελίδες αναφορών πραγματικού χρόνου και ιστορικού."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Ανωνυμοποιημένα δεδομένα σχετικά με τη χρήση IPv4 και IPv6 στο δίκτυο SPCast."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Αναλυτικά στατιστικά για τα mountpoints που χρησιμοποιούνται στο δίκτυο."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Λάβετε αναλυτικά, ανωνυμοποιημένα δεδομένα για τα mountpoints στο δίκτυο SPCast."
+
+msgid "Unable to load statistics at the moment."
+msgstr "Δεν είναι δυνατή η φόρτωση των στατιστικών αυτή τη στιγμή."
+
+msgid "Number of users"
+msgstr "Αριθμός χρηστών"
+
+msgid "System (currently dark)"
+msgstr "Σύστημα (τρέχον σκοτεινό)"
+
+msgid "System (currently light)"
+msgstr "Σύστημα (τρέχον φωτεινό)"
+
+msgid "Select color scheme"
+msgstr "Επιλογή χρωματικού θέματος"
+
+msgid "System default"
+msgstr "Προεπιλογή συστήματος"
+
+msgid "System"
+msgstr "Σύστημα"
+
+msgid "Light theme"
+msgstr "Φωτεινό θέμα"
+
+msgid "Dark theme"
+msgstr "Σκοτεινό θέμα"
+
+msgid "Adjust font size"
+msgstr "Προσαρμογή μεγέθους γραμματοσειράς"
+
+msgid "Decrease font size"
+msgstr "Μείωση γραμματοσειράς"
+
+msgid "Default font size"
+msgstr "Προεπιλεγμένο μέγεθος"
+
+msgid "Increase font size"
+msgstr "Αύξηση γραμματοσειράς"
+
+msgid "Last 30 Minutes"
+msgstr "Τελευταία 30 λεπτά"
+
+msgid "Minutes ago"
+msgstr "Λεπτά πριν"
+
+msgid "Back to Statistics Hub"
+msgstr "Επιστροφή στο κέντρο στατιστικών"
+
+msgid "Peak Today"
+msgstr "Μέγιστο σήμερα"
+
+msgid "Highest hourly value recorded today"
+msgstr "Υψηλότερη ωριαία τιμή σήμερα"
+
+msgid "Last 7 Days Total"
+msgstr "Σύνολο τελευταίων 7 ημερών"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Αθροιστικοί ενεργοί χρήστες (7 ημέρες)"
+
+msgid "Close"
+msgstr "Κλείσιμο"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

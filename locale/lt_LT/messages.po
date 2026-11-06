@@ -486,7 +486,6 @@ msgstr "Statistics on the browsers used by users. Real-time data for daily, week
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "„spcast live“, „spcast“ operacinės sistemos, vartotojų platformos, OS statistika, realaus laiko duomenys, tinklo platformos"
 
@@ -522,3 +521,198 @@ msgstr "„spcast live“, „spcast“ prievadai, vartotojų statistikos prieva
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "„Spcast“ tiesiogiai, „Spcast“ realaus laiko statistika, vartotojų statistika, tinklo statistika, tiesioginiai duomenys, kanalo naudojimas"
+
+msgid "Live Network Telemetry"
+msgstr "Tiesioginė tinklo telemetrija"
+
+msgid "Realtime Overview"
+msgstr "Realaus laiko apžvalga"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Prisijungė (paskutinės 30 min.)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Atsijungė (paskutinės 30 min.)"
+
+msgid "Details"
+msgstr "Išsamiau"
+
+msgid "Net Stream Flow"
+msgstr "Grynasis srauto balansas"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Įeinančių ir išeinančių santykis"
+
+msgid "Auto Refresh"
+msgstr "Automatinis atnaujinimas"
+
+msgid "Refresh now"
+msgstr "Atnaujinti dabar"
+
+msgid "Pause auto-refresh"
+msgstr "Pristabdyti automatinį atnaujinimą"
+
+msgid "Resume auto-refresh"
+msgstr "Tęsti automatinį atnaujinimą"
+
+msgid "Paused"
+msgstr "Pristabdyta"
+
+msgid "Interactive Statistics Hub"
+msgstr "Interaktyvus statistikos centras"
+
+msgid "Open dedicated view"
+msgstr "Atidaryti išsamų vaizdą"
+
+msgid "Select statistic category"
+msgstr "Pasirinkite statistikos kategoriją"
+
+msgid "Select time period"
+msgstr "Pasirinkite laikotarpį"
+
+msgid "Chart scale"
+msgstr "Diagramos skalė"
+
+msgid "Linear"
+msgstr "Tiesinė"
+
+msgid "Logarithmic"
+msgstr "Logaritminė"
+
+msgid "Chart limit"
+msgstr "Diagramos riba"
+
+msgid "Top 15"
+msgstr "Top 15"
+
+msgid "All entries"
+msgstr "Visi įrašai"
+
+msgid "Filter entries"
+msgstr "Filtruoti įrašus"
+
+msgid "Filter entries..."
+msgstr "Filtruoti įrašus..."
+
+msgid "Total events"
+msgstr "Iš viso įvykių"
+
+msgid "Unique entries"
+msgstr "Unikalios reikšmės"
+
+msgid "Top entry"
+msgstr "Lyderis"
+
+msgid "Loading statistics..."
+msgstr "Įkeliama statistika..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Pasirinktam laikotarpiui statistikos dar nėra."
+
+msgid "Count"
+msgstr "Skaičius"
+
+msgid "Share"
+msgstr "Dalis"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Išsamus pasirinktos statistikos ir laikotarpio suskirstymas"
+
+msgid "Entry"
+msgstr "Įrašas"
+
+msgid "Rank"
+msgstr "Vieta"
+
+msgid "All Individual Views"
+msgstr "Visi atskiri rodiniai"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Tiesioginė prieiga prie visų specializuotų realaus laiko ir istorinių ataskaitų puslapių."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Anonimizuoti duomenys apie IPv4 ir IPv6 naudojimą SPCast tinkle."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Išsami tinkle naudojamų mountpoint taškų statistika."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Gaukite išsamius anonimizuotus duomenis apie SPCast tinkle naudojamus mountpoint taškus."
+
+msgid "Unable to load statistics at the moment."
+msgstr "Šiuo metu nepavyksta įkelti statistikos."
+
+msgid "Number of users"
+msgstr "Vartotojų skaičius"
+
+msgid "System (currently dark)"
+msgstr "Sistema (dabar tamsi)"
+
+msgid "System (currently light)"
+msgstr "Sistema (dabar šviesi)"
+
+msgid "Select color scheme"
+msgstr "Pasirinkite spalvų schemą"
+
+msgid "System default"
+msgstr "Sistemos numatytoji"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "Light theme"
+msgstr "Šviesi tema"
+
+msgid "Dark theme"
+msgstr "Tamsi tema"
+
+msgid "Adjust font size"
+msgstr "Keisti šrifto dydį"
+
+msgid "Decrease font size"
+msgstr "Sumažinti šriftą"
+
+msgid "Default font size"
+msgstr "Numatytasis šrifto dydis"
+
+msgid "Increase font size"
+msgstr "Padidinti šriftą"
+
+msgid "Last 30 Minutes"
+msgstr "Paskutinės 30 minučių"
+
+msgid "Minutes ago"
+msgstr "Prieš minučių"
+
+msgid "Back to Statistics Hub"
+msgstr "Atgal į statistikos centrą"
+
+msgid "Peak Today"
+msgstr "Šiandienos pikas"
+
+msgid "Highest hourly value recorded today"
+msgstr "Didžiausia šiandien užfiksuota valandinė reikšmė"
+
+msgid "Last 7 Days Total"
+msgstr "Iš viso per 7 dienas"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Kaupiamieji aktyvūs vartotojai (7 d.)"
+
+msgid "Close"
+msgstr "Uždaryti"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

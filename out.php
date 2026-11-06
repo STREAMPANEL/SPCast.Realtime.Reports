@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types=1);
 
 require_once 'includes/config.php';
@@ -20,8 +19,8 @@ $inoutConfig = [
         'realtime' => __('Tuned out per 30 minutes'),
         'realtimeY' => __('Tuned out per 30 minutes'),
         'weekly' => __('Tuned out over the last 7 days'),
-        'monthly' => __('Tuned out over the last 30 days')
-    ]
+        'monthly' => __('Tuned out over the last 30 days'),
+    ],
 ];
 
 require_once 'includes/inout_template.php';

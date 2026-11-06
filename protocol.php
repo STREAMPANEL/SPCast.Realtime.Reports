@@ -1,11 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
+require_once 'includes/config.php';
 require_once 'includes/i18n.php';
+
 $reportConfig = [
     'typeId' => 'protocol',
-    'analyticsMethod' => 'getListenerAddWithProtocol',
+    'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
     'faqLinkType' => 'protocol',
     'pageTitle' => __('Protocol Statistics - SPCast Live'),
     'pageDescription' => __('Shows the protocols of user activities in the network. Statistics for daily, weekly, and monthly evaluations.'),
@@ -18,9 +19,9 @@ $reportConfig = [
         'today' => __('Protocol Distribution for Today'),
         'yesterday' => __('Protocol Distribution for Yesterday'),
         '7days' => __('Protocol Distribution over the last 7 Days'),
-        '30days' => __('Protocol Distribution over the last 30 Days')
+        '30days' => __('Protocol Distribution over the last 30 Days'),
     ],
-    'chartLabel' => 'Protokoll'
+    'chartLabel' => __('Protocol'),
 ];
 
 require_once 'includes/report_template.php';

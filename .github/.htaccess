@@ -1,0 +1,3 @@
+# Protect source files even if the project-root guard is missing.
+Options -Indexes
+Require all denied

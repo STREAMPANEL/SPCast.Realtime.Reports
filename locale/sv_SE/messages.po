@@ -486,7 +486,6 @@ msgstr "Statistik om de webbläsare som används av användarna. Realtidsdata f�
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Anonymiserade data om de använda webbläsarna för användarna i SPCast-nätverket. Denna statistik hjälper till att analysera användarnas tekniska preferenser, baserat på realtidsdata."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "spcast live, spcast operativsystem, användarplattformar, OS-statistik, realtidsdata, nätverksplattformar"
 
@@ -522,3 +521,198 @@ msgstr "spcast live, spcast-portar, användarstatistikportar, nätverksdata, rea
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "spcast live, spcast realtidsstatistik, användarstatistik, nätverksstatistik, livedata, kanalanvändning"
+
+msgid "Live Network Telemetry"
+msgstr "Live nätverkstelemetri"
+
+msgid "Realtime Overview"
+msgstr "Realtidsöversikt"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Inkopplade (senaste 30 min)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Frånkopplade (senaste 30 min)"
+
+msgid "Details"
+msgstr "Detaljer"
+
+msgid "Net Stream Flow"
+msgstr "Nettoströmflöde"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Balans mellan inkommande och utgående"
+
+msgid "Auto Refresh"
+msgstr "Automatisk uppdatering"
+
+msgid "Refresh now"
+msgstr "Uppdatera nu"
+
+msgid "Pause auto-refresh"
+msgstr "Pausa automatisk uppdatering"
+
+msgid "Resume auto-refresh"
+msgstr "Återuppta automatisk uppdatering"
+
+msgid "Paused"
+msgstr "Pausad"
+
+msgid "Interactive Statistics Hub"
+msgstr "Interaktiv statistikhubb"
+
+msgid "Open dedicated view"
+msgstr "Öppna detaljvy"
+
+msgid "Select statistic category"
+msgstr "Välj statistikkategori"
+
+msgid "Select time period"
+msgstr "Välj tidsperiod"
+
+msgid "Chart scale"
+msgstr "Diagramskala"
+
+msgid "Linear"
+msgstr "Linjär"
+
+msgid "Logarithmic"
+msgstr "Logaritmisk"
+
+msgid "Chart limit"
+msgstr "Diagramgräns"
+
+msgid "Top 15"
+msgstr "Topp 15"
+
+msgid "All entries"
+msgstr "Alla poster"
+
+msgid "Filter entries"
+msgstr "Filtrera poster"
+
+msgid "Filter entries..."
+msgstr "Filtrera poster..."
+
+msgid "Total events"
+msgstr "Totalt antal händelser"
+
+msgid "Unique entries"
+msgstr "Unika värden"
+
+msgid "Top entry"
+msgstr "Toppvärde"
+
+msgid "Loading statistics..."
+msgstr "Laddar statistik..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Ingen statistik tillgänglig för den valda perioden ännu."
+
+msgid "Count"
+msgstr "Antal"
+
+msgid "Share"
+msgstr "Andel"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Detaljerad fördelning för vald statistik och period"
+
+msgid "Entry"
+msgstr "Post"
+
+msgid "Rank"
+msgstr "Rang"
+
+msgid "All Individual Views"
+msgstr "Alla enskilda vyer"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Direkt åtkomst till alla specialiserade realtids- och historikrapporter."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Anonymiserade data om användningen av IPv4 och IPv6 i SPCast-nätverket. Statistiken visar fördelningen av IP-versioner mellan radiostationerna."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Detaljerad statistik över använda mountpoints i nätverket."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Få detaljerade, anonymiserade data om mountpoints i SPCast-nätverket."
+
+msgid "Unable to load statistics at the moment."
+msgstr "Det går inte att ladda statistik just nu."
+
+msgid "Number of users"
+msgstr "Antal användare"
+
+msgid "System (currently dark)"
+msgstr "System (för närvarande mörkt)"
+
+msgid "System (currently light)"
+msgstr "System (för närvarande ljust)"
+
+msgid "Select color scheme"
+msgstr "Välj färgschema"
+
+msgid "System default"
+msgstr "Systemstandard"
+
+msgid "System"
+msgstr "System"
+
+msgid "Light theme"
+msgstr "Ljust tema"
+
+msgid "Dark theme"
+msgstr "Mörkt tema"
+
+msgid "Adjust font size"
+msgstr "Justera teckenstorlek"
+
+msgid "Decrease font size"
+msgstr "Minska teckenstorlek"
+
+msgid "Default font size"
+msgstr "Standardteckenstorlek"
+
+msgid "Increase font size"
+msgstr "Öka teckenstorlek"
+
+msgid "Last 30 Minutes"
+msgstr "Senaste 30 minuterna"
+
+msgid "Minutes ago"
+msgstr "Minuter sedan"
+
+msgid "Back to Statistics Hub"
+msgstr "Tillbaka till statistikhubben"
+
+msgid "Peak Today"
+msgstr "Toppnotering idag"
+
+msgid "Highest hourly value recorded today"
+msgstr "Högsta timvärde uppmätt idag"
+
+msgid "Last 7 Days Total"
+msgstr "Totalt senaste 7 dagarna"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Ackumulerade aktiva användare (7 dagar)"
+
+msgid "Close"
+msgstr "Stäng"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

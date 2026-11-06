@@ -486,7 +486,6 @@ msgstr "Statistics on the browsers used by users. Real-time data for daily, week
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "spcast live, sisteme de operare spcast, platforme de utilizatori, statistici OS, date în timp real, platforme de rețea"
 
@@ -522,3 +521,198 @@ msgstr "spcast live, porturi spcast, porturi pentru statistici utilizator, date 
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "spcast live, statistici spcast în timp real, statistici utilizatori, statistici de rețea, date live, utilizarea canalului"
+
+msgid "Live Network Telemetry"
+msgstr "Telemetrie de rețea în timp real"
+
+msgid "Realtime Overview"
+msgstr "Prezentare în timp real"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Conectați (ultimele 30 min)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Deconectați (ultimele 30 min)"
+
+msgid "Details"
+msgstr "Detalii"
+
+msgid "Net Stream Flow"
+msgstr "Flux net de redare"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Balanța dintre intrări și ieșiri"
+
+msgid "Auto Refresh"
+msgstr "Actualizare automată"
+
+msgid "Refresh now"
+msgstr "Actualizează acum"
+
+msgid "Pause auto-refresh"
+msgstr "Întrerupe actualizarea automată"
+
+msgid "Resume auto-refresh"
+msgstr "Reia actualizarea automată"
+
+msgid "Paused"
+msgstr "În pauză"
+
+msgid "Interactive Statistics Hub"
+msgstr "Centru interactiv de statistici"
+
+msgid "Open dedicated view"
+msgstr "Deschide vizualizarea dedicată"
+
+msgid "Select statistic category"
+msgstr "Selectează categoria statistică"
+
+msgid "Select time period"
+msgstr "Selectează perioada"
+
+msgid "Chart scale"
+msgstr "Scara graficului"
+
+msgid "Linear"
+msgstr "Liniar"
+
+msgid "Logarithmic"
+msgstr "Logaritmic"
+
+msgid "Chart limit"
+msgstr "Limita graficului"
+
+msgid "Top 15"
+msgstr "Top 15"
+
+msgid "All entries"
+msgstr "Toate intrările"
+
+msgid "Filter entries"
+msgstr "Filtrează intrările"
+
+msgid "Filter entries..."
+msgstr "Filtrează intrările..."
+
+msgid "Total events"
+msgstr "Total evenimente"
+
+msgid "Unique entries"
+msgstr "Valori unice"
+
+msgid "Top entry"
+msgstr "Pe primul loc"
+
+msgid "Loading statistics..."
+msgstr "Se încarcă statisticile..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Nu există încă statistici disponibile pentru perioada selectată."
+
+msgid "Count"
+msgstr "Număr"
+
+msgid "Share"
+msgstr "Pondere"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Detaliere completă pentru statistica și perioada selectate"
+
+msgid "Entry"
+msgstr "Intrare"
+
+msgid "Rank"
+msgstr "Loc"
+
+msgid "All Individual Views"
+msgstr "Toate vizualizările individuale"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Acces direct la toate paginile specializate de rapoarte în timp real și istorice."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Date anonimizate privind utilizarea IPv4 și IPv6 în rețeaua SPCast. Aceste statistici oferă informații despre distribuția versiunilor IP."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Statistici detaliate privind mountpoint-urile utilizate în rețea."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Obțineți date detaliate și anonimizate despre mountpoint-urile utilizate în rețeaua SPCast."
+
+msgid "Unable to load statistics at the moment."
+msgstr "Statisticile nu pot fi încărcate momentan."
+
+msgid "Number of users"
+msgstr "Număr de utilizatori"
+
+msgid "System (currently dark)"
+msgstr "Sistem (actual întunecat)"
+
+msgid "System (currently light)"
+msgstr "Sistem (actual luminos)"
+
+msgid "Select color scheme"
+msgstr "Selectează schema de culori"
+
+msgid "System default"
+msgstr "Implicit sistem"
+
+msgid "System"
+msgstr "Sistem"
+
+msgid "Light theme"
+msgstr "Temă luminoasă"
+
+msgid "Dark theme"
+msgstr "Temă întunecată"
+
+msgid "Adjust font size"
+msgstr "Ajustează dimensiunea textului"
+
+msgid "Decrease font size"
+msgstr "Micșorează textul"
+
+msgid "Default font size"
+msgstr "Dimensiune standard text"
+
+msgid "Increase font size"
+msgstr "Mărește textul"
+
+msgid "Last 30 Minutes"
+msgstr "Ultimele 30 de minute"
+
+msgid "Minutes ago"
+msgstr "Minute în urmă"
+
+msgid "Back to Statistics Hub"
+msgstr "Înapoi la centrul de statistici"
+
+msgid "Peak Today"
+msgstr "Vârful de astăzi"
+
+msgid "Highest hourly value recorded today"
+msgstr "Cea mai mare valoare orară înregistrată astăzi"
+
+msgid "Last 7 Days Total"
+msgstr "Total ultimele 7 zile"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Utilizatori activi cumulați (7 zile)"
+
+msgid "Close"
+msgstr "Închide"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

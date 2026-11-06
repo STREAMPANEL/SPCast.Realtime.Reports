@@ -486,7 +486,6 @@ msgstr "Statistics on the browsers used by users. Real-time data for daily, week
 msgid "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 msgstr "Anonymized data on the used browsers of the users in the SPCast network. These statistics help in analyzing technical preferences of users, based on real-time data."
 
-
 msgid "spcast live, spcast betriebssysteme, nutzerplattformen, os statistiken, echtzeitdaten, netzwerkplattformen"
 msgstr "spcast live, sistemi operattivi spcast, pjattaformi tal-utenti, statistika tal-OS, data f'ħin reali, pjattaformi tan-netwerk"
 
@@ -522,3 +521,198 @@ msgstr "spcast live, portijiet spcast, portijiet tal-istatistika tal-utent, data
 
 msgid "spcast live, spcast echtzeitstatistiken, nutzerstatistik, netzwerkstatistiken, live daten, sendernutzung"
 msgstr "spcast live, statistika spcast f'ħin reali, statistika tal-utent, statistika tan-netwerk, dejta diretta, użu tal-kanal"
+
+msgid "Live Network Telemetry"
+msgstr "Telemetrija tan-netwerk diretta"
+
+msgid "Realtime Overview"
+msgstr "Ħarsa ġenerali f'ħin reali"
+
+msgid "Tuned in (last 30 min)"
+msgstr "Konnessi (l-aħħar 30 min)"
+
+msgid "Tuned out (last 30 min)"
+msgstr "Skonnessi (l-aħħar 30 min)"
+
+msgid "Details"
+msgstr "Dettalji"
+
+msgid "Net Stream Flow"
+msgstr "Fluss nett tax-xandir"
+
+msgid "Balance of incoming vs. outgoing"
+msgstr "Bilanċ bejn dħul u ħruġ"
+
+msgid "Auto Refresh"
+msgstr "Aġġornament awtomatiku"
+
+msgid "Refresh now"
+msgstr "Aġġorna issa"
+
+msgid "Pause auto-refresh"
+msgstr "Waqqaf l-aġġornament awtomatiku"
+
+msgid "Resume auto-refresh"
+msgstr "Kompli l-aġġornament awtomatiku"
+
+msgid "Paused"
+msgstr "Imwaqqaf"
+
+msgid "Interactive Statistics Hub"
+msgstr "Ċentru interattiv tal-istatistika"
+
+msgid "Open dedicated view"
+msgstr "Iftaħ id-dehra ddedikata"
+
+msgid "Select statistic category"
+msgstr "Agħżel kategorija tal-istatistika"
+
+msgid "Select time period"
+msgstr "Agħżel il-perjodu ta' żmien"
+
+msgid "Chart scale"
+msgstr "Skala taċ-ċart"
+
+msgid "Linear"
+msgstr "Lineari"
+
+msgid "Logarithmic"
+msgstr "Logaritmika"
+
+msgid "Chart limit"
+msgstr "Limitu taċ-ċart"
+
+msgid "Top 15"
+msgstr "L-Aqwa 15"
+
+msgid "All entries"
+msgstr "L-entrati kollha"
+
+msgid "Filter entries"
+msgstr "Iffiltra l-entrati"
+
+msgid "Filter entries..."
+msgstr "Iffiltra l-entrati..."
+
+msgid "Total events"
+msgstr "Total ta' avvenimenti"
+
+msgid "Unique entries"
+msgstr "Valuri uniċi"
+
+msgid "Top entry"
+msgstr "L-ogħla entrata"
+
+msgid "Loading statistics..."
+msgstr "Qed jitgħabbew l-istatistiċi..."
+
+msgid "No statistics available for the selected period yet."
+msgstr "Għad m'hemmx statistika disponibbli għall-perjodu magħżul."
+
+msgid "Count"
+msgstr "Għadd"
+
+msgid "Share"
+msgstr "Sehem"
+
+msgid "Detailed breakdown for the selected statistic and period"
+msgstr "Tqassim dettaljat għall-istatistika u l-perjodu magħżul"
+
+msgid "Entry"
+msgstr "Entrata"
+
+msgid "Rank"
+msgstr "Pożizzjoni"
+
+msgid "All Individual Views"
+msgstr "Id-dehriet individwali kollha"
+
+msgid "Direct access to all specialized realtime and historical report pages."
+msgstr "Aċċess dirett għall-paġni kollha tar-rapporti f'ħin reali u storiċi."
+
+msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
+msgstr "Data anonimizzata dwar l-użu ta' IPv4 u IPv6 fin-netwerk SPCast."
+
+msgid "Detailed statistics on the mountpoints used in the network. Analyses available for various periods."
+msgstr "Statistika dettaljata dwar il-mountpoints użati fin-netwerk."
+
+msgid "Get detailed, anonymized data on the mountpoints used in the SPCast network. These statistics show general trends in radio station usage."
+msgstr "Ikseb data dettaljata u anonimizzata dwar il-mountpoints fin-netwerk SPCast."
+
+msgid "Unable to load statistics at the moment."
+msgstr "L-istatistika ma tistax titgħabba bħalissa."
+
+msgid "Number of users"
+msgstr "Numru ta' utenti"
+
+msgid "System (currently dark)"
+msgstr "Sistema (bħalissa skura)"
+
+msgid "System (currently light)"
+msgstr "Sistema (bħalissa ċara)"
+
+msgid "Select color scheme"
+msgstr "Agħżel l-iskema tal-kuluri"
+
+msgid "System default"
+msgstr "Standard tas-sistema"
+
+msgid "System"
+msgstr "Sistema"
+
+msgid "Light theme"
+msgstr "Tema ċara"
+
+msgid "Dark theme"
+msgstr "Tema skura"
+
+msgid "Adjust font size"
+msgstr "Aġġusta d-daqs tat-tipa"
+
+msgid "Decrease font size"
+msgstr "Naqqas id-daqs tat-tipa"
+
+msgid "Default font size"
+msgstr "Daqs standard tat-tipa"
+
+msgid "Increase font size"
+msgstr "Żid id-daqs tat-tipa"
+
+msgid "Last 30 Minutes"
+msgstr "L-aħħar 30 minuta"
+
+msgid "Minutes ago"
+msgstr "Minuti ilu"
+
+msgid "Back to Statistics Hub"
+msgstr "Lura lejn iċ-ċentru tal-istatistika"
+
+msgid "Peak Today"
+msgstr "Il-quċċata tal-lum"
+
+msgid "Highest hourly value recorded today"
+msgstr "L-ogħla valur fis-siegħa rreġistrat illum"
+
+msgid "Last 7 Days Total"
+msgstr "Total tal-aħħar 7 ijiem"
+
+msgid "Cumulative active users (7 days)"
+msgstr "Utenti attivi kumulattivi (7 ijiem)"
+
+msgid "Close"
+msgstr "Agħlaq"
+
+msgid "Method not allowed."
+msgstr ""
+
+msgid "Invalid request parameter."
+msgstr ""
+
+msgid "Unsupported API action."
+msgstr ""
+
+msgid "Missing or invalid report type."
+msgstr ""
+
+msgid "Unknown report type requested."
+msgstr ""

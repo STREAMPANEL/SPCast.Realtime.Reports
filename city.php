@@ -1,11 +1,12 @@
 <?php
-
 declare(strict_types=1);
 
+require_once 'includes/config.php';
 require_once 'includes/i18n.php';
+
 $reportConfig = [
     'typeId' => 'city',
-    'analyticsMethod' => 'getListenerAddWithCity',
+    'gaPropertyId' => GA_PROPERTY_ID_GENERAL,
     'faqLinkType' => 'city',
     'pageTitle' => __('User Statistics by City - SPCast Live'),
     'pageDescription' => __('Detailed data on the origin of users at the city level. Statistics for today, the last 7 and 30 days.'),
@@ -18,9 +19,9 @@ $reportConfig = [
         'today' => __('City Distribution for Today'),
         'yesterday' => __('City Distribution for Yesterday'),
         '7days' => __('City Distribution over the last 7 Days'),
-        '30days' => __('City Distribution over the last 30 Days')
+        '30days' => __('City Distribution over the last 30 Days'),
     ],
-    'chartLabel' => 'Stadt'
+    'chartLabel' => __('City'),
 ];
 
 require_once 'includes/report_template.php';
