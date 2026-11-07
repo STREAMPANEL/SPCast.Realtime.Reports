@@ -127,7 +127,7 @@ msgid "Tuned in over the last 30 days"
 msgstr "Eingeschaltet in den letzten 30 Tagen"
 
 msgid "Shows the users who tuned out of stations on the network within the last 30 minutes. Real-time and live data available."
-msgstr "Zeigt die Nutzer, die Sender im Netzwerk innerhalb der letzten 30 Minuten ausgeschaltet haben. Echtzeit- und Live-Daten verfügbar."
+msgstr "Zeigt die Nutzer, die Sender im Netzwerk innerhalb der letzten 30 Minuten ausgeschaltet haben. Echtzeit und Live-Daten verfügbar."
 
 msgid "Anonymized statistics on users who tuned out of a station in the SPCast network within the last 30 minutes. A valuable source of analysis for general trends on the network."
 msgstr "Anonymisierte Statistiken zu Nutzern, die innerhalb der letzten 30 Minuten einen Sender im SPCast-Netzwerk ausgeschaltet haben. Eine wertvolle Analysequelle für allgemeine Trends im Netzwerk."
@@ -388,13 +388,13 @@ msgid "User Statistics by Region - SPCast Live"
 msgstr "Nutzerstatistik nach Bundesland - SPCast Live"
 
 msgid "Shows user activities by region. Detailed statistics for various time periods, daily and weekly."
-msgstr "Zeigt Nutzeraktivitäten nach Bundesländern. Ausführliche Statistiken für verschiedene Zeiträume, tages- und wochenweise."
+msgstr "Zeigt Nutzeraktivitäten nach Bundesländern. Ausführliche Statistiken für verschiedene Zeiträume, tages und wochenweise."
 
 msgid "User Statistics by Region"
 msgstr "Nutzerstatistik nach Bundesland"
 
 msgid "View anonymized data on user activities in the SPCast network by region. These statistics show how usage is distributed geographically, based on daily and weekly evaluations."
-msgstr "Sehen Sie anonymisierte Daten zu Nutzeraktivitäten im SPCast-Netzwerk nach Bundesländern. Diese Statistiken zeigen, wie die Nutzung geografisch verteilt ist, basierend auf tages- und wochenweisen Auswertungen."
+msgstr "Sehen Sie anonymisierte Daten zu Nutzeraktivitäten im SPCast-Netzwerk nach Bundesländern. Diese Statistiken zeigen, wie die Nutzung geografisch verteilt ist, basierend auf tages und wochenweisen Auswertungen."
 
 msgid "Shows the protocols of user activities in the network. Statistics for daily, weekly, and monthly evaluations."
 msgstr "Zeigt die Protokolle der Nutzeraktivitäten im Netzwerk. Statistiken für tägliche, wöchentliche und monatliche Auswertungen."
@@ -409,7 +409,7 @@ msgid "Anonymized statistics on the ports used by users in the SPCast network. T
 msgstr "Anonymisierte Statistiken zu den von Nutzern genutzten Ports im SPCast-Netzwerk. Diese Daten helfen, allgemeine Trends und technische Präferenzen der Radiostationen zu erkennen."
 
 msgid "Shows the users who tuned out of a station in the network within the last 30 minutes. Real-time and live data available."
-msgstr "Zeigt die Nutzer, die Sender im Netzwerk innerhalb der letzten 30 Minuten ausgeschaltet haben. Echtzeit- und Live-Daten verfügbar."
+msgstr "Zeigt die Nutzer, die Sender im Netzwerk innerhalb der letzten 30 Minuten ausgeschaltet haben. Echtzeit und Live-Daten verfügbar."
 
 msgid "Anonymized statistics on users who tuned out of a station in the SPCast network within the last 30 minutes. A valuable source of analysis for general trends in the network."
 msgstr "Anonymisierte Statistiken zu Nutzern, die innerhalb der letzten 30 Minuten einen Sender im SPCast-Netzwerk ausgeschaltet haben. Eine wertvolle Analysequelle für allgemeine Trends im Netzwerk."
@@ -628,7 +628,7 @@ msgid "All Individual Views"
 msgstr "Alle Einzelansichten"
 
 msgid "Direct access to all specialized realtime and historical report pages."
-msgstr "Direkter Zugriff auf alle spezialisierten Echtzeit- und Verlaufsseiten."
+msgstr "Direkter Zugriff auf alle spezialisierten Echtzeit und Verlaufsseiten."
 
 msgid "Anonymized data on the usage of IPv4 and IPv6 in the SPCast network. These statistics provide insights into the distribution of IP versions across radio stations."
 msgstr "Anonymisierte Daten zur Nutzung von IPv4 und IPv6 im SPCast-Netzwerk. Diese Statistiken geben Aufschluss über die Verteilung der IP-Versionen innerhalb der Radiostationen."
@@ -766,7 +766,7 @@ msgid "Data Source & Interval"
 msgstr "Datenquelle & Intervall"
 
 msgid "Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history."
-msgstr "Aggregierte Hörer- und Stream-Ereignisse über die Audio-Streaming-Infrastruktur von %s (Icecast, SHOUTcast, HLS), aktualisiert alle 45 Sekunden mit rollierender 30-Tage-Historie."
+msgstr "Aggregierte Hörer und Stream-Ereignisse über die Audio-Streaming-Infrastruktur von %s (Icecast, SHOUTcast, HLS), aktualisiert alle 45 Sekunden mit rollierender 30-Tage-Historie."
 
 msgid "Anonymization & Privacy"
 msgstr "Anonymisierung & Datenschutz"

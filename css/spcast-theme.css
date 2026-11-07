@@ -19,6 +19,15 @@
     --sp-shadow-light: 0 10px 30px rgba(11, 16, 32, 0.06);
     --sp-scrollbar-thumb-light: #94a3b8;
     --sp-scrollbar-track-light: #e2e8f0;
+    --sp-bg-gradient-light: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 60%, #eef2f7 100%);
+    --sp-shimmer-left-light: rgba(0, 119, 91, 0.08);
+    --sp-shimmer-right-light: rgba(11, 107, 203, 0.07);
+    --sp-btn-gradient-light: linear-gradient(135deg, #00775b 0%, #0b6bcb 100%);
+    --sp-btn-gradient-hover-light: linear-gradient(135deg, #0b6bcb 0%, #00775b 100%);
+    --sp-btn-shadow-light: 0 4px 14px rgba(0, 119, 91, 0.22);
+    --sp-btn-shadow-hover-light: 0 0 20px rgba(0, 119, 91, 0.32);
+    --sp-card-hover-border-light: #00775b;
+    --sp-card-hover-shadow-light: 0 18px 36px -8px rgba(15, 23, 42, 0.14), 0 0 20px rgba(15, 118, 110, 0.15);
 
     /* Dark palette */
     --sp-bg-dark: #0b1020;
@@ -40,6 +49,15 @@
     --sp-shadow-dark: 0 14px 36px rgba(0, 0, 0, 0.38);
     --sp-scrollbar-thumb-dark: #334155;
     --sp-scrollbar-track-dark: #0f172a;
+    --sp-bg-gradient-dark: linear-gradient(180deg, #070a14 0%, #0b1020 70%, #060913 100%);
+    --sp-shimmer-left-dark: rgba(73, 242, 194, 0.22);
+    --sp-shimmer-right-dark: rgba(106, 167, 255, 0.2);
+    --sp-btn-gradient-dark: linear-gradient(135deg, #49f2c2 0%, #6aa7ff 100%);
+    --sp-btn-gradient-hover-dark: linear-gradient(135deg, #6aa7ff 0%, #49f2c2 100%);
+    --sp-btn-shadow-dark: 0 4px 16px rgba(73, 242, 194, 0.28);
+    --sp-btn-shadow-hover-dark: 0 0 24px rgba(73, 242, 194, 0.45);
+    --sp-card-hover-border-dark: rgba(73, 242, 194, 0.45);
+    --sp-card-hover-shadow-dark: 0 20px 40px -8px rgba(0, 0, 0, 0.6), 0 0 25px rgba(73, 242, 194, 0.2);
 
     --sp-bg: var(--sp-bg-light);
     --sp-surface: var(--sp-surface-light);
@@ -60,6 +78,15 @@
     --sp-shadow: var(--sp-shadow-light);
     --sp-scrollbar-thumb: var(--sp-scrollbar-thumb-light);
     --sp-scrollbar-track: var(--sp-scrollbar-track-light);
+    --sp-bg-gradient: var(--sp-bg-gradient-light);
+    --sp-shimmer-left: var(--sp-shimmer-left-light);
+    --sp-shimmer-right: var(--sp-shimmer-right-light);
+    --sp-btn-gradient: var(--sp-btn-gradient-light);
+    --sp-btn-gradient-hover: var(--sp-btn-gradient-hover-light);
+    --sp-btn-shadow: var(--sp-btn-shadow-light);
+    --sp-btn-shadow-hover: var(--sp-btn-shadow-hover-light);
+    --sp-card-hover-border: var(--sp-card-hover-border-light);
+    --sp-card-hover-shadow: var(--sp-card-hover-shadow-light);
 
     color-scheme: light dark;
     accent-color: var(--sp-accent);
@@ -88,10 +115,21 @@
         --sp-shadow: var(--sp-shadow-dark);
         --sp-scrollbar-thumb: var(--sp-scrollbar-thumb-dark);
         --sp-scrollbar-track: var(--sp-scrollbar-track-dark);
+        --sp-bg-gradient: var(--sp-bg-gradient-dark);
+        --sp-shimmer-left: var(--sp-shimmer-left-dark);
+        --sp-shimmer-right: var(--sp-shimmer-right-dark);
+        --sp-btn-gradient: var(--sp-btn-gradient-dark);
+        --sp-btn-gradient-hover: var(--sp-btn-gradient-hover-dark);
+        --sp-btn-shadow: var(--sp-btn-shadow-dark);
+        --sp-btn-shadow-hover: var(--sp-btn-shadow-hover-dark);
+        --sp-card-hover-border: var(--sp-card-hover-border-dark);
+        --sp-card-hover-shadow: var(--sp-card-hover-shadow-dark);
     }
 }
 
-:root:has(> head > meta[name="color-scheme"][content="dark"]) {
+:root:has(> head > meta[name="color-scheme"][content="dark"]),
+:root[data-bs-theme="dark"],
+[data-bs-theme="dark"] {
     color-scheme: dark;
     --sp-bg: var(--sp-bg-dark);
     --sp-surface: var(--sp-surface-dark);
@@ -112,9 +150,20 @@
     --sp-shadow: var(--sp-shadow-dark);
     --sp-scrollbar-thumb: var(--sp-scrollbar-thumb-dark);
     --sp-scrollbar-track: var(--sp-scrollbar-track-dark);
+    --sp-bg-gradient: var(--sp-bg-gradient-dark);
+    --sp-shimmer-left: var(--sp-shimmer-left-dark);
+    --sp-shimmer-right: var(--sp-shimmer-right-dark);
+    --sp-btn-gradient: var(--sp-btn-gradient-dark);
+    --sp-btn-gradient-hover: var(--sp-btn-gradient-hover-dark);
+    --sp-btn-shadow: var(--sp-btn-shadow-dark);
+    --sp-btn-shadow-hover: var(--sp-btn-shadow-hover-dark);
+    --sp-card-hover-border: var(--sp-card-hover-border-dark);
+    --sp-card-hover-shadow: var(--sp-card-hover-shadow-dark);
 }
 
-:root:has(> head > meta[name="color-scheme"][content="light"]) {
+:root:has(> head > meta[name="color-scheme"][content="light"]),
+:root[data-bs-theme="light"],
+[data-bs-theme="light"] {
     color-scheme: light;
     --sp-bg: var(--sp-bg-light);
     --sp-surface: var(--sp-surface-light);
@@ -135,6 +184,15 @@
     --sp-shadow: var(--sp-shadow-light);
     --sp-scrollbar-thumb: var(--sp-scrollbar-thumb-light);
     --sp-scrollbar-track: var(--sp-scrollbar-track-light);
+    --sp-bg-gradient: var(--sp-bg-gradient-light);
+    --sp-shimmer-left: var(--sp-shimmer-left-light);
+    --sp-shimmer-right: var(--sp-shimmer-right-light);
+    --sp-btn-gradient: var(--sp-btn-gradient-light);
+    --sp-btn-gradient-hover: var(--sp-btn-gradient-hover-light);
+    --sp-btn-shadow: var(--sp-btn-shadow-light);
+    --sp-btn-shadow-hover: var(--sp-btn-shadow-hover-light);
+    --sp-card-hover-border: var(--sp-card-hover-border-light);
+    --sp-card-hover-shadow: var(--sp-card-hover-shadow-light);
 }
 
 @supports (color: light-dark(white, black)) {
@@ -158,6 +216,15 @@
         --sp-shadow: light-dark(var(--sp-shadow-light), var(--sp-shadow-dark));
         --sp-scrollbar-thumb: light-dark(var(--sp-scrollbar-thumb-light), var(--sp-scrollbar-thumb-dark));
         --sp-scrollbar-track: light-dark(var(--sp-scrollbar-track-light), var(--sp-scrollbar-track-dark));
+        --sp-bg-gradient: light-dark(var(--sp-bg-gradient-light), var(--sp-bg-gradient-dark));
+        --sp-shimmer-left: light-dark(var(--sp-shimmer-left-light), var(--sp-shimmer-left-dark));
+        --sp-shimmer-right: light-dark(var(--sp-shimmer-right-light), var(--sp-shimmer-right-dark));
+        --sp-btn-gradient: light-dark(var(--sp-btn-gradient-light), var(--sp-btn-gradient-dark));
+        --sp-btn-gradient-hover: light-dark(var(--sp-btn-gradient-hover-light), var(--sp-btn-gradient-hover-dark));
+        --sp-btn-shadow: light-dark(var(--sp-btn-shadow-light), var(--sp-btn-shadow-dark));
+        --sp-btn-shadow-hover: light-dark(var(--sp-btn-shadow-hover-light), var(--sp-btn-shadow-hover-dark));
+        --sp-card-hover-border: light-dark(var(--sp-card-hover-border-light), var(--sp-card-hover-border-dark));
+        --sp-card-hover-shadow: light-dark(var(--sp-card-hover-shadow-light), var(--sp-card-hover-shadow-dark));
     }
 }
 
@@ -191,12 +258,31 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--sp-bg);
-    background-image: radial-gradient(ellipse 80% 420px at 50% -100px, var(--sp-hero-glow), transparent 70%);
+    background-image:
+        radial-gradient(1200px 600px at 15% 0%, var(--sp-shimmer-left), transparent 60%),
+        radial-gradient(900px 550px at 85% 0%, var(--sp-shimmer-right), transparent 55%),
+        var(--sp-bg-gradient);
     background-repeat: no-repeat;
+    background-size: 100% 900px, 100% 900px, 100% 100%;
     color: var(--sp-text);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+}
+
+.section-shimmer {
+    position: relative;
+}
+
+.section-shimmer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(1200px 600px at 15% 10%, var(--sp-shimmer-left), transparent 55%),
+        radial-gradient(900px 500px at 85% 10%, var(--sp-shimmer-right), transparent 55%);
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -252,6 +338,10 @@ main {
 
 .sp-brand:hover {
     color: var(--sp-heading);
+}
+
+.sp-brand:hover .sp-brand-logo {
+    box-shadow: 0 0 10px var(--sp-hero-glow), 0 0 0 1px var(--sp-border-strong);
 }
 
 .sp-brand-logo {
@@ -392,9 +482,14 @@ main {
     transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
+.sp-card-interactive {
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .sp-card-interactive:hover {
-    border-color: var(--sp-border-strong);
-    transform: translateY(-2px);
+    border-color: var(--sp-card-hover-border);
+    box-shadow: var(--sp-card-hover-shadow);
+    transform: translateY(-4px);
 }
 
 .sp-card-accent {
@@ -446,21 +541,26 @@ main {
     justify-content: center;
     gap: 0.45rem;
     background-color: var(--sp-accent);
+    background-image: var(--sp-btn-gradient);
     color: var(--sp-button-text);
     border: 1px solid transparent;
     border-radius: 0.6rem;
     padding: 0.52rem 1rem;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.9rem;
     text-decoration: none;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    box-shadow: var(--sp-btn-shadow);
+    transition: background-image 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease, border-color 0.15s ease;
 }
 
 .sp-btn-primary:hover,
 .sp-btn-primary:focus-visible {
     background-color: var(--sp-accent-hover);
+    background-image: var(--sp-btn-gradient-hover);
     color: var(--sp-button-text);
+    box-shadow: var(--sp-btn-shadow-hover);
+    transform: translateY(-1px);
 }
 
 .sp-btn-ghost {
@@ -477,13 +577,14 @@ main {
     font-size: 0.85rem;
     text-decoration: none;
     cursor: pointer;
-    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease;
+    transition: border-color 0.15s ease, color 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .sp-btn-ghost:hover {
     background-color: var(--sp-hover);
     color: var(--sp-heading);
     border-color: var(--sp-border-strong);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .sp-btn-ghost[aria-pressed="true"],
@@ -492,6 +593,7 @@ main {
     color: var(--sp-accent);
     border-color: var(--sp-border-strong);
     font-weight: 600;
+    box-shadow: 0 0 14px var(--sp-hero-glow);
 }
 
 /* Hub & tabs */
@@ -538,6 +640,7 @@ main {
 .sp-pill-btn:hover {
     color: var(--sp-heading);
     background: var(--sp-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .sp-pill-btn.active,
@@ -546,6 +649,15 @@ main {
     color: var(--sp-accent);
     border-color: var(--sp-border-strong);
     font-weight: 600;
+    box-shadow: 0 0 14px var(--sp-hero-glow);
+}
+
+.sp-pill-btn.active .sp-badge-count,
+.sp-btn-ghost.active .sp-badge-count,
+.sp-nav-link.active .sp-badge-count {
+    background: var(--sp-surface);
+    color: var(--sp-accent);
+    border-color: var(--sp-border-strong);
 }
 
 .sp-tabs {
