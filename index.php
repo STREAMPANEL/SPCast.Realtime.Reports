@@ -361,7 +361,7 @@ $schemaGraph = SeoHelper::buildHomeSchemaGraph(
                                 <?php echo SeoHelper::renderInterpolatedLink(
                                     __('Aggregated listener and stream events across the %s audio streaming infrastructure (Icecast, SHOUTcast, HLS), refreshed every 45 seconds with a rolling 30-day history.'),
                                     SeoHelper::BRAND_URL,
-                                    'SPCast.eu'
+                                    'SPCast'
                                 ); ?>
                             </p>
                         </div>

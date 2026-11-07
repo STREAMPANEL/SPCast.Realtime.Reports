@@ -295,7 +295,13 @@ class SeoHelperTest extends TestCase
         $this->assertStringContainsString('Datenquelle &amp; Intervall', $html);
         $this->assertStringContainsString('Anonymisierung &amp; Datenschutz', $html);
         $this->assertStringContainsString('Quelloffenes Dashboard', $html);
+        $this->assertStringContainsString('Stadt und Mountpoint-Gruppen mit weniger als fünf Ereignissen werden zusammengefasst.', $html);
+        $this->assertStringNotContainsString('Stadt- und Mountpoint-Gruppen', $html);
         $this->assertStringContainsString(
+            '<a href="https://www.spcast.eu/" target="_blank" rel="noopener" class="sp-inline-link">SPCast</a>',
+            $html
+        );
+        $this->assertStringNotContainsString(
             '<a href="https://www.spcast.eu/" target="_blank" rel="noopener" class="sp-inline-link">SPCast.eu</a>',
             $html
         );

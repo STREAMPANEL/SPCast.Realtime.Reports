@@ -772,7 +772,7 @@ msgid "Anonymization & Privacy"
 msgstr "Anonymisierung & Datenschutz"
 
 msgid "City and mountpoint groups with fewer than five events are combined. Listener IP addresses are not published."
-msgstr "Stadt- und Mountpoint-Gruppen mit weniger als fünf Ereignissen werden zusammengefasst. IP-Adressen von Hörern werden nicht veröffentlicht."
+msgstr "Stadt und Mountpoint-Gruppen mit weniger als fünf Ereignissen werden zusammengefasst. IP-Adressen von Hörern werden nicht veröffentlicht."
 
 msgid "Open-Source Dashboard"
 msgstr "Quelloffenes Dashboard"
